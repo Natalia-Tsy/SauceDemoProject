@@ -4,6 +4,10 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> NT
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
 driver.get("https://www.saucedemo.com/")
@@ -21,6 +25,7 @@ def test_login_form():
 
     button_login =driver.find_element(By.XPATH, "//input[@name='login-button']").click()
     time.sleep(2)
+
 
     assert driver.current_url == 'https://www.saucedemo.com/inventory.html', 'We reached another site!'
 
