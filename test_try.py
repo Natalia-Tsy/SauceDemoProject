@@ -23,5 +23,6 @@ def test_login_form():
     button_login =driver.find_element(By.XPATH, "//input[@name='login-button']").click()
     time.sleep(3)
 
-    assert driver.current_url == 'https://www.saucedemo.com/inventory.html', 'We reached another site!'
+    assert driver.current_url == 'https://www.saucedemo.com/inventory.html', \
+        'We reached another site!'
 
