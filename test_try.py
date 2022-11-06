@@ -3,11 +3,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> NT
 driver = webdriver.Chrome(ChromeDriverManager().install())
 
 driver.get("https://www.saucedemo.com/")
@@ -18,10 +13,10 @@ def test_title():
 
 def test_login_form():
     driver.find_element(By.ID, 'user-name').send_keys('standard_user')
-    time.sleep(1)
+    time.sleep(2)
 
     password = driver.find_element(By.XPATH, "//input[@id='password']").send_keys('secret_sauce')
-    time.sleep(1)
+    time.sleep(2)
 
     button_login =driver.find_element(By.XPATH, "//input[@name='login-button']").click()
     time.sleep(2)
