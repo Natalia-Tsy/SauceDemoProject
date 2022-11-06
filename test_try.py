@@ -15,13 +15,13 @@ def test_title():
 
 def test_login_form():
     driver.find_element(By.ID, 'user-name').send_keys('standard_user')
-    time.sleep(1)
+    time.sleep(3)
 
     password = driver.find_element(By.XPATH, "//input[@id='password']").send_keys('secret_sauce')
-    time.sleep(1)
+    time.sleep(3)
 
     button_login =driver.find_element(By.XPATH, "//input[@name='login-button']").click()
-    time.sleep(1)
+    time.sleep(3)
 
     assert driver.current_url == 'https://www.saucedemo.com/inventory.html', 'We reached another site!'
 
