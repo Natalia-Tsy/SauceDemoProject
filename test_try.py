@@ -2,9 +2,21 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
 
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
+print("\nstart browser...")
+options = webdriver.ChromeOptions()
+options.add_argument("--window-size=1600,1080")
+options.headless = True
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()), options=options
+)
+# yield browser
+print("\nquit browser...")
+# browser.quit()
+
+# driver = webdriver.Chrome(ChromeDriverManager().install())
 
 driver.get("https://www.saucedemo.com/")
 
