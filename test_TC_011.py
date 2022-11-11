@@ -30,8 +30,7 @@ def test_login_form():
     driver.find_element(By.ID, "user-name").send_keys("standard_user")
     time.sleep(2)
 
-    driver.find_element(By.XPATH, "//input[@id='password']"
-                        ).send_keys("secret_sauce")
+    driver.find_element(By.XPATH, "//input[@id='password']").send_keys("secret_sauce")
     time.sleep(2)
 
     driver.find_element(By.XPATH, "//input[@name='login-button']").click()
