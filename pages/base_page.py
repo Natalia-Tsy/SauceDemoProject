@@ -15,7 +15,6 @@ class BasePage:
 
     # Возвращается объект WebElement на основе заданного критерия поиска
     def element_is_present(self, method, locator):
-
         try:
             self.browser.find_element(method, locator)
         except NoSuchElementException:
@@ -47,6 +46,15 @@ class BasePage:
             EC.presence_of_all_elements_located((locator))
         )
 
+    # Возвращаются элементы или запускается ожидание timeout
+    # секунд до того,
+    # как вернется исключение TimeoutException,
+    # если не найдет элемент за timeout
+    def element_is_located(self, locator, timeout=5):
+        return Wait(self.browser, timeout).until(
+            EC.presence_of_element_located((locator))
+        )
+
     # Проверяет, что текущая страница соответствует требованиям
     def should_be_link(self, link):
         assert link in self.browser.current_url, "wrong url"
@@ -64,3 +72,9 @@ class BasePage:
     # соответствующий требованиям
     def get_text(self, i, method, locator):
         return self.browser.find_element(method, locator).text.split("\n")[i:]
+
+    def flatten(self, mylist):
+        return [item for sublist in mylist for item in sublist]
+
+    def click_button(self, method, locator):
+        self.browser.find_element(method, locator).click()

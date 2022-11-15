@@ -15,17 +15,21 @@ class ProductsPage(BasePage):
         self.should_be_page_title("PRODUCTS", *ProductsPageLocators.TITLE)
         # Проверяет, что товары на страницы соответствуют требованиям
         self.should_be_products_page_inventory_list()
-        # Получает элемент корзины на странице
-        assert self.browser.find_element(*ProductsPageLocators.SHOP_CART_LINK)
+        # Проверяет, что имеется ссылка на страницу корзины
+        self.should_be_link_to_cart_page()
+
+    # Проверяет, что имеется ссылка на страницу корзины
+    def should_be_link_to_cart_page(self):
+        # assert self.element_is_located(*ProductsPageLocators.SHOP_CART_LINK)
+        assert self.element_is_visible(ProductsPageLocators.SHOP_CART_LINK)
 
     # Проверяет, что товары на страницы соответствуют требованиям
     def should_be_products_page_inventory_list(self):
         # Получает список элементов товаров на странице
         list_el = self.browser.find_element(*ProductsPageLocators.INVENT_LIST)
-        assert (
-            len(list_el.get_property("children")) != 0
-        ), "there is no products"
+        assert len(list_el.get_property("children")) != 0, "there is no products"
 
+    # Выполняется поиск элементов товаров на странице в соответствии с требованиями
     def list_finded_item_by_name(self, item_names):
         # Получает список элементов товаров на странице
         list_el = self.browser.find_elements(*ProductsPageLocators.INVENT_ITEM)
@@ -39,18 +43,29 @@ class ProductsPage(BasePage):
         )
         return items
 
-    def click_button(self, el):
-        # a = {}
-        # print(type(el))
+    # Нажимается кнопка "ADD TO CART"/"REMOVE" выбранных элементов товаров
+    def find_button(self, el):
+        # Блок товара
         inventory_item = el.get_property("children")
-        # item_lbl = inventory_item[0].get_property("children")
-        # pricebar = inventory_item[1].get_property("children")
-        # h = pricebar[0].text
-        # a[item_lbl[0].text] = pricebar[0].text
-        inventory_item[1].get_property("children")[1].click()
+        # Блок pricebar товара
+        pricebar = inventory_item[1].get_property("children")
+        # Кнопка "ADD TO CART"/"REMOVE" товара
+        btn_inventory = pricebar[1]
+        btn_inventory.click()
 
-    # Добавляется в корзину товар
+    # Добавляются товары в корзину в соответствии с требованием
     def add_item_on_products_page(self, *args, **kwargs):
+        selected_items = self.flatten(self.list_finded_item_by_name(args))
+        # Добавляется поочередно товар в корзину товар
+        list(map(lambda y: self.find_button(y), selected_items))
+        return selected_items
 
-        j = self.list_finded_item_by_name(args)
-        list(filter(lambda x: list(map(lambda y: self.click_button(y), x)), j))
+    # Переходит на страницу корзины
+    def go_to_basket_page(self):
+        self.click_button(*ProductsPageLocators.SHOP_CART_LINK)
+
+    # Проверяет, что иконка корзины на текущей странице не указывает количество
+    # товаров в корзине
+    def should_be_empty_shopping_cart_badge(self):
+        el = self.browser.find_element(*ProductsPageLocators.SHOP_CART_LINK)
+        assert (el.get_property("children")) == [], "there is some items in cart"
