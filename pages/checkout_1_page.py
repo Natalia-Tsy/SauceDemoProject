@@ -53,8 +53,7 @@ class CheckoutPage_1(BasePage):
         self.browser.find_element(*Checkout1PageLocators.INPUT_CODE).send_keys(
             code
         )
-        # Нажимается кнопка "LOGIN"
 
-    # Переходит на страницу корзины
+    # Нажимается кнопка "LOGIN"
     def go_to_checkout_2_page(self):
         self.click_button(*Checkout1PageLocators.CONTINUE_BTN)
