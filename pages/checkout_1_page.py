@@ -33,24 +33,24 @@ class CheckoutPage_1(BasePage):
     def should_be_input_postal_code_to_checkout_1_page(self):
         assert self.element_is_present(*Checkout1PageLocators.INPUT_CODE)
 
-    # Проверяет, что кнопка "CHECKOUT" имеется на текущей странице
-    def should_be_btn_to_checkout_1_page(self):
-        assert self.element_is_visible(Checkout1PageLocators.CONTINUE_BTN)
+    # # Проверяет, что кнопка "CHECKOUT" имеется на текущей странице
+    # def should_be_btn_to_checkout_1_page(self):
+    #     assert self.element_is_visible(Checkout1PageLocators.CONTINUE_BTN)
 
-    # Заполняются данные, необходимые для получения товара
-    def set_shipping_info(self, firstname, lastname, code):
-        # Имя пользователя передается текстовому элементу на странице
-        self.browser.find_element(
-            *Checkout1PageLocators.INPUT_FIRSTNAME
-        ).send_keys(firstname)
-        # Пароль передается текстовому элементу на странице
-        self.browser.find_element(
-            *Checkout1PageLocators.INPUT_LASTNAME
-        ).send_keys(lastname)
-        # Код получения передается текстовому элементу на странице
-        self.browser.find_element(*Checkout1PageLocators.INPUT_CODE).send_keys(
-            code
-        )
+    # # Заполняются данные, необходимые для получения товара
+    # def set_shipping_info(self, firstname, lastname, code):
+    #     # Имя пользователя передается текстовому элементу на странице
+    #     self.browser.find_element(
+    #         *Checkout1PageLocators.INPUT_FIRSTNAME
+    #     ).send_keys(firstname)
+    #     # Пароль передается текстовому элементу на странице
+    #     self.browser.find_element(
+    #         *Checkout1PageLocators.INPUT_LASTNAME
+    #     ).send_keys(lastname)
+    #     # Код получения передается текстовому элементу на странице
+    #     self.browser.find_element(*Checkout1PageLocators.INPUT_CODE).send_keys(
+    #         code
+    #     )
 
     # Нажимается кнопка "LOGIN"
     def go_to_checkout_2_page(self):
