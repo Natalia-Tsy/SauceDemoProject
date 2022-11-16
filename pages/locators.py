@@ -8,12 +8,12 @@ class CheckoutCmpltPageLocators:
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
 
 
-class Checkout2PageLocators:
+class Chckout2PageLocators:
     FINISH_BTN = (By.ID, "finish")
     TITLE = (By.CLASS_NAME, "title")
 
 
-class Checkout1PageLocators:
+class Chckout1PageLocators:
     CONTINUE_BTN = (By.ID, "continue")
     TITLE = (By.CLASS_NAME, "title")
     INPUT_FIRSTNAME = (By.ID, "first-name")
