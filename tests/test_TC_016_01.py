@@ -1,18 +1,17 @@
+import pytest
 from pages.cart_page import CartPage
 from pages.products_page import ProductsPage
 from pages.login_page import LoginPage
 from pages.checkout_1_page import CheckoutPage_1
 from pages.checkout_2_page import CheckoutPage_2
 from pages.checkout_cmplt_page import CheckouCmpltPage
-import pytest
-
 
 link = "https://www.saucedemo.com/"
 
 
 class TestSample:
     @pytest.mark.parametrize(
-        "username, password",
+        'username, password',
         [
             ("standard_user", "secret_sauce"),
             ("locked_out_user", "secret_sauce"),
@@ -36,9 +35,13 @@ class TestSample:
         "username, password",
         [
             ("standard_user", "secret_sauce"),
-            ("locked_out_user", "secret_sauce"),
             ("performance_glitch_user", "secret_sauce"),
             ("problem_user", "secret_sauce"),
+            pytest.param(
+                "locked_out_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
         ],
     )
     # Тест проверяет, что пользователь может перейти со страницы авторизации
@@ -63,9 +66,13 @@ class TestSample:
         "username, password",
         [
             ("standard_user", "secret_sauce"),
-            ("locked_out_user", "secret_sauce"),
             ("performance_glitch_user", "secret_sauce"),
             ("problem_user", "secret_sauce"),
+            pytest.param(
+                "locked_out_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
         ],
     )
     # Тест проверяет, что пользователь может перейти со страницы авторизации
@@ -89,25 +96,19 @@ class TestSample:
         "username, password",
         [
             ("standard_user", "secret_sauce"),
-            ("locked_out_user", "secret_sauce"),
             ("performance_glitch_user", "secret_sauce"),
-            ("problem_user", "secret_sauce"),
+            pytest.param(
+                "problem_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
+            pytest.param(
+                "locked_out_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
         ],
     )
-    # @pytest.mark.parametrize(
-    #     "firstname",
-    #     [
-    #         "John",
-    #     ],
-    #     "lastname",
-    #     [
-    #         "Smith",
-    #     ],
-    #     "code",
-    #     [
-    #         "33009",
-    #     ],
-    # )
     # Тест проверяет, что пользователь может перейти со страницы авторизации
     # на страницу каталога товаров
     def test_user_can_go_to_checkout_1_page(self, d, username, password):
@@ -132,9 +133,17 @@ class TestSample:
         "username, password",
         [
             ("standard_user", "secret_sauce"),
-            ("locked_out_user", "secret_sauce"),
             ("performance_glitch_user", "secret_sauce"),
-            ("problem_user", "secret_sauce"),
+            pytest.param(
+                "problem_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
+            pytest.param(
+                "locked_out_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
         ],
     )
     def test_user_can_go_to_checkout_2_page(self, d, username, password):
@@ -158,9 +167,17 @@ class TestSample:
         "username, password",
         [
             ("standard_user", "secret_sauce"),
-            ("locked_out_user", "secret_sauce"),
             ("performance_glitch_user", "secret_sauce"),
-            ("problem_user", "secret_sauce"),
+            pytest.param(
+                "problem_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
+            pytest.param(
+                "locked_out_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError)
+            ),
         ],
     )
     def test_user_can_go_to_checkout_complete_page(self, d, username, password):

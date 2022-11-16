@@ -1,16 +1,17 @@
 from .base_page import BasePage
 from .locators import CheckoutCmpltPageLocators
+from .src import CheckoutCmpltPageSrc
 
 
 class CheckouCmpltPage(BasePage):
     # Проверяет, что текущая страница является страницей корзины
     def should_be_checkout_complete_page(self):
         # Проверяет, что текущая страница соответствует требованиям
-        self.should_be_link("checkout-complete")
+        self.should_be_link(CheckoutCmpltPageSrc.LINK)
         # Проверяет, что текст элемента заглавия страницы
         # соответствует требованиям
         self.should_be_page_title(
-            "CHECKOUT: COMPLETE!", *CheckoutCmpltPageLocators.TITLE
+            CheckoutCmpltPageSrc.TITLE, *CheckoutCmpltPageLocators.TITLE
         )
         self.should_be_btn_to_checkout_complete_page()
         self.should_be_empty_shopping_cart_badge()

@@ -1,16 +1,17 @@
 from .base_page import BasePage
 from .locators import Chckout1PageLocators
+from .src import Chckout1PageSrc
 
 
 class CheckoutPage_1(BasePage):
     # Проверяет, что текущая страница является страницей корзины
     def should_be_checkout_1_page(self):
         # Проверяет, что текущая страница соответствует требованиям
-        self.should_be_link("checkout-step-one")
+        self.should_be_link(Chckout1PageSrc.LINK)
         # Проверяет, что текст элемента заглавия страницы
         # соответствует требованиям
         self.should_be_page_title(
-            "CHECKOUT: YOUR INFORMATION", *Chckout1PageLocators.TITLE
+            Chckout1PageSrc.TITLE, *Chckout1PageLocators.TITLE
         )
         self.should_be_input_firstname_to_checkout_1_page()
         self.should_be_input_lastname_to_checkout_1_page()

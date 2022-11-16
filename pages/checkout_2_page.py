@@ -1,15 +1,16 @@
 from .base_page import BasePage
 from .locators import Chckout2PageLocators
+from .src import Chckout2PageSrc
 
 
 class CheckoutPage_2(BasePage):
     # Проверяет, что текущая страница является страницей корзины
     def should_be_checkout_2_page(self):
         # Проверяет, что текущая страница соответствует требованиям
-        self.should_be_link("checkout-step-two")
+        self.should_be_link(Chckout2PageSrc.LINK)
         # Проверяет, что текст элемента заглавия страницы
         # соответствует требованиям
-        self.should_be_page_title("CHECKOUT: OVERVIEW", *Chckout2PageLocators.TITLE)
+        self.should_be_page_title(Chckout2PageSrc.TITLE, *Chckout2PageLocators.TITLE)
         self.should_be_btn_to_checkout_complete_page()
 
     # Проверяет, что кнопка "FINISH" имеется на текущей странице

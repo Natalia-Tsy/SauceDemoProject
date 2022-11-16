@@ -1,6 +1,7 @@
+import re
 from .base_page import BasePage
 from .locators import ProductsPageLocators
-import re
+from .src import ProductsPageSrc
 
 
 class ProductsPage(BasePage):
@@ -9,10 +10,10 @@ class ProductsPage(BasePage):
     def should_be_products_page(self):
 
         # Проверяет, что текущая страница соответствует требованиям
-        self.should_be_link("inventory")
+        self.should_be_link(ProductsPageSrc.LINK)
         # Проверяет, что текст элемента заглавия страницы
         # соответствует требованиям
-        self.should_be_page_title("PRODUCTS", *ProductsPageLocators.TITLE)
+        self.should_be_page_title(ProductsPageSrc.TITLE, *ProductsPageLocators.TITLE)
         # Проверяет, что товары на страницы соответствуют требованиям
         self.should_be_products_page_inventory_list()
         # Проверяет, что имеется ссылка на страницу корзины

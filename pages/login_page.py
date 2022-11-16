@@ -1,10 +1,11 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from .src import LoginPageSrc
 
 
 class LoginPage(BasePage):
     def should_be_login_page(self):
-        self.should_be_link("https://www.saucedemo.com/")
+        self.should_be_link(LoginPageSrc.LINK)
         # Проверяет, что элемент для ввода имени пользователя
         # имеется на текущей странице
         assert self.element_is_present(*LoginPageLocators.INPUT_USERNAME)
@@ -35,5 +36,5 @@ class LoginPage(BasePage):
         # имеется на текущей странице
         btn_error = self.browser.find_element(*LoginPageLocators.ERROR_BTN)
         assert (
-            btn_error.text == "Epic sadface: Sorry, this user has been locked out."
+            btn_error.text == LoginPageSrc.ERROR_BTN_TEXT
         ), "wrong test"
