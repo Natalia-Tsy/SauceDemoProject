@@ -9,7 +9,9 @@ class CheckoutPage_1(BasePage):
         self.should_be_link("checkout-step-one")
         # Проверяет, что текст элемента заглавия страницы
         # соответствует требованиям
-        self.should_be_page_title("CHECKOUT: YOUR INFORMATION", *Chckout1PageLocators.TITLE)
+        self.should_be_page_title(
+            "CHECKOUT: YOUR INFORMATION", *Chckout1PageLocators.TITLE
+        )
         self.should_be_input_firstname_to_checkout_1_page()
         self.should_be_input_lastname_to_checkout_1_page()
         self.should_be_input_postal_code_to_checkout_1_page()
@@ -40,9 +42,13 @@ class CheckoutPage_1(BasePage):
     # Заполняются данные, необходимые для получения товара
     def set_shipping_info(self, firstname, lastname, code):
         # Имя пользователя передается текстовому элементу на странице
-        self.browser.find_element(*Chckout1PageLocators.INPUT_FIRSTNAME).send_keys(firstname)
+        self.browser.find_element(*Chckout1PageLocators.INPUT_FIRSTNAME).send_keys(
+            firstname
+        )
         # Пароль передается текстовому элементу на странице
-        self.browser.find_element(*Chckout1PageLocators.INPUT_LASTNAME).send_keys(lastname)
+        self.browser.find_element(*Chckout1PageLocators.INPUT_LASTNAME).send_keys(
+            lastname
+        )
         # Код получения передается текстовому элементу на странице
         self.browser.find_element(*Chckout1PageLocators.INPUT_CODE).send_keys(code)
 

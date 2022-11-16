@@ -21,12 +21,8 @@ class CheckouCmpltPage(BasePage):
 
     # Проверяет, что иконка корзины не указывает количество товаров в корзине
     def should_be_empty_shopping_cart_badge(self):
-        el = self.browser.find_element(
-            *CheckoutCmpltPageLocators.SHOP_CART_LINK
-        )
-        assert (
-            el.get_property("children")
-        ) == [], "there is some items in cart"
+        el = self.browser.find_element(*CheckoutCmpltPageLocators.SHOP_CART_LINK)
+        assert (el.get_property("children")) == [], "there is some items in cart"
 
     # Переходит на страницу завершения оформления заказа
     def go_to_products_page(self):

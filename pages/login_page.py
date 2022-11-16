@@ -34,4 +34,6 @@ class LoginPage(BasePage):
         # Проверяет, что элемент сообщения об ошибке
         # имеется на текущей странице
         btn_error = self.browser.find_element(*LoginPageLocators.ERROR_BTN)
-        assert btn_error.text == "Epic sadface: Sorry, this user has been locked out.", "wrong test"
+        assert (
+            btn_error.text == "Epic sadface: Sorry, this user has been locked out."
+        ), "wrong test"
