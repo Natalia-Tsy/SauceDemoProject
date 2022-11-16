@@ -39,7 +39,7 @@ def d(browser):
 def pytest_addoption(parser):
     parser.addoption(
         "--browser",
-        default="chrome",
+        default="firefox",
         help="define browser: chrome or firefox, --browser=chrome",
     )
 
