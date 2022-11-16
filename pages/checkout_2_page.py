@@ -9,9 +9,7 @@ class CheckoutPage_2(BasePage):
         self.should_be_link("checkout-step-two")
         # Проверяет, что текст элемента заглавия страницы
         # соответствует требованиям
-        self.should_be_page_title(
-            "CHECKOUT: OVERVIEW", *Chckout2PageLocators.TITLE
-        )
+        self.should_be_page_title("CHECKOUT: OVERVIEW", *Chckout2PageLocators.TITLE)
         self.should_be_btn_to_checkout_complete_page()
 
     # Проверяет, что кнопка "FINISH" имеется на текущей странице
