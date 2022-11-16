@@ -35,6 +35,4 @@ class LoginPage(BasePage):
         # Проверяет, что элемент сообщения об ошибке
         # имеется на текущей странице
         btn_error = self.browser.find_element(*LoginPageLocators.ERROR_BTN)
-        assert (
-            btn_error.text == LoginPageSrc.ERROR_BTN_TEXT
-        ), "wrong test"
+        assert btn_error.text == LoginPageSrc.ERROR_BTN_TEXT, "wrong test"

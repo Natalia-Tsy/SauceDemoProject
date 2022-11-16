@@ -11,7 +11,7 @@ link = "https://www.saucedemo.com/"
 
 class TestSample:
     @pytest.mark.parametrize(
-        'username, password',
+        "username, password",
         [
             ("standard_user", "secret_sauce"),
             ("locked_out_user", "secret_sauce"),
@@ -40,7 +40,7 @@ class TestSample:
             pytest.param(
                 "locked_out_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
         ],
     )
@@ -71,7 +71,7 @@ class TestSample:
             pytest.param(
                 "locked_out_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
         ],
     )
@@ -100,12 +100,12 @@ class TestSample:
             pytest.param(
                 "problem_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
             pytest.param(
                 "locked_out_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
         ],
     )
@@ -137,12 +137,12 @@ class TestSample:
             pytest.param(
                 "problem_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
             pytest.param(
                 "locked_out_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
         ],
     )
@@ -171,12 +171,12 @@ class TestSample:
             pytest.param(
                 "problem_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
             pytest.param(
                 "locked_out_user",
                 "secret_sauce",
-                marks=pytest.mark.xfail(raises=AssertionError)
+                marks=pytest.mark.xfail(raises=AssertionError),
             ),
         ],
     )

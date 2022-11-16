@@ -10,9 +10,7 @@ class CheckoutPage_1(BasePage):
         self.should_be_link(Chckout1PageSrc.LINK)
         # Проверяет, что текст элемента заглавия страницы
         # соответствует требованиям
-        self.should_be_page_title(
-            Chckout1PageSrc.TITLE, *Chckout1PageLocators.TITLE
-        )
+        self.should_be_page_title(Chckout1PageSrc.TITLE, *Chckout1PageLocators.TITLE)
         self.should_be_input_firstname_to_checkout_1_page()
         self.should_be_input_lastname_to_checkout_1_page()
         self.should_be_input_postal_code_to_checkout_1_page()
