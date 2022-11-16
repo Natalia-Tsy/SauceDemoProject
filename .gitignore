@@ -160,6 +160,5 @@ cython_debug/
 #.idea/
 .vscode/launch.json
 .vscode/settings.json
-testre.py
 conftest.py
-mytest.py
+pyproject.toml

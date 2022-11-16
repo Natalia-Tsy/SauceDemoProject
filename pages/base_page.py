@@ -73,8 +73,10 @@ class BasePage:
     def get_text(self, i, method, locator):
         return self.browser.find_element(method, locator).text.split("\n")[i:]
 
+    #  Выполняется распаковка списка списков элементов в список элементов
     def flatten(self, mylist):
         return [item for sublist in mylist for item in sublist]
 
+    # Выполняется нажатие кнопки по локатору
     def click_button(self, method, locator):
         self.browser.find_element(method, locator).click()
