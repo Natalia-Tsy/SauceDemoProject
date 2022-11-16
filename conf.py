@@ -1,2 +1,2 @@
-URL = 'https://www.saucedemo.com/'
+URL = "https://www.saucedemo.com/"
 BROWSER_HEADLESS = True

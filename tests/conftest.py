@@ -58,5 +58,6 @@ def g(d):
     print("\n*** end fixture = teardown ***\n")
 
 
+# Убрать комментарии после оформления html report
 # def pytest_html_report_title(report):
 #     report.title = "REPORT"
