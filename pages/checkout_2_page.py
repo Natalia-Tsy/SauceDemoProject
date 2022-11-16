@@ -7,7 +7,8 @@ class CheckoutPage_2(BasePage):
     def should_be_checkout_2_page(self):
         # Проверяет, что текущая страница соответствует требованиям
         self.should_be_link("checkout-step-two")
-        # Проверяет, что текст элемента заглавия страницы соответствует требованиям
+        # Проверяет, что текст элемента заглавия страницы
+        # соответствует требованиям
         self.should_be_page_title(
             "CHECKOUT: OVERVIEW", *Chckout2PageLocators.TITLE
         )
