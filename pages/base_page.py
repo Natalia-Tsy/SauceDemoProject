@@ -10,7 +10,6 @@ class BasePage:
 
     # Открывает страницу
     def open_page(self):
-
         self.browser.get(self.link)
 
     # Возвращается объект WebElement на основе заданного критерия поиска
