@@ -24,13 +24,9 @@ class LoginPage(BasePage):
         # w = self.get_text(n, *LoginPageLocators.LOGIN_PASSWORD)
         # Имя пользователя передается текстовому элементу
         # на странице авторизации
-        self.browser.find_element(*LoginPageLocators.INPUT_USERNAME).send_keys(
-            username
-        )
+        self.browser.find_element(*LoginPageLocators.INPUT_USERNAME).send_keys(username)
         # Пароль передается текстовому элементу на странице авторизации
-        self.browser.find_element(*LoginPageLocators.INPUT_PASSWORD).send_keys(
-            password
-        )
+        self.browser.find_element(*LoginPageLocators.INPUT_PASSWORD).send_keys(password)
         # Нажимается кнопка "LOGIN"
         self.click_button(*LoginPageLocators.LOGIN_BTN)
 
@@ -38,7 +34,4 @@ class LoginPage(BasePage):
         # Проверяет, что элемент сообщения об ошибке
         # имеется на текущей странице
         btn_error = self.browser.find_element(*LoginPageLocators.ERROR_BTN)
-        assert (
-            btn_error.text
-            == "Epic sadface: Sorry, this user has been locked out."
-        ), "wrong test"
+        assert btn_error.text == "Epic sadface: Sorry, this user has been locked out.", "wrong test"
