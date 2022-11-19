@@ -6,12 +6,12 @@ from selenium.webdriver.chrome.service import Service
 
 
 print("\nstart browser...")
-options = webdriver.ChromeOptions()
-options.add_argument("--window-size=1600,1080")
-options.headless = True
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=options
-)
+# options = webdriver.ChromeOptions()
+# options.add_argument("--window-size=1600,1080")
+# options.headless = True
+# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
 # yield browser
 print("\nquit browser...")
 # browser.quit()
