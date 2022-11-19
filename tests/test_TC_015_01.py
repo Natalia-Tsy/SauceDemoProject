@@ -90,7 +90,7 @@ def test_tc015_01():
 # and press "Login" button
     test_login_form()
 
-# 5. Press "Cart" icon on the page https://www.saucedemo.com/inventory.html
+# 5. Press "Cart" icon on the page "https://www.saucedemo.com/inventory.html"
     css_loc = ".shopping_cart_link"
     driver.find_element(By.CSS_SELECTOR, css_loc).click()   # вошли в Корзину
     time.sleep(1)
