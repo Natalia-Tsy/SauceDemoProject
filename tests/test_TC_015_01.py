@@ -9,7 +9,9 @@ print("\nstart browser...")
 options = webdriver.ChromeOptions()
 options.add_argument("--window-size=1920,1080")
 options.headless = True
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+driver = webdriver.Chrome(
+    service=Service(ChromeDriverManager().install()), options=options
+)
 # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 # driver = webdriver.Chrome(ChromeDriverManager().install())
 
