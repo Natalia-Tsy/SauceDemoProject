@@ -6,14 +6,14 @@ from selenium.webdriver.chrome.service import Service
 
 
 print("\nstart browser...")
-# options = webdriver.ChromeOptions()
-# options.add_argument("--window-size=1600,1080")
-# options.headless = True
-# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+options = webdriver.ChromeOptions()
+options.add_argument("--window-size=1920,1080")
+options.headless = True
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 # driver = webdriver.Chrome(ChromeDriverManager().install())
 
-# yield browser
+# yield driver
 
 # driver.get("https://www.saucedemo.com/")
 time.sleep(1)
