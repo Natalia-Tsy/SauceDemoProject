@@ -61,9 +61,7 @@ def test_tc015_01():
     time.sleep(1)
 
     url_item = "https://www.saucedemo.com/inventory-item.html?id=3"
-    assert (
-        driver.current_url == url_item
-    ), "Не зашли в карточку нужного товара"
+    assert driver.current_url == url_item, "Не зашли в карточку нужного товара"
 
     css_loc = ".inventory_details_desc_container button"
     driver.find_element(By.CSS_SELECTOR, css_loc).click()  # ADD TO CARD
