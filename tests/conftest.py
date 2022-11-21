@@ -65,7 +65,6 @@ def pytest_runtest_makereport(item, call):
             destination_file = os.path.join(report_dir, file_name)
             driver.save_screenshot(destination_file)
             if file_name:
-                # chrome_browser.save_screenshot('C:/Users/user/Desktop/demo.png')
                 html = (
                     '<div><img src="%s" alt="screenshot" style="width:300px;height:200px" onclick="window.open('
                     'this.src)" align="right"/></div>' % file_name
