@@ -37,7 +37,12 @@ jobs:
       - name: Run the pytest
         run: poetry run pytest -v
       - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
+      - uses: actions/checkout@v2
+  
+      - uses: actions/download-artifact@v3
         with:
-          name: code-coverage-report
-          path: report/report.html
+          path: path/to/artifacts
+    
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: path/to/artifacts
