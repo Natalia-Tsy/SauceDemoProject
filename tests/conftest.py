@@ -60,11 +60,8 @@ def pytest_runtest_makereport(item, call):
         xfail = hasattr(report, "wasxfail")
         if (report.skipped and xfail) or (report.failed and not xfail):
             report_dir = os.path.dirname(item.config.option.htmlpath)
-            file_name = (
-                report.nodeid[len(os.path.dirname(item.nodeid)):].replace("::", "_")[
-                    1:
-                ] + ".png"
-            )
+            len_dir = len(os.path.dirname(item.nodeid))
+            file_name = report.nodeid[len_dir:].replace("::", "_")[1:] + ".png"
             destination_file = os.path.join(report_dir, file_name)
             driver.save_screenshot(destination_file)
             if file_name:
