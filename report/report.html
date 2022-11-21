@@ -439,7 +439,7 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>REPORT</h1>
-    <p>Report generated on 21-Nov-2022 at 06:14:20 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 21-Nov-2022 at 20:59:44 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -455,8 +455,8 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
         <td>Python</td>
         <td>3.11.0</td></tr></table>
     <h2>Summary</h2>
-    <p>0 tests ran in 0.07 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>24 tests ran in 76.69 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">16 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">8 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -466,4 +466,234 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable" col="duration">Duration</th>
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
-          <th colspan="4">No results found. Try to check the filters</th></tr></thead></table></body></html>
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_products_page[locked_out_user-secret_sauce]</td>
+          <td class="col-duration">0.48</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_products_page[locked_out_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5BFCFD0&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;locked_out_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;problem_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    # Тест проверяет, что пользователь может перейти со страницы авторизации<br/>    # на страницу каталога товаров<br/>    def test_user_can_go_to_products_page(self, d, username, password):<br/>        # Авторизация пользователя<br/>        self.test_register_user(d, username, password)<br/>        # if Users == (&quot;locked_out_user&quot;, &quot;secret_sauce&quot;):<br/>        #     pytest.xfail()<br/>        link = &quot;https://www.saucedemo.com/inventory.html&quot;<br/>        # Создает экземпляр главной страницы - Main Page<br/>        page = ProductsPage(d, link)<br/>        # Проверяет, что текущая страница является страницей каталогом товаров<br/>&gt;       page.should_be_products_page()<br/><br/>tests\test_TC_016_01.py:58: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>pages\products_page.py:13: in should_be_products_page<br/>    self.should_be_link(ProductsPageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.products_page.ProductsPage object at 0x000000CDB5C2BB50&gt;<br/>link = &#x27;inventory&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_cart_page[locked_out_user-secret_sauce]</td>
+          <td class="col-duration">0.48</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_cart_page[locked_out_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5BFE150&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;locked_out_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;problem_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    # Тест проверяет, что пользователь может перейти со страницы авторизации<br/>    # на страницу каталога товаров<br/>    def test_user_can_go_to_cart_page(self, d, username, password):<br/>&gt;       self.test_user_can_go_to_products_page(d, username, password)<br/><br/>tests\test_TC_016_01.py:81: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>tests\test_TC_016_01.py:58: in test_user_can_go_to_products_page<br/>    page.should_be_products_page()<br/>pages\products_page.py:13: in should_be_products_page<br/>    self.should_be_link(ProductsPageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.products_page.ProductsPage object at 0x000000CDB5CCF510&gt;<br/>link = &#x27;inventory&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_1_page[problem_user-secret_sauce]</td>
+          <td class="col-duration">1.40</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_checkout_1_page[problem_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5BFFA50&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;problem_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;problem_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    # Тест проверяет, что пользователь может перейти со страницы авторизации<br/>    # на страницу каталога товаров<br/>    def test_user_can_go_to_checkout_1_page(self, d, username, password):<br/>        self.test_user_can_go_to_cart_page(d, username, password)<br/>        link = &quot;https://www.saucedemo.com/checkout-step-one.html&quot;<br/>        # Создает экземпляр страницы корзины - Cart Page<br/>        page = CheckoutPage_1(d, link)<br/>        # Проверяет, что текущая страница является страницей корзины<br/>        page.should_be_checkout_1_page()<br/>        # Заполняются данные, необходимые для получения товара<br/>        page.set_shipping_info(&quot;John&quot;, &quot;Smith&quot;, &quot;33009&quot;)<br/>        # Переходит на следующую страницу оформления заказа<br/>        page.go_to_checkout_2_page()<br/>        link = &quot;https://www.saucedemo.com/checkout-step-two.html&quot;<br/>        # Создает экземпляр главной страницы - Main Page<br/>        page = CheckoutPage_2(d, link)<br/>        # Проверяет, что текущая страница является<br/>        # следующей страницей оформления заказа<br/>&gt;       page.should_be_checkout_2_page()<br/><br/>tests\test_TC_016_01.py:130: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>pages\checkout_2_page.py:10: in should_be_checkout_2_page<br/>    self.should_be_link(Chckout2PageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.checkout_2_page.CheckoutPage_2 object at 0x000000CDB5C30590&gt;<br/>link = &#x27;-step-two&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_1_page[locked_out_user-secret_sauce]</td>
+          <td class="col-duration">0.34</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_checkout_1_page[locked_out_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5BFFD10&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;locked_out_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;problem_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    # Тест проверяет, что пользователь может перейти со страницы авторизации<br/>    # на страницу каталога товаров<br/>    def test_user_can_go_to_checkout_1_page(self, d, username, password):<br/>&gt;       self.test_user_can_go_to_cart_page(d, username, password)<br/><br/>tests\test_TC_016_01.py:115: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>tests\test_TC_016_01.py:81: in test_user_can_go_to_cart_page<br/>    self.test_user_can_go_to_products_page(d, username, password)<br/>tests\test_TC_016_01.py:58: in test_user_can_go_to_products_page<br/>    page.should_be_products_page()<br/>pages\products_page.py:13: in should_be_products_page<br/>    self.should_be_link(ProductsPageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.products_page.ProductsPage object at 0x000000CDB35FB4D0&gt;<br/>link = &#x27;inventory&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_2_page[problem_user-secret_sauce]</td>
+          <td class="col-duration">1.60</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_checkout_2_page[problem_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5C05410&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;problem_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;problem_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    def test_user_can_go_to_checkout_2_page(self, d, username, password):<br/>&gt;       self.test_user_can_go_to_checkout_1_page(d, username, password)<br/><br/>tests\test_TC_016_01.py:150: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>tests\test_TC_016_01.py:130: in test_user_can_go_to_checkout_1_page<br/>    page.should_be_checkout_2_page()<br/>pages\checkout_2_page.py:10: in should_be_checkout_2_page<br/>    self.should_be_link(Chckout2PageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.checkout_2_page.CheckoutPage_2 object at 0x000000CDB5CCF090&gt;<br/>link = &#x27;-step-two&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_2_page[locked_out_user-secret_sauce]</td>
+          <td class="col-duration">0.37</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_checkout_2_page[locked_out_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5C056D0&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;locked_out_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;problem_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    def test_user_can_go_to_checkout_2_page(self, d, username, password):<br/>&gt;       self.test_user_can_go_to_checkout_1_page(d, username, password)<br/><br/>tests\test_TC_016_01.py:150: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>tests\test_TC_016_01.py:115: in test_user_can_go_to_checkout_1_page<br/>    self.test_user_can_go_to_cart_page(d, username, password)<br/>tests\test_TC_016_01.py:81: in test_user_can_go_to_cart_page<br/>    self.test_user_can_go_to_products_page(d, username, password)<br/>tests\test_TC_016_01.py:58: in test_user_can_go_to_products_page<br/>    page.should_be_products_page()<br/>pages\products_page.py:13: in should_be_products_page<br/>    self.should_be_link(ProductsPageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.products_page.ProductsPage object at 0x000000CDB5C30C90&gt;<br/>link = &#x27;inventory&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_complete_page[problem_user-secret_sauce]</td>
+          <td class="col-duration">1.33</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_checkout_complete_page[problem_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5C06D90&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;problem_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;problem_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    def test_user_can_go_to_checkout_complete_page(self, d, username, password):<br/>&gt;       self.test_user_can_go_to_checkout_2_page(d, username, password)<br/><br/>tests\test_TC_016_01.py:184: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>tests\test_TC_016_01.py:150: in test_user_can_go_to_checkout_2_page<br/>    self.test_user_can_go_to_checkout_1_page(d, username, password)<br/>tests\test_TC_016_01.py:130: in test_user_can_go_to_checkout_1_page<br/>    page.should_be_checkout_2_page()<br/>pages\checkout_2_page.py:10: in should_be_checkout_2_page<br/>    self.should_be_link(Chckout2PageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.checkout_2_page.CheckoutPage_2 object at 0x000000CDB5C33290&gt;<br/>link = &#x27;-step-two&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/></div></td></tr></tbody>
+      <tbody class="xfailed results-table-row">
+        <tr>
+          <td class="col-result">XFailed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_complete_page[locked_out_user-secret_sauce]</td>
+          <td class="col-duration">2.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div><div><img src="test_TC_016_01.py_TestSample_test_user_can_go_to_checkout_complete_page[locked_out_user-secret_sauce].png" alt="screenshot" style="width:300px;height:200px" onclick="window.open(this.src)" align="right"/></div></div>
+            <div class="log">self = &lt;SauceDemoProjectTest.tests.test_TC_016_01.TestSample object at 0x000000CDB5C07090&gt;<br/>d = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;f3f795f826cf050c8cfe8d23c483eeb1&quot;)&gt;<br/>username = &#x27;locked_out_user&#x27;, password = &#x27;secret_sauce&#x27;<br/><br/>    @pytest.mark.parametrize(<br/>        &quot;username, password&quot;,<br/>        [<br/>            (&quot;standard_user&quot;, &quot;secret_sauce&quot;),<br/>            (&quot;performance_glitch_user&quot;, &quot;secret_sauce&quot;),<br/>            pytest.param(<br/>                &quot;problem_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>            pytest.param(<br/>                &quot;locked_out_user&quot;,<br/>                &quot;secret_sauce&quot;,<br/>                marks=pytest.mark.xfail(raises=AssertionError),<br/>            ),<br/>        ],<br/>    )<br/>    def test_user_can_go_to_checkout_complete_page(self, d, username, password):<br/>&gt;       self.test_user_can_go_to_checkout_2_page(d, username, password)<br/><br/>tests\test_TC_016_01.py:184: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>tests\test_TC_016_01.py:150: in test_user_can_go_to_checkout_2_page<br/>    self.test_user_can_go_to_checkout_1_page(d, username, password)<br/>tests\test_TC_016_01.py:115: in test_user_can_go_to_checkout_1_page<br/>    self.test_user_can_go_to_cart_page(d, username, password)<br/>tests\test_TC_016_01.py:81: in test_user_can_go_to_cart_page<br/>    self.test_user_can_go_to_products_page(d, username, password)<br/>tests\test_TC_016_01.py:58: in test_user_can_go_to_products_page<br/>    page.should_be_products_page()<br/>pages\products_page.py:13: in should_be_products_page<br/>    self.should_be_link(ProductsPageSrc.LINK)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>self = &lt;pages.products_page.ProductsPage object at 0x000000CDB61BF890&gt;<br/>link = &#x27;inventory&#x27;<br/><br/>    def should_be_link(self, link):<br/>&gt;       assert link in self.browser.current_url, &quot;wrong url&quot;<br/><span class="error">E       AssertionError: wrong url</span><br/><br/>pages\base_page.py:60: AssertionError<br/> ----------------------------Captured stdout teardown---------------------------- <br/>
+*** end fixture = teardown ***
+
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_register_user[standard_user-secret_sauce]</td>
+          <td class="col-duration">10.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -----------------------------Captured stdout setup------------------------------ <br/>
+*** start fixture = setup ***
+
+<br/></div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_register_user[locked_out_user-secret_sauce]</td>
+          <td class="col-duration">0.49</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_register_user[performance_glitch_user-secret_sauce]</td>
+          <td class="col-duration">6.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_register_user[problem_user-secret_sauce]</td>
+          <td class="col-duration">0.63</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_products_page[standard_user-secret_sauce]</td>
+          <td class="col-duration">1.16</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_products_page[performance_glitch_user-secret_sauce]</td>
+          <td class="col-duration">6.03</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_products_page[problem_user-secret_sauce]</td>
+          <td class="col-duration">0.81</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_cart_page[standard_user-secret_sauce]</td>
+          <td class="col-duration">1.55</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_cart_page[performance_glitch_user-secret_sauce]</td>
+          <td class="col-duration">6.88</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_cart_page[problem_user-secret_sauce]</td>
+          <td class="col-duration">1.41</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_1_page[standard_user-secret_sauce]</td>
+          <td class="col-duration">2.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_1_page[performance_glitch_user-secret_sauce]</td>
+          <td class="col-duration">6.57</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_2_page[standard_user-secret_sauce]</td>
+          <td class="col-duration">2.00</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_2_page[performance_glitch_user-secret_sauce]</td>
+          <td class="col-duration">6.87</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_complete_page[standard_user-secret_sauce]</td>
+          <td class="col-duration">1.97</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">tests/test_TC_016_01.py::TestSample::test_user_can_go_to_checkout_complete_page[performance_glitch_user-secret_sauce]</td>
+          <td class="col-duration">11.99</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>
