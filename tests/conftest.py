@@ -63,8 +63,7 @@ def pytest_runtest_makereport(item, call):
             file_name = (
                 report.nodeid[len(os.path.dirname(item.nodeid)):].replace("::", "_")[
                     1:
-                ]
-            + ".png"
+                ] + ".png"
             )
             destination_file = os.path.join(report_dir, file_name)
             driver.save_screenshot(destination_file)
