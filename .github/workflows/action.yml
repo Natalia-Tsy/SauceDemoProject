@@ -36,9 +36,10 @@ jobs:
         run: poetry update
       - name: Run the pytest
         run: poetry run pytest -v
-      - uses: actions/checkout@v2
       - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         with:
-          name: code-coverage-report
-          path: report/
+          name: my-artifact
+          path: |
+            report/
+            !rport/*.png
