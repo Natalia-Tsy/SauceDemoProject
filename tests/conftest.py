@@ -60,9 +60,8 @@ def pytest_runtest_makereport(item, call):
         xfail = hasattr(report, "wasxfail")
         if (report.skipped and xfail) or (report.failed and not xfail):
             report_dir = os.path.dirname(item.config.option.htmlpath)
-            nodeid_ = report.nodeid
             file_name = (
-                report.nodeid[len(os.path.dirname(item.nodeid)) :].replace("::", "_")[
+                report.nodeid[len(os.path.dirname(item.nodeid)):].replace("::", "_")[
                     1:
                 ]
                 + ".png"
