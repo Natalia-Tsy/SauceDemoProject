@@ -42,4 +42,4 @@ jobs:
           name: report
           path: |
             report/
-            !report/*.png
+            !rport/*.png
