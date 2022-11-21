@@ -39,7 +39,7 @@ jobs:
       - name: Archive code coverage results
         uses: actions/download-artifact@v3
         with:
-          path: report/
+          path: path/to/artifacts
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: report/
+        working-directory: path/to/artifacts
