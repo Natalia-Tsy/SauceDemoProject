@@ -2,37 +2,36 @@ import re
 from .base_page import BasePage
 from .locators import ProductsPageLocators
 from .src import ProductsPageSrc
+from .locators import PageLocators
 
 
 class ProductsPage(BasePage):
 
-    # Проверяет, что текущая страница является страницей корзины
+    # Checks that the current page is Products page
     def should_be_products_page(self):
-
-        # Проверяет, что текущая страница соответствует требованиям
+        # Checks that the current page meets the requirements
         self.should_be_link(ProductsPageSrc.LINK)
-        # Проверяет, что текст элемента заглавия страницы
-        # соответствует требованиям
+        # Checks that the page title element meets the requirements
         self.should_be_page_title(ProductsPageSrc.TITLE, *ProductsPageLocators.TITLE)
-        # Проверяет, что товары на страницы соответствуют требованиям
+        # Checks that the products on the page meet the requirements
         self.should_be_products_page_inventory_list()
-        # Проверяет, что имеется ссылка на страницу корзины
+        # Checks that there's a link to the Cart
         self.should_be_link_to_cart_page()
 
-    # Проверяет, что имеется ссылка на страницу корзины
+    # Checks that there's a link to the Cart
     def should_be_link_to_cart_page(self):
         # assert self.element_is_located(*ProductsPageLocators.SHOP_CART_LINK)
         assert self.element_is_visible(ProductsPageLocators.SHOP_CART_LINK)
 
-    # Проверяет, что товары на страницы соответствуют требованиям
+    # Checks the products on the page meet the requirements
     def should_be_products_page_inventory_list(self):
-        # Получает список элементов товаров на странице
+        # Gets the list of elements on the page
         list_el = self.browser.find_element(*ProductsPageLocators.INVENT_LIST)
         assert len(list_el.get_property("children")) != 0, "there is no products"
 
-    # Выполняется поиск элементов товаров на странице в соответствии с требованиями
+    # Products on the page are searched in accordance with the requirements
     def list_finded_item_by_name(self, item_names):
-        # Получает список элементов товаров на странице
+        # Gets the list of products on the page
         list_el = self.browser.find_elements(*ProductsPageLocators.INVENT_ITEM)
         items = list(
             map(
@@ -44,29 +43,34 @@ class ProductsPage(BasePage):
         )
         return items
 
-    # Нажимается кнопка "ADD TO CART"/"REMOVE" выбранных элементов товаров
+    # The button  "ADD TO CART"/"REMOVE" is pressed for the selected products
     def find_button(self, el):
-        # Блок товара
+        # Product module
         inventory_item = el.get_property("children")
-        # Блок pricebar товара
+        # Product Pricebar module
         pricebar = inventory_item[1].get_property("children")
-        # Кнопка "ADD TO CART"/"REMOVE" товара
+        #  "ADD TO CART"/"REMOVE" button
         btn_inventory = pricebar[1]
         btn_inventory.click()
 
-    # Добавляются товары в корзину в соответствии с требованием
+    # Products are added into the cart in accordance with the requirements
     def add_item_on_products_page(self, *args, **kwargs):
         selected_items = self.flatten(self.list_finded_item_by_name(args))
-        # Добавляется поочередно товар в корзину товар
+        # Products are added into the cart one by one
         list(map(lambda y: self.find_button(y), selected_items))
         return selected_items
 
-    # Переходит на страницу корзины
+    # Goes to the Cart page
     def go_to_basket_page(self):
         self.click_button(*ProductsPageLocators.SHOP_CART_LINK)
 
-    # Проверяет, что иконка корзины на текущей странице не указывает количество
-    # товаров в корзине
+    # Checks that the cart icon  on the current page doesn't display any products
     def should_be_empty_shopping_cart_badge(self):
         el = self.browser.find_element(*ProductsPageLocators.SHOP_CART_LINK)
         assert (el.get_property("children")) == [], "there is some items in cart"
+
+    # Checks the link Privacy Policy
+    def check_footer(self):
+        assert self.element_is_present(*PageLocators.ROBOT), "something went wrong"
+        # self.browser.find_element(*PageLocators.PRIVACY)
+        self.click_button(*PageLocators.PRIVACY)

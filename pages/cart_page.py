@@ -1,24 +1,29 @@
 from .base_page import BasePage
 from .locators import CartPageLocators
 from .src import CartPageSrc
+from .locators import PageLocators
 
 
 class CartPage(BasePage):
 
-    # Проверяет, что текущая страница является страницей корзины
+    # Checks that the page is Cart page
     def should_be_cart_page(self):
-        # Проверяет, что текущая страница соответствует требованиям
+        # Checks that the current page meets the requirements
         self.should_be_link(CartPageSrc.LINK)
-        # Проверяет, что текст элемента заглавия страницы
-        # соответствует требованиям
+        # Checks that the text of the title element meets the requirements
         self.should_be_page_title(CartPageSrc.TITLE, *CartPageLocators.TITLE)
-        # Проверяет, что кнопка "CHECKOUT" имеется на странице
+        # Checks there's "checkout" button on the page
         self.should_be_btn_to_checkout_1_page()
 
-    # Проверяет, что кнопка "CHECKOUT" имеется на странице
+    # Checks there's "checkout" button on the page
     def should_be_btn_to_checkout_1_page(self):
         assert self.element_is_visible(CartPageLocators.CHECKOUT_BTN)
 
-    # Переходит на страницу корзины
+    # Goes to Checkout-1 page
     def go_to_checkout_1_page(self):
         self.click_button(*CartPageLocators.CHECKOUT_BTN)
+
+    # Checks the link Privacy Policy
+    def check_footer(self):
+        assert self.element_is_present(*PageLocators.ROBOT), "something went wrong"
+        self.browser.find_element(*PageLocators.PRIVACY).click()

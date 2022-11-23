@@ -40,3 +40,8 @@ class CheckoutCmpltPageLocators:
     TITLE = (By.CLASS_NAME, "title")
     COMPLETE_MSG = (By.CLASS_NAME, "complete - header")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
+
+
+class PageLocators:
+    ROBOT = (By.CSS_SELECTOR, ".footer_robot")
+    PRIVACY = (By.XPATH, '//*[@id="page_wrapper"]/footer/div/text()[3]')
