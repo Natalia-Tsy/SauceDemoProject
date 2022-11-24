@@ -110,9 +110,9 @@ class Tests:
         page.go_to_checkout_2_page()  # gets to checkout-2 page
         link = "https://www.saucedemo.com/checkout-step-two.html"
         page = CheckoutPage_2(d, link)  # Creates the Checkout-two instance
-        page.should_be_checkout_2_page()  # Checks that the current page is Checkput-2 page
+        page.should_be_checkout_2_page()  # Checks that the current page is Checkout-2 page
         page.go_to_checkout_complete_page()  # gets to the final page
         page = "https://www.saucedemo.com/checkout-complete.html"
-        page = CheckouCmpltPage(d, link)  # Creates the Checkout-complete page intance
-        page.should_be_checkout_complete_page()  # Checks the current page is Checkout-complete page
+        page = CheckouCmpltPage(d, link)  # Creates the Checkout-complete page instance
+        page.check_the_page()  # Checks the current page is Checkout-complete page
         page.check_footer()  # tries to click on Privacy Policy
