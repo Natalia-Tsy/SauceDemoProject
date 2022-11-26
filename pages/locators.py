@@ -40,7 +40,7 @@ class CheckoutCmpltPageLocators:
     BACKHOME_BTN = (By.ID, "back-to-products")
     TITLE = (By.CLASS_NAME, "title")
     COMPLETE_MSG = (By.CLASS_NAME, "complete - header")
-    SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_badge")
+    SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
 
 
 class PageLocators:
