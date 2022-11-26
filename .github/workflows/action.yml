@@ -43,3 +43,28 @@ jobs:
           path: |
             report/
             !rport/*.png
+      - name: Test marketplace action
+        uses: SauceDemoProject@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: build/allure-reports
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: SauceDemoProject/actions-gh-pages@v3
+        env:
+          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: allure-history
+      - name: Post the link to the report
+      if: always()
+      uses: SauceDemoProject@v1
+      with: 
+        authToken: ${{secrets.GITHUB_TOKEN}}
+        context: 'Test report'
+        state: 'success'
+        sha: ${{ github.event.pull_request.head.sha }}
+        target_url: simple-elf.github.io/github-allure-history/${{ github.run_number }}
