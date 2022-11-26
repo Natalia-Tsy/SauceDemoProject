@@ -74,7 +74,11 @@ def pytest_runtest_makereport(item, call):
 
             driver.set_window_size(S("Width"), S("Height"))
             driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
-            allure.attach(driver.get_screenshot_as_png(), name="Screeshot", attachment_type=AttachmentType.PNG)
+            allure.attach(
+                driver.get_screenshot_as_png(),
+                name="Screeshot",
+                attachment_type=AttachmentType.PNG,
+            )
             # allure.attach(driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             if file_name:
                 html = (
