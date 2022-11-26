@@ -43,6 +43,13 @@ jobs:
           path: |
             report/
             !rport/*.png
+      - name: Get Allure history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
       - name: Test marketplace action
         uses: actions/checkout@v3
         if: always()
