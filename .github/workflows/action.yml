@@ -68,7 +68,7 @@ jobs:
           PUBLISH_DIR: allure-history
       - name: Post the link to the report
         if: always()
-        uses: SauceDemoProject/actions-gh-pages@v3
+        uses: Natalia-Tsy/SauceDemoProject@v3
         with: 
           authToken: ${{secrets.GITHUB_TOKEN}}
           context: 'Test report'
