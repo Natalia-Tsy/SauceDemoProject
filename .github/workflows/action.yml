@@ -44,7 +44,7 @@ jobs:
             report/
             !rport/*.png
       - name: Test marketplace action
-        uses: Natalia-Tsy/SauceDemoProject@master
+        uses: actions/checkout@v3
         if: always()
         id: allure-report
         with:
