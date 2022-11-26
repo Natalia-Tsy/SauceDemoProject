@@ -79,7 +79,6 @@ def pytest_runtest_makereport(item, call):
                 name="Screeshot",
                 attachment_type=AttachmentType.PNG,
             )
-            # allure.attach(driver.get_screenshot_as_png(), name="Screenshot", attachment_type=AttachmentType.PNG)
             if file_name:
                 html = (
                     '<div><img src="%s" alt="screenshot" style="width:300px;height:200px" onclick="window.open('
