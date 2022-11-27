@@ -10,7 +10,6 @@ class BasePage:
 
     # Открывает страницу
     def open_page(self):
-
         self.browser.get(self.link)
 
     # Возвращается объект WebElement на основе заданного критерия поиска
@@ -55,6 +54,11 @@ class BasePage:
             EC.presence_of_element_located((locator))
         )
 
+    def element_is_located_in_element(self, element, locator, timeout=5):
+        return Wait(element, timeout).until(
+            EC.presence_of_element_located((locator))
+        )
+
     # Проверяет, что текущая страница соответствует требованиям
     def should_be_link(self, link):
         assert link in self.browser.current_url, "wrong url"
@@ -80,3 +84,11 @@ class BasePage:
     # Выполняется нажатие кнопки по локатору
     def click_button(self, method, locator):
         self.browser.find_element(method, locator).click()
+
+    def get_num_products_in_basket(self, method, locator):
+        try:
+            return self.browser.find_elements(method, locator)
+        except NoSuchElementException:
+            return []
+
+

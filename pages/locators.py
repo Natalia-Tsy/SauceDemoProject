@@ -15,6 +15,8 @@ class ProductsPageLocators:
     INVENT_LIST = (By.CLASS_NAME, "inventory_list")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
     INVENT_ITEM = (By.CLASS_NAME, "inventory_item_description")
+    NAME_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_name")
+    BTN_ADD_OR_DEL_TO_BASKET = (By.CSS_SELECTOR, "button.btn_inventory")
 
 
 class CartPageLocators:
@@ -40,3 +42,13 @@ class CheckoutCmpltPageLocators:
     TITLE = (By.CLASS_NAME, "title")
     COMPLETE_MSG = (By.CLASS_NAME, "complete - header")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
+
+
+class BasketIconMainPageLocators:
+    NUMBER_PRODUCT_IN_BASKET = (By.CSS_SELECTOR,".shopping_cart_link > span.shopping_cart_badge")
+    ICON_BASKET = (By.CSS_SELECTOR,'#shopping_cart_container')
+
+class BasketPageLocators:
+    TITLE = (By.CSS_SELECTOR, ".title")
+    BASKET_LIST = (By.CSS_SELECTOR, ".cart_list")
+    LIST_PRODUCTS = (By.CSS_SELECTOR,".cart_item")
