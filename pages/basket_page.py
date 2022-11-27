@@ -1,5 +1,4 @@
 import time
-import re
 from selenium.common import ElementClickInterceptedException, NoSuchElementException
 
 from .login_page import LoginPage
@@ -41,6 +40,7 @@ class BasketPage(LoginPage, ProductsPage):
         product_in_basket = self.get_num_products_in_basket(*CartPageLocators.LIST_PRODUCTS)
         assert num_product == len(product_in_basket), "Incorrect number of items in the cart"
 
+
     def get_ids_and_put_or_del_products_in_packet_on_the_card_page(self, item_names):
         """Метод добавления/удаления товаров с/из карточки товара в/из корзину(ы)"""
         all_card_products = self.browser.find_elements(*ProductsPageLocators.INVENT_ITEM)
@@ -50,15 +50,24 @@ class BasketPage(LoginPage, ProductsPage):
 
     def product_params_comparison_in_basket(self):
         """Метод проверки совпадения параметров товара в корзине"""
-        all_data= [("Sauce Labs Backpack","29.99") ,("Sauce Labs Bolt T-Shirt","15.99"), ("Sauce Labs Fleece Jacket","49.99"),
-                   ("Test.allTheThings() T-Shirt (Red)","15.99")]
+        all_data = [("Sauce Labs Backpack", "29.99"), ("Sauce Labs Bolt T-Shirt", "15.99"),
+                    ("Sauce Labs Fleece Jacket", "49.99"),
+                    ("Test.allTheThings() T-Shirt (Red)", "15.99")]
         products_in_basket = self.browser.find_elements(*CartPageLocators.PRODUCT_DIV)
         for product in products_in_basket:
             name_product_basket = product.find_element(*CartPageLocators.NAME_PRODUCT).text
-            price_product_basket = self.clearing_characters("$", product.find_element(*CartPageLocators.PRICE_PRODUCT).text)
-            assert (name_product_basket, price_product_basket) in all_data, "The names or price of the products do not match"
+            price_product_basket = self.clearing_characters("$",
+                                                            product.find_element(*CartPageLocators.PRICE_PRODUCT).text)
+            assert (name_product_basket,
+                    price_product_basket) in all_data, "The names or price of the products do not match"
 
     def clear_all_products_in_basket(self):
+        """Метод удаления всех товаров из корзины"""
         all_products_in_basket = self.browser.find_elements(*CartPageLocators.LIST_PRODUCTS)
         for product in all_products_in_basket:
             product.find_element(*CartPageLocators.DEL_PRODUCT_BTN).click()
+
+    def check_number_products_in_basket_is_zero(self):
+        """Метод проверки, что все товары удалены из корзины """
+        product_in_basket = self.get_num_products_in_basket(*CartPageLocators.LIST_PRODUCTS)
+        assert 0 == len(product_in_basket), "Incorrect number of items in the cart"
