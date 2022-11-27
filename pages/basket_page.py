@@ -50,14 +50,14 @@ class BasketPage(LoginPage, ProductsPage):
 
     def product_params_comparison_in_basket(self):
         """Метод проверки совпадения параметров товара в корзине"""
-        name_product = "Sauce Labs Fleece Jacket"
-        price_product = "49.99"
+        all_data= [("Sauce Labs Backpack","29.99") ,("Sauce Labs Bolt T-Shirt","15.99"), ("Sauce Labs Fleece Jacket","49.99"),
+                   ("Test.allTheThings() T-Shirt (Red)","15.99")]
         products_in_basket = self.browser.find_elements(*CartPageLocators.PRODUCT_DIV)
         for product in products_in_basket:
             name_product_basket = product.find_element(*CartPageLocators.NAME_PRODUCT).text
             price_product_basket = self.clearing_characters("$", product.find_element(*CartPageLocators.PRICE_PRODUCT).text)
-            assert name_product == name_product_basket, "The names of the products do not match"
-            assert price_product == price_product_basket, "The price of the products do not match"
+            assert (name_product_basket, price_product_basket) in all_data, "The names or price of the products do not match"
+
     def clear_all_products_in_basket(self):
         all_products_in_basket = self.browser.find_elements(*CartPageLocators.LIST_PRODUCTS)
         for product in all_products_in_basket:
