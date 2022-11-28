@@ -1,12 +1,14 @@
 import pytest
 import conf
 import os
+import allure
 from selenium import webdriver as WB
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
+from allure_commons.types import AttachmentType
 
 
 @pytest.fixture(scope="class")
@@ -72,6 +74,11 @@ def pytest_runtest_makereport(item, call):
 
             driver.set_window_size(S("Width"), S("Height"))
             driver.find_element(By.TAG_NAME, "body").screenshot(destination_file)
+            allure.attach(
+                driver.get_screenshot_as_png(),
+                name="Screeshot",
+                attachment_type=AttachmentType.PNG,
+            )
             if file_name:
                 html = (
                     '<div><img src="%s" alt="screenshot" style="width:300px;height:200px" onclick="window.open('
