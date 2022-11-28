@@ -29,29 +29,20 @@ class Tests:
         browser.find_element(
             By.CSS_SELECTOR, "#add-to-cart-sauce-labs-backpack"
         ).click()
-        time.sleep(1)
         browser.find_element(
             By.CSS_SELECTOR, "#add-to-cart-sauce-labs-bike-light"
         ).click()
-        time.sleep(1)
         browser.find_element(
             By.CSS_SELECTOR, "#add-to-cart-sauce-labs-bolt-t-shirt"
         ).click()
-        time.sleep(1)
         browser.find_element(By.CSS_SELECTOR, ".shopping_cart_link").click()
         browser.find_element(By.CSS_SELECTOR, "#continue-shopping").click()
         browser.find_element(
             By.CSS_SELECTOR, "#add-to-cart-sauce-labs-fleece-jacket"
         ).click()
-        time.sleep(1)
         browser.find_element(By.CSS_SELECTOR, "#add-to-cart-sauce-labs-onesie").click()
-        time.sleep(1)
         # browser.find_element(By.CSS_SELECTOR, '#add-to-cart-test\.allthethings\(\)-t-shirt-\(red\)').click()
-        # time.sleep(1)
 
-        text = browser.find_element(
-            By.XPATH, '//*[@id="shopping_cart_container"]/a/span'
-        ).text
-        # print(text)
-        if text == 5:
+        quantity = browser.find_element(By.CLASS_NAME, "shopping_cart_badge").text
+        if quantity == 5:
             assert "5 item in the cart", "Something went wrong"

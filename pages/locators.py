@@ -44,7 +44,7 @@ class CheckoutCmpltPageLocators:
 
 
 class PageLocators:
-    ROBOT = (By.CSS_SELECTOR, ".footer_robot")
-    PRIVACY = (By.XPATH, '//*[@id="page_wrapper"]/footer/div/text()[3]')
+    ROBOT_IMG = (By.CSS_SELECTOR, ".footer_robot")
+    PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
     HAMBURGER = (By.ID, "react-burger-menu-btn")
     ALL_ITEMS = (By.ID, "inventory_sidebar_link")

@@ -8,7 +8,7 @@ class Tests:
         link = "https://www.saucedemo.com/"
         page = LoginPage(d, link)  # Creates the Login page instance
         page.open_page()
-        page.user_can_authorize()  # Standard user logs in
+        page.register_user("standard_user", "secret_sauce")  # Standard user logs in
         link = "https://www.saucedemo.com/inventory.html"
         page = ProductsPage(d, link)  # Creates the Products page instance
         page.should_be_products_page()

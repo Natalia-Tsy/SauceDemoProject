@@ -70,7 +70,7 @@ class ProductsPage(BasePage):
         assert (el.get_property("children")) == [], "there is some items in cart"
 
     # Checks the link Privacy Policy
-    def check_footer(self):
-        assert self.element_is_present(*PageLocators.ROBOT), "something went wrong"
+    def check_privacy_link(self):
+        assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
         # self.browser.find_element(*PageLocators.PRIVACY)
         self.click_button(*PageLocators.PRIVACY)

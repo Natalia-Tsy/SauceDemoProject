@@ -34,11 +34,3 @@ class LoginPage(BasePage):
         # Checks there's Error message on the current page
         btn_error = self.browser.find_element(*LoginPageLocators.ERROR_BTN)
         assert btn_error.text == LoginPageSrc.ERROR_BTN_TEXT, "wrong test"
-
-    # Inputs the data to log in
-    def user_can_authorize(self):
-        self.browser.find_element(By.ID, "user-name").send_keys("standard_user")
-        self.browser.find_element(By.XPATH, "//input[@id='password']").send_keys(
-            "secret_sauce"
-        )
-        self.browser.find_element(By.XPATH, "//input[@name='login-button']").click()

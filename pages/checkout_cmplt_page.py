@@ -30,12 +30,6 @@ class CheckouCmpltPage(BasePage):
         self.click_button(*CheckoutCmpltPageLocators.BACKHOME_BTN)
 
     # Checks the link Privacy Policy
-    def check_footer(self):
-        assert self.element_is_present(*PageLocators.ROBOT), "something went wrong"
+    def check_privacy_link(self):
+        assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
         self.browser.find_element(*PageLocators.PRIVACY).click()
-
-    # Checks the title of the page
-    def check_the_page(self):
-        self.should_be_page_title(
-            CheckoutCmpltPageSrc.TITLE, *CheckoutCmpltPageLocators.TITLE
-        )
