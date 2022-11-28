@@ -1,56 +1,58 @@
 from .base_page import BasePage
 from .locators import Chckout1PageLocators
 from .src import Chckout1PageSrc
+from .locators import PageLocators
 
 
 class CheckoutPage_1(BasePage):
-    # Проверяет, что текущая страница является страницей корзины
+    # Checks tha the current page is Checkout-1
     def should_be_checkout_1_page(self):
-        # Проверяет, что текущая страница соответствует требованиям
+        # Checks that the current page meets the requirements
         self.should_be_link(Chckout1PageSrc.LINK)
-        # Проверяет, что текст элемента заглавия страницы
-        # соответствует требованиям
+        # Checks that the texts of the page title element meets the requirements
         self.should_be_page_title(Chckout1PageSrc.TITLE, *Chckout1PageLocators.TITLE)
         self.should_be_input_firstname_to_checkout_1_page()
         self.should_be_input_lastname_to_checkout_1_page()
         self.should_be_input_postal_code_to_checkout_1_page()
         self.should_be_btn_to_checkout_1_page()
 
-        # Проверяет, что элемент для ввода имени пользователя
-        # имеется на текущей странице
+        # Checks there's an element to input User's first name on the page
 
     def should_be_input_firstname_to_checkout_1_page(self):
         assert self.element_is_present(*Chckout1PageLocators.INPUT_FIRSTNAME)
 
-        # Проверяет, что элемент для ввода фамилии пользователя
-        # имеется на текущей странице
+        # Checks there's an element to input User's last name on the page
 
     def should_be_input_lastname_to_checkout_1_page(self):
         assert self.element_is_present(*Chckout1PageLocators.INPUT_LASTNAME)
 
-        # Проверяет, что элемент для ввода кода получения
-        # имеется на текущей странице
+        # Checks there's an element to input User's zipcode on the page
 
     def should_be_input_postal_code_to_checkout_1_page(self):
         assert self.element_is_present(*Chckout1PageLocators.INPUT_CODE)
 
-    # Проверяет, что кнопка "CHECKOUT" имеется на текущей странице
+    # Checks there's CHECKOUT button on the page
     def should_be_btn_to_checkout_1_page(self):
         assert self.element_is_visible(Chckout1PageLocators.CONTINUE_BTN)
 
-    # Заполняются данные, необходимые для получения товара
+    # The data required to receive the product is filled
     def set_shipping_info(self, firstname, lastname, code):
-        # Имя пользователя передается текстовому элементу на странице
+        # User's first name is passed to the text element on the page
         self.browser.find_element(*Chckout1PageLocators.INPUT_FIRSTNAME).send_keys(
             firstname
         )
-        # Пароль передается текстовому элементу на странице
+        # User's last name is passed to the text element on the page
         self.browser.find_element(*Chckout1PageLocators.INPUT_LASTNAME).send_keys(
             lastname
         )
-        # Код получения передается текстовому элементу на странице
+        # User's zipcode is passed to the text element on the page
         self.browser.find_element(*Chckout1PageLocators.INPUT_CODE).send_keys(code)
 
-    # Нажимается кнопка "LOGIN"
+    # "CONTINUE" Button is pressed
     def go_to_checkout_2_page(self):
         self.click_button(*Chckout1PageLocators.CONTINUE_BTN)
+
+    # Checks the link Privacy Policy
+    def check_privacy_link(self):
+        assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
+        self.browser.find_element(*PageLocators.PRIVACY).click()
