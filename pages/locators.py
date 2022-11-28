@@ -20,6 +20,7 @@ class ProductsPageLocators:
 class CartPageLocators:
     CHECKOUT_BTN = (By.ID, "checkout")
     TITLE = (By.CLASS_NAME, "title")
+    QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
 
 
 class Chckout1PageLocators:
@@ -40,3 +41,10 @@ class CheckoutCmpltPageLocators:
     TITLE = (By.CLASS_NAME, "title")
     COMPLETE_MSG = (By.CLASS_NAME, "complete - header")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
+
+
+class PageLocators:
+    ROBOT_IMG = (By.CSS_SELECTOR, ".footer_robot")
+    PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
+    HAMBURGER = (By.ID, "react-burger-menu-btn")
+    ALL_ITEMS = (By.ID, "inventory_sidebar_link")
