@@ -35,7 +35,7 @@ jobs:
       - name: install dependencies
         run: poetry update
       - name: Run the pytest
-        run: poetry run pytest -v --alluredir=allure-results
+        run: poetry run pytest -v
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
@@ -54,7 +54,7 @@ jobs:
         uses: simple-elf/allure-report-action@master
         if: always()
         with:
-          allure_results: allure-results
+          allure_results: allure-reports
           allure_history: allure-history
           keep_reports: 8
       - name: Deploy report to Github Pages
