@@ -58,9 +58,7 @@ class BasePage:
         )
 
     def element_is_located_in_element(self, element, locator, timeout=5):
-        return Wait(element, timeout).until(
-            EC.presence_of_element_located((locator))
-        )
+        return Wait(element, timeout).until(EC.presence_of_element_located((locator)))
 
     # Проверяет, что текущая страница соответствует требованиям
     def should_be_link(self, link):
@@ -97,23 +95,30 @@ class BasePage:
 
     # Метод получения ID товара
     def get_id_product(self, element):
-        product_id = \
-            element.find_element(*ProductsPageLocators.PRODUCT_ID).get_attribute('id').split('_title_link')[0].split(
-                'item_')[1]
+        product_id = (
+            element.find_element(*ProductsPageLocators.PRODUCT_ID)
+            .get_attribute("id")
+            .split("_title_link")[0]
+            .split("item_")[1]
+        )
         return product_id
 
     # Метод добавления/удаления товаров с/из карточки товара в/из корзину(ы)
     def add_or_del_product_from_card_product_page(self, product_id, name_product):
-        url = f'https://www.saucedemo.com/inventory-item.html?id={product_id}'
+        url = f"https://www.saucedemo.com/inventory-item.html?id={product_id}"
         self.browser.get(url)
         time.sleep(1)
-        name_product_from_card_page = self.browser.find_element(*CardProductPageLocator.NAME_PRODUCT).text
+        name_product_from_card_page = self.browser.find_element(
+            *CardProductPageLocator.NAME_PRODUCT
+        ).text
         if name_product_from_card_page in name_product:
             try:
                 self.browser.find_element(*CardProductPageLocator.ADD_BTN).click()
             except NoSuchElementException:
                 self.browser.find_element(*CardProductPageLocator.DEL_BTN).click()
-            self.browser.find_element(*CardProductPageLocator.BACK_TO_THE_MAIN_PAGE_BTN).click()
+            self.browser.find_element(
+                *CardProductPageLocator.BACK_TO_THE_MAIN_PAGE_BTN
+            ).click()
 
     # Метод очистки знака доллара в цене товара
     def clearing_characters(self, char, data):
