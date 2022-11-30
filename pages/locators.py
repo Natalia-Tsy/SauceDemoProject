@@ -27,6 +27,7 @@ class ProductsPageLocators:
     PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")
     PRODUCT_IMG_DETAILS = (By.CSS_SELECTOR, ".inventory_details_img")
     PRODUCT_IMG_FOR_CLICK = (By.CSS_SELECTOR, "#item_0_img_link")
+    #for sort product
     SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, 'option[value="az"]')
     ALL_NAMES = (By.CSS_SELECTOR, ".inventory_item_name")
     SORTING_BY_PRICE_ASC = (By.CSS_SELECTOR, 'option[value="lohi"]')

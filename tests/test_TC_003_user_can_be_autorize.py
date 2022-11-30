@@ -1,4 +1,3 @@
-import time
 import pytest
 from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
@@ -24,7 +23,6 @@ class TestSample:
         page = LoginPage(d, link)
         page.open_page()
         page.register_user(username, password)
-        time.sleep(2)
         link = "https://www.saucedemo.com/inventory.html"
         page = ProductsPage(d, link)
         page.should_be_products_page()

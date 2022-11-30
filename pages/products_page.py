@@ -125,6 +125,7 @@ class ProductsPage(BasePage):
         )
         assert select_price == select_price_product_details, "We found another price"
 
+    # sort products
     def sorting_products_by_name_asc(self):
         sorting_products_by_name_asc = self.browser.find_element(
             *ProductsPageLocators.SORTING_BY_NAME_AZ

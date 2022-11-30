@@ -2,7 +2,7 @@ import pytest
 from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
 
-
+#sort product
 class Tests:
     # TC 007.00.01 Sorting products by name asc
     @pytest.mark.parametrize(
