@@ -15,6 +15,7 @@ class ProductsPageLocators:
     INVENT_LIST = (By.CLASS_NAME, "inventory_list")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
     INVENT_ITEM = (By.CLASS_NAME, "inventory_item_description")
+    # for test TC_007_01
     PRODUCT_IMG = (By.CSS_SELECTOR, "#item_0_img_link>img")
     PRODUCT_NAME = (By.CSS_SELECTOR, "#item_0_title_link>div")
     PRODUCT_NAME_DETAILS = (By.CSS_SELECTOR, ".inventory_details_name")

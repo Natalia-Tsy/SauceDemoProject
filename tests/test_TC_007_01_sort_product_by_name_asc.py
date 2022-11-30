@@ -4,7 +4,7 @@ from pages.products_page import ProductsPage
 
 
 class Tests:
-    # TC 007.00.01 Sorting products by name ascending
+    # TC 007.00.01 Sorting products by name asc
     @pytest.mark.parametrize(
         "username, password",
         [

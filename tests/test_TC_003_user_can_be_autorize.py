@@ -4,7 +4,7 @@ from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
 
 
-# TC 003.00 Login page
+# TC 003.00 Login page with another username
 class TestSample:
     @pytest.mark.parametrize(
         "username, password",

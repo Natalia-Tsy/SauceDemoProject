@@ -2,6 +2,8 @@ import pytest
 from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
 
+# sort_products_by_price_asc
+
 
 class Test:
     @pytest.mark.parametrize(
