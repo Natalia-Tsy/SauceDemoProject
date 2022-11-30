@@ -23,7 +23,7 @@ class Tests:
             ),
         ],
     )
-    #view details
+    # view details
     def test_TC_005_01_view_details_for_product(self, d, username, password):
         link = "https://www.saucedemo.com/"
         page = LoginPage(d, link)

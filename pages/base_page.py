@@ -78,7 +78,7 @@ class BasePage:
     def click_button(self, method, locator):
         self.browser.find_element(method, locator).click()
 
-    # Returns the element src text that meets the requirements from the specified index i
+    # Returns the elements src text that meets the requirements from the specified index i
     def get_src(self, i, method, locator):
         return (
             self.browser.find_element(method, locator)

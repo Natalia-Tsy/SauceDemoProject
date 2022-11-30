@@ -31,5 +31,5 @@ class Test:
         link = "https://www.saucedemo.com/inventory.html"
         page = ProductsPage(d, link)
         page.should_be_products_page()
-        # sorting price ascending
+        # sorting price
         page.sorting_products_by_price_asc()
