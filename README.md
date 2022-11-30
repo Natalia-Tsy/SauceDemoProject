@@ -1,7 +1,7 @@
 #### Project Description
 A sample pytest project https://www.saucedemo.com/ to trigger automated tests, generate Allure Report and publish to GitHub Pages via GitHub Actions workflow
 
-
+[![selenium_test](https://github.com/ivanovajulika/Sauce/actions/workflows/action.yml/badge.svg)](https://github.com/Natalia-Tsy/SauceDemoProject/actions/workflows/action.yml)
 [![Allure Report](https://img.shields.io/badge/Allure%20Report-deployed-yellowgreen)](https://natalia-tsy.github.io/SauceDemoProject/)
 
 
