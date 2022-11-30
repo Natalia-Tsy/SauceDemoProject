@@ -1,5 +1,8 @@
-#### Allure Report
-#### https://natalia-tsy.github.io/SauceDemoProject/
+#### Project Description
+A sample pytest project https://www.saucedemo.com/ to trigger automated tests, generate Allure Report and publish to GitHub Pages via GitHub Actions workflow
+
+
+[![Allure Report](https://img.shields.io/badge/Allure%20Report-deployed-yellowgreen)](https://natalia-tsy.github.io/SauceDemoProject/)
 
 
 #### How to work with the Repo:
