@@ -74,3 +74,112 @@ class ProductsPage(BasePage):
         assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
         # self.browser.find_element(*PageLocators.PRIVACY)
         self.click_button(*PageLocators.PRIVACY)
+
+    """Check choose product:
+        Product image
+        Product name = "Sauce Labs Bike Light"
+        Price = $9.99"""
+
+    def check_product_img(self):
+        select_img_src = self.get_src(0, *ProductsPageLocators.PRODUCT_IMG)
+        select_img_product = self.browser.find_element(
+            *ProductsPageLocators.PRODUCT_IMG
+        )
+        select_img_product.click()
+        select_img_product_details = self.get_src(
+            0, *ProductsPageLocators.PRODUCT_IMG_DETAILS
+        )
+        assert select_img_src == select_img_product_details, "We found another picture"
+
+    def check_product_name(self):
+        back_to_products = self.browser.find_element(
+            *ProductsPageLocators.BACK_TO_PRODUCTS
+        )
+        back_to_products.click()
+        select_name = self.get_text(0, *ProductsPageLocators.PRODUCT_NAME)
+        select_name_product = self.browser.find_element(
+            *ProductsPageLocators.PRODUCT_NAME
+        )
+        select_name_product.click()
+        select_name_product_details = self.get_text(
+            0, *ProductsPageLocators.PRODUCT_NAME_DETAILS
+        )
+        assert (
+            select_name == select_name_product_details
+        ), "We found another name of product"
+
+        # check price
+
+    def check_product_price(self):
+        back_to_products = self.browser.find_element(
+            *ProductsPageLocators.BACK_TO_PRODUCTS
+        )
+        back_to_products.click()
+        select_price = self.get_text(0, *ProductsPageLocators.PRODUCT_PRICE)
+        select_name_product = self.browser.find_element(
+            *ProductsPageLocators.PRODUCT_NAME
+        )
+        select_name_product.click()
+        select_price_product_details = self.get_text(
+            0, *ProductsPageLocators.PRODUCT_PRICE_DETAILS
+        )
+        assert select_price == select_price_product_details, "We found another price"
+
+    def sorting_products_by_name_asc(self):
+        sorting_products_by_name_asc = self.browser.find_element(
+            *ProductsPageLocators.SORTING_BY_NAME_AZ
+        )
+        list_before_sort = self.browser.find_elements(*ProductsPageLocators.ALL_NAMES)
+        sorting_products_by_name_asc.click()
+        list_after_sort = self.browser.find_elements(*ProductsPageLocators.ALL_NAMES)
+        new_list_before_sorting = []
+        for i in range(len(list_before_sort)):
+            new_list_before_sorting.append(list_before_sort[i].text)
+
+        new_list_before_sorting.sort()
+
+        new_list_all_name_after_sorting = []
+        for i in range(len(list_after_sort)):
+            new_list_all_name_after_sorting.append(list_after_sort[i].text)
+
+        assert (
+            new_list_before_sorting == new_list_all_name_after_sorting
+        ), "We have a problem!"
+
+    def sorting_products_by_price_asc(self):
+        sorting_products_by_name_asc = self.browser.find_element(
+            *ProductsPageLocators.SORTING_BY_PRICE_ASC
+        )
+        list_before_sorting = self.browser.find_elements(
+            *ProductsPageLocators.All_PRICES
+        )
+        sorting_products_by_name_asc.click()
+        list_after_sorting = self.browser.find_elements(
+            *ProductsPageLocators.All_PRICES
+        )
+
+        new_list_before_sorting = []
+        for i in range(len(list_before_sorting)):
+            new_list_before_sorting.append(list_before_sorting[i].text)
+
+        new_list_for_sort_without_first_symbol = []
+        for i in range(len(new_list_before_sorting)):
+            new_list_for_sort_without_first_symbol.append(
+                float(new_list_before_sorting[i].replace("$", ""))
+            )
+
+        new_list_for_sort_without_first_symbol.sort()
+
+        new_list_after_sort = []
+        for i in range(len(list_after_sorting)):
+            new_list_after_sort.append(list_after_sorting[i].text)
+
+        new_list_all_price_after_sorting = []
+        for i in range(len(new_list_after_sort)):
+            new_list_all_price_after_sorting.append(
+                float(new_list_after_sort[i].replace("$", ""))
+            )
+
+        assert (
+            new_list_for_sort_without_first_symbol == new_list_all_price_after_sorting
+        ), " Error"

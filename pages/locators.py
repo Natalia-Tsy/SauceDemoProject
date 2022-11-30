@@ -15,6 +15,21 @@ class ProductsPageLocators:
     INVENT_LIST = (By.CLASS_NAME, "inventory_list")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
     INVENT_ITEM = (By.CLASS_NAME, "inventory_item_description")
+    PRODUCT_IMG = (By.CSS_SELECTOR, "#item_0_img_link>img")
+    PRODUCT_NAME = (By.CSS_SELECTOR, "#item_0_title_link>div")
+    PRODUCT_NAME_DETAILS = (By.CSS_SELECTOR, ".inventory_details_name")
+    BACK_TO_PRODUCTS = (By.CSS_SELECTOR, "#back-to-products")
+    PRODUCT_PRICE = (
+        By.CSS_SELECTOR,
+        "#inventory_container > div > div:nth-child(2) > div.inventory_item_description > div.pricebar > div",
+    )
+    PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")
+    PRODUCT_IMG_DETAILS = (By.CSS_SELECTOR, ".inventory_details_img")
+    PRODUCT_IMG_FOR_CLICK = (By.CSS_SELECTOR, "#item_0_img_link")
+    SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, 'option[value="az"]')
+    ALL_NAMES = (By.CSS_SELECTOR, ".inventory_item_name")
+    SORTING_BY_PRICE_ASC = (By.CSS_SELECTOR, 'option[value="lohi"]')
+    All_PRICES = (By.CSS_SELECTOR, ".inventory_item_price")
 
 
 class CartPageLocators:
