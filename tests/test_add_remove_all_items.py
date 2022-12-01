@@ -18,9 +18,8 @@ class TestAddRemoveAllItems:
         inventory_list = d.find_elements(*ProductsPageLocators.INVENTORY_LIST)
 
         for add_to_cart_button in inventory_list:
-            add_to_cart_button = d.find_element(
-                By.CSS_SELECTOR, "[name*=add-to-cart]"
-            ).click()
+            add_to_cart_button = d.find_element(By.CSS_SELECTOR, "[name*=add-to-cart]")
+            add_to_cart_button.click()
 
         shopping_cart = d.find_element(*ProductsPageLocators.SHOPPING_CART_LINK).text
         assert shopping_cart == "6"
@@ -34,10 +33,8 @@ class TestAddRemoveAllItems:
         inventory_list = d.find_elements(*ProductsPageLocators.INVENTORY_LIST)
 
         for remove_from_cart_button in inventory_list:
-            remove_from_cart_button = d.find_element(
-                By.CSS_SELECTOR, "[name*=remove]"
-            ).click()
+            remove_from_cart_button = d.find_element(By.CSS_SELECTOR, "[name*=remove]")
+            remove_from_cart_button.click()
 
         shopping_cart = d.find_element(*ProductsPageLocators.SHOPPING_CART_LINK).text
-
         assert shopping_cart == ""
