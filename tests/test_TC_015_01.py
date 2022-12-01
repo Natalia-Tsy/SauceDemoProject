@@ -52,7 +52,8 @@ def test_tc015_01():
         driver.current_url == "https://www.saucedemo.com/inventory.html"
     ), "We reached another site!"
 
-    # 1. Add product "Test.allTheThings() T-Shirt (Red)" to cart on the page https://www.saucedemo.com/inventory.html
+    # 1. Add product "Test.allTheThings() T-Shirt (Red)"
+    # to cart on the page https://www.saucedemo.com/inventory.html
     driver.get("https://www.saucedemo.com/inventory.html")
 
     # css_loc = ".inventory_list .inventory_item_label #item_3_title_link"
@@ -84,7 +85,8 @@ def test_tc015_01():
         item_name == "Test.allTheThings() T-Shirt (Red)"
     ), "В корзине нет нужного товара"
 
-    # 3. Сlick the hamburger menu button in the upper left corner of the header. Click "LOGOUT" from the dropdown list
+    # 3. Сlick the hamburger menu button in the upper
+    # left corner of the header. Click "LOGOUT" from the dropdown list
     css_loc = "#react-burger-menu-btn"
     driver.find_element(By.CSS_SELECTOR, css_loc).click()
     time.sleep(1)
@@ -97,11 +99,13 @@ def test_tc015_01():
         driver.current_url == "https://www.saucedemo.com/"
     ), "Мы не вышли из магазина, на главную страницу авторизации"
 
-    # 4. On the page https://www.saucedemo.com/. Input the username: standard_user and password: secret_sauce
+    # 4. On the page https://www.saucedemo.com/.
+    # Input the username: standard_user and password: secret_sauce
     # and press "Login" button
     test_login_form()
 
-    # 5. Press "Cart" icon on the page "https://www.saucedemo.com/inventory.html"
+    # 5. Press "Cart" icon on the page
+    # "https://www.saucedemo.com/inventory.html"
     css_loc = ".shopping_cart_link"
     driver.find_element(By.CSS_SELECTOR, css_loc).click()  # вошли в Корзину
     time.sleep(1)

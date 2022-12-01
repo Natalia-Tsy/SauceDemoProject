@@ -56,7 +56,8 @@ class TestSample:
         page = ProductsPage(d, link)
         # Checks that the current page is Products Page
         page.should_be_products_page()
-        # Products that were selected by name are added to/removed from the cart
+        # Products that were selected by name
+        # are added to/removed from the cart
         # and the list of these products is returned
         page.add_item_on_products_page("Sauce Labs Onesie", "Sauce Labs Backpack")
         # Gets to the Cart Page
