@@ -13,7 +13,8 @@ class BasePage:
 
         self.browser.get(self.link)
 
-    # Object WebElement is returned in accordance with the specified search criteria
+    # Object WebElement is returned in
+    # accordance with the specified search criteria
     def element_is_present(self, method, locator):
         try:
             self.browser.find_element(method, locator)
@@ -66,7 +67,8 @@ class BasePage:
         # Checks that the page title element meets the requirements
         assert title == el_title.text, "wrong title"
 
-    # Returns the elements text that meets the requirements from the specified index i
+    # Return the elements text that meets
+    # the requirements from the specified index i
     def get_text(self, i, method, locator):
         return self.browser.find_element(method, locator).text.split("\n")[i:]
 

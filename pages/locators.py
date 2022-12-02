@@ -16,6 +16,24 @@ class ProductsPageLocators:
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
     INVENT_ITEM = (By.CLASS_NAME, "inventory_item_description")
 
+    # Rustam
+    INVENTORY_ITEM = (By.CSS_SELECTOR, ".inventory_item")
+    INVENTORY_ITEM_NAME = (By.CSS_SELECTOR, ".inventory_item_name")
+    INVENTORY_ITEM_DESC = (By.CSS_SELECTOR, ".inventory_item_desc")
+    INVENTORY_ITEM_PRICE = (By.CSS_SELECTOR, ".inventory_item_price")
+    INVENTORY_ITEM_LINK = (By.CSS_SELECTOR, ".inventory_item_img .inventory_item_img")
+
+    SAUCE_LABS_BACKPACK_ADD_TO_CART = (
+        By.CSS_SELECTOR,
+        "#add-to-cart-sauce-labs-backpack",
+    )
+    SAUCE_LABS_BACKPACK_REMOVE_FROM_CART = (
+        By.CSS_SELECTOR,
+        "#remove-sauce-labs-backpack",
+    )
+    SORT_DROPDOWN = (By.CLASS_NAME, "select_container")
+    PRICE_LOW_TO_HIGH = (By.CSS_SELECTOR, ".product_sort_container [value='lohi']")
+
 
 class CartPageLocators:
     CHECKOUT_BTN = (By.ID, "checkout")

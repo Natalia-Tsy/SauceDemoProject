@@ -9,7 +9,8 @@ class CheckoutPage_1(BasePage):
     def should_be_checkout_1_page(self):
         # Checks that the current page meets the requirements
         self.should_be_link(Chckout1PageSrc.LINK)
-        # Checks that the texts of the page title element meets the requirements
+        # Checks that the texts of the page
+        # title element meets the requirements
         self.should_be_page_title(Chckout1PageSrc.TITLE, *Chckout1PageLocators.TITLE)
         self.should_be_input_firstname_to_checkout_1_page()
         self.should_be_input_lastname_to_checkout_1_page()

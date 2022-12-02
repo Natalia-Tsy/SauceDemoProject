@@ -64,7 +64,7 @@ class ProductsPage(BasePage):
     def go_to_basket_page(self):
         self.click_button(*ProductsPageLocators.SHOP_CART_LINK)
 
-    # Checks that the cart icon  on the current page doesn't display any products
+    # Check the cart icon on the current page doesn't display any products
     def should_be_empty_shopping_cart_badge(self):
         el = self.browser.find_element(*ProductsPageLocators.SHOP_CART_LINK)
         assert (el.get_property("children")) == [], "there is some items in cart"
