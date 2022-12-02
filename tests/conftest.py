@@ -15,6 +15,7 @@ from allure_commons.types import AttachmentType
 def d(browser):
     if browser == "chrome":
         o = WB.ChromeOptions()
+        o.add_argument(conf.BROWSER_ADD_ARGUMENT)
         o.headless = conf.BROWSER_HEADLESS
         driver = WB.Chrome(
             service=ChromeService(ChromeDriverManager().install()),
@@ -22,6 +23,7 @@ def d(browser):
         )
     elif browser == "firefox":
         o = WB.FirefoxOptions()
+        o.add_argument(conf.BROWSER_ADD_ARGUMENT)
         o.headless = conf.BROWSER_HEADLESS
         driver = WB.Firefox(
             service=FirefoxService(GeckoDriverManager().install()), options=o
