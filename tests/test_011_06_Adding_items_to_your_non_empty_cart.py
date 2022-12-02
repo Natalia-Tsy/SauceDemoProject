@@ -15,7 +15,7 @@ class TestAddToCartAllItems:
 
         assert d.current_url == "https://www.saucedemo.com/inventory.html"
 
-        inventory_list = d.find_elements(*ProductsPageLocators.INVENTORY_LIST)
+        inventory_list = d.find_elements(*ProductsPageLocators.INVENTORY_ITEM)
 
         for item in range(0, len(inventory_list)):
             item += 1
@@ -30,11 +30,11 @@ class TestAddToCartAllItems:
             )
             continue_shopping_button.click()
 
-        shopping_cart = d.find_element(*ProductsPageLocators.SHOPPING_CART_LINK).text
+        shopping_cart = d.find_element(*ProductsPageLocators.SHOP_CART_LINK).text
         assert shopping_cart == "6"
 
     def test_remove_from_cart(self, d):
-        shopping_cart = d.find_element(*ProductsPageLocators.SHOPPING_CART_LINK).text
+        shopping_cart = d.find_element(*ProductsPageLocators.SHOP_CART_LINK).text
         assert shopping_cart == "6"
 
         d.find_element(By.CSS_SELECTOR, ".shopping_cart_link").click()
@@ -46,5 +46,5 @@ class TestAddToCartAllItems:
             remove_from_cart_button = d.find_element(By.CSS_SELECTOR, "[name*=remove]")
             remove_from_cart_button.click()
 
-        shopping_cart = d.find_element(*ProductsPageLocators.SHOPPING_CART_LINK).text
+        shopping_cart = d.find_element(*ProductsPageLocators.SHOP_CART_LINK).text
         assert shopping_cart == ""

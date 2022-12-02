@@ -1,6 +1,0 @@
-
-*** start fixture = setup ***
-
-
-*** end fixture = teardown ***
-

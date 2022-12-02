@@ -17,7 +17,7 @@ class ProductsPageLocators:
     INVENT_ITEM = (By.CLASS_NAME, "inventory_item_description")
 
     # Rustam
-    INVENTORY_LIST = (By.CSS_SELECTOR, ".inventory_item")
+    INVENTORY_ITEM = (By.CSS_SELECTOR, ".inventory_item")
     INVENTORY_ITEM_NAME = (By.CSS_SELECTOR, ".inventory_item_name")
     INVENTORY_ITEM_DESC = (By.CSS_SELECTOR, ".inventory_item_desc")
     INVENTORY_ITEM_PRICE = (By.CSS_SELECTOR, ".inventory_item_price")
@@ -31,9 +31,8 @@ class ProductsPageLocators:
         By.CSS_SELECTOR,
         "#remove-sauce-labs-backpack",
     )
-    SHOPPING_CART_LINK = (By.CSS_SELECTOR, ".shopping_cart_link")
     SORT_DROPDOWN = (By.CLASS_NAME, "select_container")
-    PRICE_LOW_TO_HIGH = (By.CSS_SELECTOR, "[value='lohi']")
+    PRICE_LOW_TO_HIGH = (By.CSS_SELECTOR, ".product_sort_container [value='lohi']")
 
 
 class CartPageLocators:
