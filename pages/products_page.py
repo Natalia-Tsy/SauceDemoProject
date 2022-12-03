@@ -64,7 +64,7 @@ class ProductsPage(BasePage):
     def go_to_basket_page(self):
         self.click_button(*ProductsPageLocators.SHOP_CART_LINK)
 
-    # Checks that the cart icon  on the current page doesn't display any products
+    # Check the cart icon on the current page doesn't display any products
     def should_be_empty_shopping_cart_badge(self):
         el = self.browser.find_element(*ProductsPageLocators.SHOP_CART_LINK)
         assert (el.get_property("children")) == [], "there is some items in cart"
@@ -92,59 +92,43 @@ class ProductsPage(BasePage):
 
     # sort products by name
     def sorting_products_by_name_asc(self):
+        new_list_before_sorting = self.get_text_elements(
+            0, *ProductsPageLocators.ALL_NAMES
+        )
+        if new_list_before_sorting == []:
+            assert False, "We have a problem!"
+        new_list_before_sorting.sort()
         sorting_products_by_name_asc = self.browser.find_element(
             *ProductsPageLocators.SORTING_BY_NAME_AZ
         )
-        list_before_sort = self.browser.find_elements(*ProductsPageLocators.ALL_NAMES)
         sorting_products_by_name_asc.click()
-        list_after_sort = self.browser.find_elements(*ProductsPageLocators.ALL_NAMES)
-        new_list_before_sorting = []
-        for i in range(len(list_before_sort)):
-            new_list_before_sorting.append(list_before_sort[i].text)
-
-        new_list_before_sorting.sort()
-
-        new_list_all_name_after_sorting = []
-        for i in range(len(list_after_sort)):
-            new_list_all_name_after_sorting.append(list_after_sort[i].text)
-
+        new_list_all_name_after_sorting = self.get_text_elements(
+            0, *ProductsPageLocators.ALL_NAMES
+        )
         assert (
             new_list_before_sorting == new_list_all_name_after_sorting
         ), "We have a problem!"
 
     def sorting_products_by_price_asc(self):
+        new_list_for_sort_without_first_symbol = self.get_text_elements(
+            1, *ProductsPageLocators.All_PRICES
+        )
+        if new_list_for_sort_without_first_symbol == []:
+            assert False, " Error"
+        new_list_for_sort_without_first_symbol = list(
+            map(float, new_list_for_sort_without_first_symbol)
+        )
+        new_list_for_sort_without_first_symbol.sort()
         sorting_products_by_name_asc = self.browser.find_element(
             *ProductsPageLocators.SORTING_BY_PRICE_ASC
         )
-        list_before_sorting = self.browser.find_elements(
-            *ProductsPageLocators.All_PRICES
-        )
         sorting_products_by_name_asc.click()
-        list_after_sorting = self.browser.find_elements(
-            *ProductsPageLocators.All_PRICES
+        new_list_all_price_after_sorting = self.get_text_elements(
+            1, *ProductsPageLocators.All_PRICES
         )
-
-        new_list_before_sorting = []
-        for i in range(len(list_before_sorting)):
-            new_list_before_sorting.append(list_before_sorting[i].text)
-
-        new_list_for_sort_without_first_symbol = []
-        for i in range(len(new_list_before_sorting)):
-            new_list_for_sort_without_first_symbol.append(
-                float(new_list_before_sorting[i].replace("$", ""))
-            )
-
-        new_list_for_sort_without_first_symbol.sort()
-
-        new_list_after_sort = []
-        for i in range(len(list_after_sorting)):
-            new_list_after_sort.append(list_after_sorting[i].text)
-
-        new_list_all_price_after_sorting = []
-        for i in range(len(new_list_after_sort)):
-            new_list_all_price_after_sorting.append(
-                float(new_list_after_sort[i].replace("$", ""))
-            )
+        new_list_all_price_after_sorting = list(
+            map(float, new_list_all_price_after_sorting)
+        )
 
         assert (
             new_list_for_sort_without_first_symbol == new_list_all_price_after_sorting

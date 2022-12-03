@@ -6,11 +6,12 @@ from .src import LoginPageSrc
 class LoginPage(BasePage):
     def should_be_login_page(self):
         self.should_be_link(LoginPageSrc.LINK)
-        # Checks there's an element to input the User's first name on the current page
+        # Check there's an element to input the
+        # User's first name on the current page
         assert self.element_is_present(*LoginPageLocators.INPUT_USERNAME)
-        # Checks there's an element to input the Password on the current page
+        # Check there's an element to input the Password on the current page
         assert self.element_is_present(*LoginPageLocators.INPUT_PASSWORD)
-        # Checks there's an element to confirm authorization on the current page
+        # Check there's an element to confirm authorization on the current page
         assert self.element_is_present(*LoginPageLocators.LOGIN_BTN)
         # # Checks there are Users' names on the current page
         # assert self.element_is_present(*LoginPageLocators.LOGIN_CREDENTIALS)

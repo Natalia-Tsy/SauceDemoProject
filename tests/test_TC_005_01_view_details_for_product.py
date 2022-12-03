@@ -1,6 +1,7 @@
 import pytest
 from pages.login_page import LoginPage
 from pages.product_page import ProductPage
+from pages.products_page import ProductsPage
 
 # view_details_for_product
 
@@ -32,7 +33,10 @@ class Tests:
         link = "https://www.saucedemo.com/inventory.html"
         page = ProductsPage(d, link)
         page.should_be_products_page()
-        # choose product
-        page.check_product_img()
-        page.check_product_name()
-        page.check_product_price()
+        item = page.select_product()
+        page.go_to_product_page()
+        page = ProductPage(d, link)
+        page.should_be_product_page()
+        page.check_product_img(item)
+        page.check_product_name(item)
+        page.check_product_price(item)

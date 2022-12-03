@@ -25,10 +25,31 @@ class ProductsPageLocators:
     )
     PRODUCT_IMG_FOR_CLICK = (By.CSS_SELECTOR, "#item_0_img_link")
     # for sort product
-    SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, 'option[value="az"]')
+    SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, '.product_sort_container option[value="az"]')
     ALL_NAMES = (By.CSS_SELECTOR, ".inventory_item_name")
-    SORTING_BY_PRICE_ASC = (By.CSS_SELECTOR, 'option[value="lohi"]')
+    SORTING_BY_PRICE_ASC = (
+        By.CSS_SELECTOR,
+        '.product_sort_container option[value="lohi"]',
+    )
     All_PRICES = (By.CSS_SELECTOR, ".inventory_item_price")
+
+    # Rustam
+    INVENTORY_ITEM = (By.CSS_SELECTOR, ".inventory_item")
+    INVENTORY_ITEM_NAME = (By.CSS_SELECTOR, ".inventory_item_name")
+    INVENTORY_ITEM_DESC = (By.CSS_SELECTOR, ".inventory_item_desc")
+    INVENTORY_ITEM_PRICE = (By.CSS_SELECTOR, ".inventory_item_price")
+    INVENTORY_ITEM_LINK = (By.CSS_SELECTOR, ".inventory_item_img .inventory_item_img")
+
+    SAUCE_LABS_BACKPACK_ADD_TO_CART = (
+        By.CSS_SELECTOR,
+        "#add-to-cart-sauce-labs-backpack",
+    )
+    SAUCE_LABS_BACKPACK_REMOVE_FROM_CART = (
+        By.CSS_SELECTOR,
+        "#remove-sauce-labs-backpack",
+    )
+    SORT_DROPDOWN = (By.CLASS_NAME, "select_container")
+    PRICE_LOW_TO_HIGH = (By.CSS_SELECTOR, ".product_sort_container [value='lohi']")
 
 
 class CartPageLocators:
@@ -62,6 +83,7 @@ class PageLocators:
     PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
     HAMBURGER = (By.ID, "react-burger-menu-btn")
     ALL_ITEMS = (By.ID, "inventory_sidebar_link")
+
 
 class ProductPageLocators:
     PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")

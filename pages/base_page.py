@@ -13,7 +13,8 @@ class BasePage:
 
         self.browser.get(self.link)
 
-    # Object WebElement is returned in accordance with the specified search criteria
+    # Object WebElement is returned in
+    # accordance with the specified search criteria
     def element_is_present(self, method, locator):
         try:
             self.browser.find_element(method, locator)
@@ -66,9 +67,10 @@ class BasePage:
         # Checks that the page title element meets the requirements
         assert title == el_title.text, "wrong title"
 
-    # Returns the elements text that meets the requirements from the specified index i
+    # Return the elements text that meets
+    # the requirements from the specified index i
     def get_text(self, i, method, locator):
-        return ''.join(self.browser.find_element(method, locator).text.split("\n")[i:])
+        return "".join(self.browser.find_element(method, locator).text.split("\n")[i:])
 
     #  Unpacks the list of elements list into element list
     def flatten(self, mylist):
@@ -80,5 +82,16 @@ class BasePage:
 
     # Returns the elements src text that meets the requirements from the specified index i
     def get_src(self, i, method, locator):
-        return ''.join( self.browser.find_element(method, locator) .get_property("src") .split("\n")[i:] )
+        return "".join(
+            self.browser.find_element(method, locator)
+            .get_property("src")
+            .split("\n")[i:]
+        )
 
+    # Returns the list elements text that meets the requirements from the specified index i
+    def get_text_elements(self, i, method, locator):
+        try:
+            list_prices = self.browser.find_elements(method, locator)
+            return list(map(lambda element: element.text[i:], list_prices))
+        except NoSuchElementException:
+            return NoSuchElementException

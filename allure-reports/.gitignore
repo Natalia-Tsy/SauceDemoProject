@@ -2,3 +2,5 @@
 *.json
 # png extension
 *.png
+# txt extension
+*.txt
