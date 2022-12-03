@@ -1,9 +1,6 @@
-import time
-
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
-from pages.locators import ProductsPageLocators, CardProductPageLocator
 
 
 class BasePage:
@@ -57,6 +54,7 @@ class BasePage:
             EC.presence_of_element_located((locator))
         )
 
+    # Method for finding an html element inside an html object
     def element_is_located_in_element(self, element, locator, timeout=5):
         return Wait(element, timeout).until(EC.presence_of_element_located((locator)))
 
@@ -91,33 +89,6 @@ class BasePage:
             return self.browser.find_elements(method, locator)
         except NoSuchElementException:
             return []
-
-    # Метод получения ID товара
-    def get_id_product(self, element):
-        product_id = (
-            element.find_element(*ProductsPageLocators.PRODUCT_ID)
-            .get_attribute("id")
-            .split("_title_link")[0]
-            .split("item_")[1]
-        )
-        return product_id
-
-    # Метод добавления/удаления товаров с/из карточки товара в/из корзину(ы)
-    def add_or_del_product_from_card_product_page(self, product_id, name_product):
-        url = f"https://www.saucedemo.com/inventory-item.html?id={product_id}"
-        self.browser.get(url)
-        time.sleep(1)
-        name_product_from_card_page = self.browser.find_element(
-            *CardProductPageLocator.NAME_PRODUCT
-        ).text
-        if name_product_from_card_page in name_product:
-            try:
-                self.browser.find_element(*CardProductPageLocator.ADD_BTN).click()
-            except NoSuchElementException:
-                self.browser.find_element(*CardProductPageLocator.DEL_BTN).click()
-            self.browser.find_element(
-                *CardProductPageLocator.BACK_TO_THE_MAIN_PAGE_BTN
-            ).click()
 
     # Метод очистки знака доллара в цене товара
     def clearing_characters(self, char, data):

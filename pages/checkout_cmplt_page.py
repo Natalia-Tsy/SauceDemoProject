@@ -1,5 +1,5 @@
 from .base_page import BasePage
-from .locators import CheckoutCmpltPageLocators
+from .locators import CheckoutCmpltPageLocators, ProductsPageLocators
 from .src import CheckoutCmpltPageSrc
 from .locators import PageLocators
 
@@ -22,7 +22,7 @@ class CheckouCmpltPage(BasePage):
 
     # Checks that the cart icon doesn't display any products
     def should_be_empty_shopping_cart_badge(self):
-        el = self.browser.find_element(*CheckoutCmpltPageLocators.SHOP_CART_LINK)
+        el = self.browser.find_element(*ProductsPageLocators.SHOP_CART_LINK)
         assert (el.get_property("children")) == [], "there is some items in cart"
 
     # Goes to the page to complete the order

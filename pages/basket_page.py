@@ -2,11 +2,12 @@ import time
 from selenium.common import ElementClickInterceptedException, NoSuchElementException
 
 from .login_page import LoginPage
+from .cart_page import CartPage
 from .products_page import ProductsPage
-from .locators import ProductsPageLocators, BasketIconMainPageLocators, CartPageLocators
+from .locators import ProductsPageLocators, CartPageLocators, CardProductPageLocator
 
 
-class BasketPage(LoginPage, ProductsPage):
+class BasketPage(LoginPage, ProductsPage, CartPage):
     def put_or_del_products_in_packet(self, item_names):
         """Метод добавления товаров в корзину с главной страницы сайта"""
         all_card_products = self.browser.find_elements(
@@ -17,7 +18,7 @@ class BasketPage(LoginPage, ProductsPage):
             product_name = product.find_element(*ProductsPageLocators.NAME_PRODUCT).text
             if product_name in item_names:
                 try:
-                    time.sleep(4)
+                    time.sleep(2)
                     self.element_is_located_in_element(
                         product, ProductsPageLocators.BTN_ADD_OR_DEL_TO_BASKET
                     ).click()
@@ -30,7 +31,7 @@ class BasketPage(LoginPage, ProductsPage):
         """Метод получения числа товаров в корзине после добавления товаров в корзину"""
         try:
             num_product_in_basket = self.browser.find_element(
-                *BasketIconMainPageLocators.NUMBER_PRODUCT_IN_BASKET
+                *ProductsPageLocators.NUMBER_PRODUCT_IN_BASKET
             ).text
         except NoSuchElementException:
             return 0
@@ -38,9 +39,8 @@ class BasketPage(LoginPage, ProductsPage):
 
     def get_data_about_products_in_basket(self, num_product):
         """Метод получения данных со страницы корзины и сравнения товаров в корзине и на иконке корзины на главной странице"""
-        self.click_button(*BasketIconMainPageLocators.ICON_BASKET)
-        self.should_be_link("cart")
-        self.should_be_page_title("YOUR CART", *CartPageLocators.TITLE)
+        self.go_to_basket_page()
+        self.should_be_cart_page()
         assert self.element_is_present(*CartPageLocators.BASKET_LIST)
         product_in_basket = self.get_num_products_in_basket(
             *CartPageLocators.LIST_PRODUCTS
@@ -48,6 +48,34 @@ class BasketPage(LoginPage, ProductsPage):
         assert num_product == len(
             product_in_basket
         ), "Incorrect number of items in the cart"
+
+        # Метод получения ID товара
+
+    def get_id_product(self, element):
+        product_id = (
+            element.find_element(*ProductsPageLocators.PRODUCT_ID)
+            .get_attribute("id")
+            .split("_title_link")[0]
+            .split("item_")[1]
+        )
+        return product_id
+
+    # Метод добавления/удаления товаров с/из карточки товара в/из корзину(ы)
+    def add_or_del_product_from_card_product_page(self, product_id, name_product):
+        url = f"https://www.saucedemo.com/inventory-item.html?id={product_id}"
+        self.browser.get(url)
+        time.sleep(1)
+        name_product_from_card_page = self.browser.find_element(
+            *CardProductPageLocator.NAME_PRODUCT
+        ).text
+        if name_product_from_card_page in name_product:
+            try:
+                self.browser.find_element(*CardProductPageLocator.ADD_BTN).click()
+            except NoSuchElementException:
+                self.browser.find_element(*CardProductPageLocator.DEL_BTN).click()
+            self.browser.find_element(
+                *CardProductPageLocator.BACK_TO_THE_MAIN_PAGE_BTN
+            ).click()
 
     def get_ids_and_put_or_del_products_in_packet_on_the_card_page(self, item_names):
         """Метод добавления/удаления товаров с/из карточки товара в/из корзину(ы)"""

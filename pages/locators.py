@@ -36,6 +36,11 @@ class ProductsPageLocators:
     )
     SORT_DROPDOWN = (By.CLASS_NAME, "select_container")
     PRICE_LOW_TO_HIGH = (By.CSS_SELECTOR, ".product_sort_container [value='lohi']")
+    NUMBER_PRODUCT_IN_BASKET = (
+        By.CSS_SELECTOR,
+        ".shopping_cart_badge",
+    )
+    ICON_BASKET = (By.CSS_SELECTOR, "#shopping_cart_container")
 
 
 class CartPageLocators:
@@ -67,15 +72,6 @@ class CheckoutCmpltPageLocators:
     BACKHOME_BTN = (By.ID, "back-to-products")
     TITLE = (By.CLASS_NAME, "title")
     COMPLETE_MSG = (By.CLASS_NAME, "complete - header")
-    SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
-
-
-class BasketIconMainPageLocators:
-    NUMBER_PRODUCT_IN_BASKET = (
-        By.CSS_SELECTOR,
-        ".shopping_cart_link > span.shopping_cart_badge",
-    )
-    ICON_BASKET = (By.CSS_SELECTOR, "#shopping_cart_container")
 
 
 class CardProductPageLocator:
