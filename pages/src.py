@@ -26,3 +26,7 @@ class Chckout2PageSrc:
 class Chckout1PageSrc:
     TITLE = "CHECKOUT: YOUR INFORMATION"
     LINK = "checkout-step-one"
+
+
+class ProductPageSrc:
+    LINK = "inventory-item"

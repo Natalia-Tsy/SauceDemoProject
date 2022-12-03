@@ -70,7 +70,7 @@ class BasePage:
     # Return the elements text that meets
     # the requirements from the specified index i
     def get_text(self, i, method, locator):
-        return self.browser.find_element(method, locator).text.split("\n")[i:]
+        return "".join(self.browser.find_element(method, locator).text.split("\n")[i:])
 
     #  Unpacks the list of elements list into element list
     def flatten(self, mylist):
@@ -79,3 +79,19 @@ class BasePage:
     # The button is pressed on the locator
     def click_button(self, method, locator):
         self.browser.find_element(method, locator).click()
+
+    # Returns the elements src text that meets the requirements from the specified index i
+    def get_src(self, i, method, locator):
+        return "".join(
+            self.browser.find_element(method, locator)
+            .get_property("src")
+            .split("\n")[i:]
+        )
+
+    # Returns the list elements text that meets the requirements from the specified index i
+    def get_text_elements(self, i, method, locator):
+        try:
+            list_prices = self.browser.find_elements(method, locator)
+            return list(map(lambda element: element.text[i:], list_prices))
+        except NoSuchElementException:
+            return NoSuchElementException

@@ -74,3 +74,62 @@ class ProductsPage(BasePage):
         assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
         # self.browser.find_element(*PageLocators.PRIVACY)
         self.click_button(*PageLocators.PRIVACY)
+
+    """Check choose product:
+        Product image
+        Product name = "Sauce Labs Bike Light"
+        Price = $9.99"""
+
+    def select_product(self):
+        item_info = {}
+        item_info["img"] = self.get_src(0, *ProductsPageLocators.PRODUCT_IMG)
+        item_info["name"] = self.get_text(0, *ProductsPageLocators.PRODUCT_NAME)
+        item_info["price"] = self.get_text(0, *ProductsPageLocators.PRODUCT_PRICE)
+        return item_info
+
+    def go_to_product_page(self):
+        self.click_button(*ProductsPageLocators.PRODUCT_IMG)
+
+    # sort products by name
+    def sorting_products_by_name_asc(self):
+        new_list_before_sorting = self.get_text_elements(
+            0, *ProductsPageLocators.INVENTORY_ITEM_NAME
+        )
+        if new_list_before_sorting == []:
+            assert False, "We have a problem!"
+        new_list_before_sorting.sort()
+        sorting_products_by_name_asc = self.browser.find_element(
+            *ProductsPageLocators.SORTING_BY_NAME_AZ
+        )
+        sorting_products_by_name_asc.click()
+        new_list_all_name_after_sorting = self.get_text_elements(
+            0, *ProductsPageLocators.INVENTORY_ITEM_NAME
+        )
+        assert (
+            new_list_before_sorting == new_list_all_name_after_sorting
+        ), "We have a problem!"
+
+    def sorting_products_by_price_asc(self):
+        new_list_for_sort_without_first_symbol = self.get_text_elements(
+            1, *ProductsPageLocators.INVENTORY_ITEM_PRICE
+        )
+        if new_list_for_sort_without_first_symbol == []:
+            assert False, " Error"
+        new_list_for_sort_without_first_symbol = list(
+            map(float, new_list_for_sort_without_first_symbol)
+        )
+        new_list_for_sort_without_first_symbol.sort()
+        sorting_products_by_name_asc = self.browser.find_element(
+            *ProductsPageLocators.PRICE_LOW_TO_HIGH
+        )
+        sorting_products_by_name_asc.click()
+        new_list_all_price_after_sorting = self.get_text_elements(
+            1, *ProductsPageLocators.INVENTORY_ITEM_PRICE
+        )
+        new_list_all_price_after_sorting = list(
+            map(float, new_list_all_price_after_sorting)
+        )
+
+        assert (
+            new_list_for_sort_without_first_symbol == new_list_all_price_after_sorting
+        ), " Error"
