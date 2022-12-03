@@ -93,7 +93,7 @@ class ProductsPage(BasePage):
     # sort products by name
     def sorting_products_by_name_asc(self):
         new_list_before_sorting = self.get_text_elements(
-            0, *ProductsPageLocators.ALL_NAMES
+            0, *ProductsPageLocators.INVENTORY_ITEM_NAME
         )
         if new_list_before_sorting == []:
             assert False, "We have a problem!"
@@ -103,7 +103,7 @@ class ProductsPage(BasePage):
         )
         sorting_products_by_name_asc.click()
         new_list_all_name_after_sorting = self.get_text_elements(
-            0, *ProductsPageLocators.ALL_NAMES
+            0, *ProductsPageLocators.INVENTORY_ITEM_NAME
         )
         assert (
             new_list_before_sorting == new_list_all_name_after_sorting
@@ -111,7 +111,7 @@ class ProductsPage(BasePage):
 
     def sorting_products_by_price_asc(self):
         new_list_for_sort_without_first_symbol = self.get_text_elements(
-            1, *ProductsPageLocators.All_PRICES
+            1, *ProductsPageLocators.INVENTORY_ITEM_PRICE
         )
         if new_list_for_sort_without_first_symbol == []:
             assert False, " Error"
@@ -120,11 +120,11 @@ class ProductsPage(BasePage):
         )
         new_list_for_sort_without_first_symbol.sort()
         sorting_products_by_name_asc = self.browser.find_element(
-            *ProductsPageLocators.SORTING_BY_PRICE_ASC
+            *ProductsPageLocators.PRICE_LOW_TO_HIGH
         )
         sorting_products_by_name_asc.click()
         new_list_all_price_after_sorting = self.get_text_elements(
-            1, *ProductsPageLocators.All_PRICES
+            1, *ProductsPageLocators.INVENTORY_ITEM_PRICE
         )
         new_list_all_price_after_sorting = list(
             map(float, new_list_all_price_after_sorting)

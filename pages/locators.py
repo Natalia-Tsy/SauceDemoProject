@@ -18,7 +18,6 @@ class ProductsPageLocators:
     # for test TC_007_01
     PRODUCT_IMG = (By.CSS_SELECTOR, "#item_0_img_link>img")
     PRODUCT_NAME = (By.CSS_SELECTOR, "#item_0_title_link>div")
-    BACK_TO_PRODUCTS = (By.CSS_SELECTOR, "#back-to-products")
     PRODUCT_PRICE = (
         By.XPATH,
         "//*[@id = 'item_0_title_link']/ancestor::*[@class = 'inventory_item_description']//*[@class = 'inventory_item_price']",
@@ -26,12 +25,6 @@ class ProductsPageLocators:
     PRODUCT_IMG_FOR_CLICK = (By.CSS_SELECTOR, "#item_0_img_link")
     # for sort product
     SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, '.product_sort_container option[value="az"]')
-    ALL_NAMES = (By.CSS_SELECTOR, ".inventory_item_name")
-    SORTING_BY_PRICE_ASC = (
-        By.CSS_SELECTOR,
-        '.product_sort_container option[value="lohi"]',
-    )
-    All_PRICES = (By.CSS_SELECTOR, ".inventory_item_price")
 
     # Rustam
     INVENTORY_ITEM = (By.CSS_SELECTOR, ".inventory_item")
