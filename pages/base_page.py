@@ -68,7 +68,7 @@ class BasePage:
 
     # Returns the elements text that meets the requirements from the specified index i
     def get_text(self, i, method, locator):
-        return self.browser.find_element(method, locator).text.split("\n")[i:]
+        return ''.join(self.browser.find_element(method, locator).text.split("\n")[i:])
 
     #  Unpacks the list of elements list into element list
     def flatten(self, mylist):
@@ -80,8 +80,5 @@ class BasePage:
 
     # Returns the elements src text that meets the requirements from the specified index i
     def get_src(self, i, method, locator):
-        return (
-            self.browser.find_element(method, locator)
-            .get_property("src")
-            .split("\n")[i:]
-        )
+        return ''.join( self.browser.find_element(method, locator) .get_property("src") .split("\n")[i:] )
+

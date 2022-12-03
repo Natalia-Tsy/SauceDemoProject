@@ -80,50 +80,15 @@ class ProductsPage(BasePage):
         Product name = "Sauce Labs Bike Light"
         Price = $9.99"""
 
-    def check_product_img(self):
-        select_img_src = self.get_src(0, *ProductsPageLocators.PRODUCT_IMG)
-        select_img_product = self.browser.find_element(
-            *ProductsPageLocators.PRODUCT_IMG
-        )
-        select_img_product.click()
-        select_img_product_details = self.get_src(
-            0, *ProductsPageLocators.PRODUCT_IMG_DETAILS
-        )
-        assert select_img_src == select_img_product_details, "We found another picture"
+    def select_product(self):
+        item_info = {}
+        item_info["img"] = self.get_src(0, *ProductsPageLocators.PRODUCT_IMG)
+        item_info["name"] = self.get_text(0, *ProductsPageLocators.PRODUCT_NAME)
+        item_info["price"] = self.get_text(0, *ProductsPageLocators.PRODUCT_PRICE)
+        return item_info
 
-    def check_product_name(self):
-        back_to_products = self.browser.find_element(
-            *ProductsPageLocators.BACK_TO_PRODUCTS
-        )
-        back_to_products.click()
-        select_name = self.get_text(0, *ProductsPageLocators.PRODUCT_NAME)
-        select_name_product = self.browser.find_element(
-            *ProductsPageLocators.PRODUCT_NAME
-        )
-        select_name_product.click()
-        select_name_product_details = self.get_text(
-            0, *ProductsPageLocators.PRODUCT_NAME_DETAILS
-        )
-        assert (
-            select_name == select_name_product_details
-        ), "We found another name of product"
-
-        # check price
-
-    def check_product_price(self):
-        back_to_products = self.browser.find_element(
-            *ProductsPageLocators.BACK_TO_PRODUCTS
-        )
-        back_to_products.click()
-        select_price = self.get_text(0, *ProductsPageLocators.PRODUCT_PRICE)
-        select_name_product = self.browser.find_element(
-            *ProductsPageLocators.PRODUCT_NAME
-        )
-        select_name_product.click()
-        select_price_product_details = self.get_text(
-            0, *ProductsPageLocators.PRODUCT_PRICE_DETAILS
-        )
-        assert select_price == select_price_product_details, "We found another price"
+    def go_to_product_page(self):
+        self.click_button(*ProductsPageLocators.PRODUCT_IMG)
 
     # sort products by name
     def sorting_products_by_name_asc(self):

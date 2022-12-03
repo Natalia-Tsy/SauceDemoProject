@@ -18,14 +18,11 @@ class ProductsPageLocators:
     # for test TC_007_01
     PRODUCT_IMG = (By.CSS_SELECTOR, "#item_0_img_link>img")
     PRODUCT_NAME = (By.CSS_SELECTOR, "#item_0_title_link>div")
-    PRODUCT_NAME_DETAILS = (By.CSS_SELECTOR, ".inventory_details_name")
     BACK_TO_PRODUCTS = (By.CSS_SELECTOR, "#back-to-products")
     PRODUCT_PRICE = (
-        By.CSS_SELECTOR,
-        "#inventory_container > div > div:nth-child(2) > div.inventory_item_description > div.pricebar > div",
+        By.XPATH,
+        "//*[@id = 'item_0_title_link']/ancestor::*[@class = 'inventory_item_description']//*[@class = 'inventory_item_price']",
     )
-    PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")
-    PRODUCT_IMG_DETAILS = (By.CSS_SELECTOR, ".inventory_details_img")
     PRODUCT_IMG_FOR_CLICK = (By.CSS_SELECTOR, "#item_0_img_link")
     # for sort product
     SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, 'option[value="az"]')
@@ -65,3 +62,8 @@ class PageLocators:
     PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
     HAMBURGER = (By.ID, "react-burger-menu-btn")
     ALL_ITEMS = (By.ID, "inventory_sidebar_link")
+
+class ProductPageLocators:
+    PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")
+    PRODUCT_IMG_DETAILS = (By.CSS_SELECTOR, ".inventory_details_img")
+    PRODUCT_NAME_DETAILS = (By.CSS_SELECTOR, ".inventory_details_name")

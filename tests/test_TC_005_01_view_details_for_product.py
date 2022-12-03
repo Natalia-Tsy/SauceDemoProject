@@ -1,6 +1,6 @@
 import pytest
 from pages.login_page import LoginPage
-from pages.products_page import ProductsPage
+from pages.product_page import ProductPage
 
 # view_details_for_product
 
