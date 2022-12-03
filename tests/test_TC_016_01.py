@@ -19,16 +19,16 @@ class TestSample:
             ("problem_user", "secret_sauce"),
         ],
     )
-    # Тест проверяет, что пользователь может выполнить авторизацию пользователя
+    # The test checks that the User can perform user's authorization
     def test_register_user(self, d, username, password):
 
-        # Создает экземпляр страницы авторизации
+        # Creates the Authorization Page instance
         page = LoginPage(d, link)
-        # Открывает страницу авторизации
+        # Opens the Authorization Page
         page.open_page()
-        # Проверяет, что текущая страница является страницей авторизации
+        # Checks that the current page is Authorization Page
         page.should_be_login_page()
-        # Авторизация пользователя
+        # User's authorization
         page.register_user(username, password)
 
     @pytest.mark.parametrize(
@@ -44,22 +44,22 @@ class TestSample:
             ),
         ],
     )
-    # Тест проверяет, что пользователь может перейти со страницы авторизации
-    # на страницу каталога товаров
+    # The test checks that the user can get to the Product Page
+    # from Authorization Page
     def test_user_can_go_to_products_page(self, d, username, password):
-        # Авторизация пользователя
+        # User's authorization
         self.test_register_user(d, username, password)
         # if Users == ("locked_out_user", "secret_sauce"):
         #     pytest.xfail()
         link = "https://www.saucedemo.com/inventory.html"
-        # Создает экземпляр главной страницы - Main Page
+        # Creates the Product Page instance
         page = ProductsPage(d, link)
-        # Проверяет, что текущая страница является страницей каталогом товаров
+        # Checks that the current page is Products Page
         page.should_be_products_page()
-        # Добавляются в корзину/Удаляются из корзины выбранные по имени товары
-        # и возвращает список данных товаров
+        # Products that were selected by name are added to/removed from the cart
+        # and the list of these products is returned
         page.add_item_on_products_page("Sauce Labs Onesie", "Sauce Labs Backpack")
-        # Переходит на страницу корзины
+        # Gets to the Cart Page
         page.go_to_basket_page()
 
     @pytest.mark.parametrize(
@@ -75,21 +75,21 @@ class TestSample:
             ),
         ],
     )
-    # Тест проверяет, что пользователь может перейти со страницы авторизации
-    # на страницу каталога товаров
+    # The test checks that the user can get to the Product Page
+    # from Authorization Page
     def test_user_can_go_to_cart_page(self, d, username, password):
         self.test_user_can_go_to_products_page(d, username, password)
         link = "https://www.saucedemo.com/cart.html"
-        # Создает экземпляр страницы корзины - Cart Page
+        # Creates the Cart Page instance
         page = CartPage(d, link)
-        # Проверяет, что текущая страница является страницей корзины
+        # Checks the current page is Cart Page
         page.should_be_cart_page()
-        # Переходит на страницу оформления заказа
+        # Gets to the Checkout Page
         page.go_to_checkout_1_page()
         link = "https://www.saucedemo.com/checkout-step-one.html"
-        # Создает экземпляр страницы корзины - Cart Page
+        # Creates the Checkout-1 Page instance
         page = CheckoutPage_1(d, link)
-        # Проверяет, что текущая страница является страницей корзины
+        # Checks that the current page is Checkout-1 Page
         page.should_be_checkout_1_page()
 
     @pytest.mark.parametrize(
@@ -109,24 +109,23 @@ class TestSample:
             ),
         ],
     )
-    # Тест проверяет, что пользователь может перейти со страницы авторизации
-    # на страницу каталога товаров
+    # The test checks that the user can get to the Product Page
+    # from Authorization Page
     def test_user_can_go_to_checkout_1_page(self, d, username, password):
         self.test_user_can_go_to_cart_page(d, username, password)
         link = "https://www.saucedemo.com/checkout-step-one.html"
-        # Создает экземпляр страницы корзины - Cart Page
+        # Creates the Checkout-1 page instance
         page = CheckoutPage_1(d, link)
-        # Проверяет, что текущая страница является страницей корзины
+        # Checks the current page is Checkout-1 page
         page.should_be_checkout_1_page()
-        # Заполняются данные, необходимые для получения товара
+        # The data that is required to receive the product is filled
         page.set_shipping_info("John", "Smith", "33009")
-        # Переходит на следующую страницу оформления заказа
+        # Gets to the next page of Checkout (Checkout-2)
         page.go_to_checkout_2_page()
         link = "https://www.saucedemo.com/checkout-step-two.html"
-        # Создает экземпляр главной страницы - Main Page
+        # Creates the Checkout-2 instance
         page = CheckoutPage_2(d, link)
-        # Проверяет, что текущая страница является
-        # следующей страницей оформления заказа
+        # Checks the current page is Checkout-2 page
         page.should_be_checkout_2_page()
 
     @pytest.mark.parametrize(
@@ -149,18 +148,16 @@ class TestSample:
     def test_user_can_go_to_checkout_2_page(self, d, username, password):
         self.test_user_can_go_to_checkout_1_page(d, username, password)
         link = "https://www.saucedemo.com/checkout-step-two.html"
-        # Создает экземпляр главной страницы - Main Page
+        # Creates the Checkout-2 Page instance
         page = CheckoutPage_2(d, link)
-        # Проверяет, что текущая страница является
-        # следующей страницей оформления заказа
+        # Checks the vurrent page is Checkout-2 page
         page.should_be_checkout_2_page()
-        # Переходит на страницу завершения оформления заказа
+        # Gets to the Checkout-complete page
         page.go_to_checkout_complete_page()
         link = "https://www.saucedemo.com/checkout-complete.html"
-        # Создает экземпляр главной страницы - Main Page
+        # Creates the Checkout-complete page instance
         page = CheckouCmpltPage(d, link)
-        # Проверяет, что текущая страница является
-        # следующей страницей оформления заказа
+        # Checks the current page is Checkout-complete page
         page.should_be_checkout_complete_page()
 
     @pytest.mark.parametrize(
@@ -183,18 +180,16 @@ class TestSample:
     def test_user_can_go_to_checkout_complete_page(self, d, username, password):
         self.test_user_can_go_to_checkout_2_page(d, username, password)
         link = "https://www.saucedemo.com/checkout-complete.html"
-        # Создает экземпляр главной страницы - Main Page
+        # Creates the Checkout-complete Page instance
         page = CheckouCmpltPage(d, link)
-        # Проверяет, что текущая страница является
-        # следующей страницей оформления заказа
+        # Checks the current page is Checkout-complete Page
         page.should_be_checkout_complete_page()
-        # Переходит на страницу каталога товаров
+        # Gets to the Products page
         page.go_to_products_page()
         link = "https://www.saucedemo.com/inventory.html"
-        # Создает экземпляр главной страницы - Main Page
+        # Creates the Products Page instance
         page = ProductsPage(d, link)
-        # Проверяет, что текущая страница является страницей каталогом товаров
+        # Checks the current page is Products Page
         page.should_be_products_page()
-        # Проверяет, что иконка корзины на текущей странице не указывает
-        # количество товаров в корзине
+        # Checks the Cart icon on the current page doesn't display any products
         page.should_be_empty_shopping_cart_badge()

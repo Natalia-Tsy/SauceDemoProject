@@ -11,11 +11,12 @@ class BasePage:
         self.browser = browser
         self.link = link
 
-    # Открывает страницу
+    # Opens a page
     def open_page(self):
         self.browser.get(self.link)
 
-    # Возвращается объект WebElement на основе заданного критерия поиска
+    # Object WebElement is returned in
+    # accordance with the specified search criteria
     def element_is_present(self, method, locator):
         try:
             self.browser.find_element(method, locator)
@@ -23,35 +24,34 @@ class BasePage:
             return False
         return True
 
-    # Возвращается список WebElements, соответствующий критериям поиска
+    # WebElements list, meeting the search requirements, is returned
     def elements_are_present(self, method, locator):
         try:
             return self.browser.find_elements(method, locator)
         except NoSuchElementException:
             return NoSuchElementException
 
-    # Возвращается элемент или запускается ожидание timeout секунд
-    # появления элемента
-    # до того, как вернется исключение TimeoutException,
-    # если не появится элемент за timeout
+    # Either returns the element or sets up waiting timeout seconds
+    # until the object appears
+    # before TimeOutException arises
+    # if the element doesn't appear during timeout
     def element_is_visible(self, locator, timeout=5):
         return Wait(self.browser, timeout).until(
             EC.visibility_of_element_located(locator)
         )
 
-    # Возвращаются элементы или запускается ожидание timeout
-    # секунд до того,
-    # как вернется исключение TimeoutException,
-    # если не найдет элемент за timeout
+    # Either returns the elements or sets up timeout
+    # seconds until the exception TimeoutException is returned
+    # if the element doesn't appear during timeout
+    #
     def elements_are_located(self, locator, timeout=5):
         return Wait(self.browser, timeout).until(
             EC.presence_of_all_elements_located((locator))
         )
 
-    # Возвращаются элементы или запускается ожидание timeout
-    # секунд до того,
-    # как вернется исключение TimeoutException,
-    # если не найдет элемент за timeout
+    # Either returns the elements or sets up timeout
+    #     seconds until the exception TimeoutException is returned
+    #     if the element doesn't appear during timeout
     def element_is_located(self, locator, timeout=5):
         return Wait(self.browser, timeout).until(
             EC.presence_of_element_located((locator))
@@ -64,25 +64,24 @@ class BasePage:
     def should_be_link(self, link):
         assert link in self.browser.current_url, "wrong url"
 
-    # Проверяет, что текст элемента заглавия страницы
+    # Checks that the texts of page title element meets the requirements
     def should_be_page_title(self, title, method, locator):
         el_title = self.browser.find_element(method, locator)
-        # Получает элемент заглавия страницы
+        # Gets the page title element
         assert el_title, "there is no title"
-        # Проверяет, что текст элемента заглавия страницы
-        # соответствует требованиям
+        # Checks that the page title element meets the requirements
         assert title == el_title.text, "wrong title"
 
-    # Возвращает с указанного индекса i текст элементов,
-    # соответствующий требованиям
+    # Return the elements text that meets
+    # the requirements from the specified index i
     def get_text(self, i, method, locator):
         return self.browser.find_element(method, locator).text.split("\n")[i:]
 
-    #  Выполняется распаковка списка списков элементов в список элементов
+    #  Unpacks the list of elements list into element list
     def flatten(self, mylist):
         return [item for sublist in mylist for item in sublist]
 
-    # Выполняется нажатие кнопки по локатору
+    # The button is pressed on the locator
     def click_button(self, method, locator):
         self.browser.find_element(method, locator).click()
 

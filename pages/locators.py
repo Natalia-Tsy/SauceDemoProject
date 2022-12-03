@@ -19,6 +19,24 @@ class ProductsPageLocators:
     BTN_ADD_OR_DEL_TO_BASKET = (By.CSS_SELECTOR, "button.btn_inventory")
     PRODUCT_ID = (By.CSS_SELECTOR, ".inventory_item_label>a")
 
+    # Rustam
+    INVENTORY_ITEM = (By.CSS_SELECTOR, ".inventory_item")
+    INVENTORY_ITEM_NAME = (By.CSS_SELECTOR, ".inventory_item_name")
+    INVENTORY_ITEM_DESC = (By.CSS_SELECTOR, ".inventory_item_desc")
+    INVENTORY_ITEM_PRICE = (By.CSS_SELECTOR, ".inventory_item_price")
+    INVENTORY_ITEM_LINK = (By.CSS_SELECTOR, ".inventory_item_img .inventory_item_img")
+
+    SAUCE_LABS_BACKPACK_ADD_TO_CART = (
+        By.CSS_SELECTOR,
+        "#add-to-cart-sauce-labs-backpack",
+    )
+    SAUCE_LABS_BACKPACK_REMOVE_FROM_CART = (
+        By.CSS_SELECTOR,
+        "#remove-sauce-labs-backpack",
+    )
+    SORT_DROPDOWN = (By.CLASS_NAME, "select_container")
+    PRICE_LOW_TO_HIGH = (By.CSS_SELECTOR, ".product_sort_container [value='lohi']")
+
 
 class CartPageLocators:
     CHECKOUT_BTN = (By.ID, "checkout")
@@ -29,6 +47,7 @@ class CartPageLocators:
     NAME_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_name")
     PRICE_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_price")
     DEL_PRODUCT_BTN = (By.CSS_SELECTOR, ".btn.btn_secondary.btn_small")
+    QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
 
 
 class Chckout1PageLocators:
@@ -67,3 +86,10 @@ class CardProductPageLocator:
         'button[data-test="back-to-products"]',
     )
     NAME_PRODUCT = (By.CSS_SELECTOR, ".inventory_details_name")
+
+
+class PageLocators:
+    ROBOT_IMG = (By.CSS_SELECTOR, ".footer_robot")
+    PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
+    HAMBURGER = (By.ID, "react-burger-menu-btn")
+    ALL_ITEMS = (By.ID, "inventory_sidebar_link")
