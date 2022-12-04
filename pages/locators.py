@@ -15,6 +15,16 @@ class ProductsPageLocators:
     INVENT_LIST = (By.CLASS_NAME, "inventory_list")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
     INVENT_ITEM = (By.CLASS_NAME, "inventory_item_description")
+    # for test TC_007_01
+    PRODUCT_IMG = (By.CSS_SELECTOR, "#item_0_img_link>img")
+    PRODUCT_NAME = (By.CSS_SELECTOR, "#item_0_title_link>div")
+    PRODUCT_PRICE = (
+        By.XPATH,
+        "//*[@id = 'item_0_title_link']/ancestor::*[@class = 'inventory_item_description']//*[@class = 'inventory_item_price']",
+    )
+    PRODUCT_IMG_FOR_CLICK = (By.CSS_SELECTOR, "#item_0_img_link")
+    # for sort product
+    SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, '.product_sort_container option[value="az"]')
 
     # Rustam
     INVENTORY_ITEM = (By.CSS_SELECTOR, ".inventory_item")
@@ -66,3 +76,9 @@ class PageLocators:
     PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
     HAMBURGER = (By.ID, "react-burger-menu-btn")
     ALL_ITEMS = (By.ID, "inventory_sidebar_link")
+
+
+class ProductPageLocators:
+    PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")
+    PRODUCT_IMG_DETAILS = (By.CSS_SELECTOR, ".inventory_details_img")
+    PRODUCT_NAME_DETAILS = (By.CSS_SELECTOR, ".inventory_details_name")
