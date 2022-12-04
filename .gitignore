@@ -160,3 +160,6 @@ cython_debug/
 .idea/
 .vscode/launch.json
 .vscode/settings.json
+
+# MacOS artefacts
+.DS_Srore
