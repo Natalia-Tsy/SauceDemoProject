@@ -51,10 +51,14 @@ class CartPage(BasePage):
     # Clear cart
     def clear_cart(self):
         # Gets the list of elements on the cart page
-        list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS)
+        list_el = self.browser.find_elements(
+            *CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS
+        )
         while len(list_el) > 0:
             list_el[0].click()
-            list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS)
+            list_el = self.browser.find_elements(
+                *CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS
+            )
 
     # Check that this item is presents in the cart
     def check_this_item_is_presents_in_the_cart(self, item):

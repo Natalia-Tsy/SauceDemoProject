@@ -59,6 +59,7 @@ class CartPageLocators:
         ".cart_list > .cart_item button"
     )
 
+
 class Chckout1PageLocators:
     CONTINUE_BTN = (By.ID, "continue")
     TITLE = (By.CLASS_NAME, "title")

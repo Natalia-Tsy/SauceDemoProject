@@ -44,7 +44,7 @@ class BasePage:
     #
     def elements_are_located(self, locator, timeout=5):
         return Wait(self.browser, timeout).until(
-            EC.presence_of_all_elements_located((locator))
+            EC.presence_of_all_elements_located(locator)
         )
 
     # Either returns the elements or sets up timeout
@@ -52,7 +52,7 @@ class BasePage:
     #     if the element doesn't appear during timeout
     def element_is_located(self, locator, timeout=5):
         return Wait(self.browser, timeout).until(
-            EC.presence_of_element_located((locator))
+            EC.presence_of_element_located(locator)
         )
 
     # Checks that the current page meets the requirements
