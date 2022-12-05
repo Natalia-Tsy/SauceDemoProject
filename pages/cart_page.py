@@ -63,8 +63,9 @@ class CartPage(BasePage):
     # Check that this item is presents in the cart
     def check_this_item_is_presents_in_the_cart(self, item):
         assert_cond = False
-        list_name_el = \
-            self.browser.find_elements(*CartPageLocators.LIST_OF_NAME_PRODUCTS)
+        list_name_el = self.browser.find_elements(
+            *CartPageLocators.LIST_OF_NAME_PRODUCTS
+        )
         for element in list_name_el:
             if element.text == item:
                 assert_cond = True

@@ -52,12 +52,9 @@ class CartPageLocators:
     LIST_OF_PRODUCTS = (By.CSS_SELECTOR, ".cart_list > .cart_item")
     LIST_OF_NAME_PRODUCTS = (
         By.CSS_SELECTOR,
-        ".cart_list > .cart_item div.inventory_item_name"
+        ".cart_list > .cart_item div.inventory_item_name",
     )
-    LIST_OF_REMOVE_BUTTON_ELEMENTS = (
-        By.CSS_SELECTOR,
-        ".cart_list > .cart_item button"
-    )
+    LIST_OF_REMOVE_BUTTON_ELEMENTS = (By.CSS_SELECTOR, ".cart_list > .cart_item button")
 
 
 class Chckout1PageLocators:
