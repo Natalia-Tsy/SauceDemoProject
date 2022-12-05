@@ -41,3 +41,28 @@ class CartPage(BasePage):
     def click_all_items(self):
         self.element_is_visible(PageLocators.ALL_ITEMS)
         self.browser.find_element(*PageLocators.ALL_ITEMS).click()
+
+    # Select and click LOGOUT item from hamburger menu
+    def click_logout_from_top_left_menu(self):
+        self.open_hamburger()
+        self.element_is_visible(PageLocators.LOGOUT)
+        self.browser.find_element(*PageLocators.LOGOUT).click()
+
+    # Clear cart
+    def clear_cart(self):
+        # Gets the list of elements on the cart page
+        list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS)
+        while len(list_el) > 0:
+            list_el[0].click()
+            list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS)
+
+    # Check that this item is presents in the cart
+    def check_this_item_is_presents_in_the_cart(self, item):
+        assert_cond = False
+        list_name_el = \
+            self.browser.find_elements(*CartPageLocators.LIST_OF_NAME_PRODUCTS)
+        for element in list_name_el:
+            if element.text == item:
+                assert_cond = True
+                break
+        assert assert_cond, "Selected Item is no presents in the cart"

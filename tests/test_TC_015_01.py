@@ -52,7 +52,8 @@ def test_tc015_01():
         driver.current_url == "https://www.saucedemo.com/inventory.html"
     ), "We reached another site!"
 
-    # 1. Add product "Test.allTheThings() T-Shirt (Red)" to cart on the page https://www.saucedemo.com/inventory.html
+    # 1. Add product "Test.allTheThings() T-Shirt (Red)" to cart on the
+    # page https://www.saucedemo.com/inventory.html
     driver.get("https://www.saucedemo.com/inventory.html")
 
     # css_loc = ".inventory_list .inventory_item_label #item_3_title_link"

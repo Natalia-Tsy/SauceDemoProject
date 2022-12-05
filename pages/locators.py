@@ -49,7 +49,15 @@ class CartPageLocators:
     CHECKOUT_BTN = (By.ID, "checkout")
     TITLE = (By.CLASS_NAME, "title")
     QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
-
+    LIST_OF_PRODUCTS = (By.CSS_SELECTOR, ".cart_list > .cart_item")
+    LIST_OF_NAME_PRODUCTS = (
+        By.CSS_SELECTOR,
+        ".cart_list > .cart_item div.inventory_item_name"
+    )
+    LIST_OF_REMOVE_BUTTON_ELEMENTS = (
+        By.CSS_SELECTOR,
+        ".cart_list > .cart_item button"
+    )
 
 class Chckout1PageLocators:
     CONTINUE_BTN = (By.ID, "continue")
@@ -76,6 +84,7 @@ class PageLocators:
     PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
     HAMBURGER = (By.ID, "react-burger-menu-btn")
     ALL_ITEMS = (By.ID, "inventory_sidebar_link")
+    LOGOUT = (By.ID, "logout_sidebar_link")
 
 
 class ProductPageLocators:
