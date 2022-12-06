@@ -58,16 +58,18 @@ class CartPage(BasePage):
     # Check that this item with name, qty, price is presents in the cart
     def check_this_item_is_presents_in_the_cart(self, item_name, item_qty, item_price):
         assert_cond = False
-        list_el = self.browser.find_elements(
-            *CartPageLocators.LIST_OF_PRODUCTS
-        )
+        list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
             qty = element.find_element(*CartPageLocators.QTY_OF_ITEM).text
             price = element.find_element(*CartPageLocators.PRICE_OF_ITEM).text
             if name == item_name:
                 assert_cond = True
-                assert qty == item_qty, f"Товар ожидаемый, но кол-во {qty} не соответствует ожидаемому {item_qty}"
-                assert price == item_price, f"Товар ожидаемый, кол-во ожидаемое {qty}, но цена {price} не соответствует ожидаемой {item_price}"
+                assert (
+                    qty == item_qty
+                ), f"Товар ожидаемый, но кол-во {qty} не соответствует ожидаемому {item_qty}"
+                assert (
+                    price == item_price
+                ), f"Товар ожидаемый, кол-во ожидаемое {qty}, но цена {price} не соответствует ожидаемой {item_price}"
                 break
         assert assert_cond, f"Ожидаемый товар {item_name} в корзине отсутствует"
