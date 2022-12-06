@@ -59,6 +59,7 @@ class CartPageLocators:
     QTY_OF_ITEM = (By.CSS_SELECTOR, "div.cart_quantity")
     PRICE_OF_ITEM = (By.CSS_SELECTOR, "div.inventory_item_price")
 
+
 class Chckout1PageLocators:
     CONTINUE_BTN = (By.ID, "continue")
     TITLE = (By.CLASS_NAME, "title")
