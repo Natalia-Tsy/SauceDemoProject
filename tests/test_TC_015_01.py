@@ -1,121 +1,113 @@
-import time
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.service import Service
+import pytest
+from pages.cart_page import CartPage
+from pages.products_page import ProductsPage
+from pages.login_page import LoginPage
+from pages.sidebar import SideBar
 
 
-print("\nstart browser...")
-options = webdriver.ChromeOptions()
-options.add_argument("--window-size=1920,1080")
-options.headless = True
-driver = webdriver.Chrome(
-    service=Service(ChromeDriverManager().install()), options=options
-)
-# driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-# driver = webdriver.Chrome(ChromeDriverManager().install())
+class TestSample:
+    # авторизация пользователя
+    def to_do_registration(self, d, username, password):
+        link = "https://www.saucedemo.com/"
+        # Creates the Authorization Page instance
+        page = LoginPage(d, link)
+        # Opens the Authorization Page
+        page.open_page()
+        # Checks that the current page is Authorization Page
+        page.should_be_login_page()
+        # User's authorization
+        page.register_user(username, password)
 
-# yield driver
+    # Метод проверки выполнения предусловий, при необходимости, их обеспечения:
+    # 1. проверяет, что корзина пуста
+    # 2. если нет, то удаляет из корзины все товары
+    def preconditions(self, d, username, password):
+        # autorization
+        self.to_do_registration(d, username, password)
+        # проверка, что в корзине ничего нет
+        link = "https://www.saucedemo.com/inventory.html"
+        page = ProductsPage(d, link)
+        page.open_page()
+        try:
+            page.should_be_empty_shopping_cart_badge()
+        except AssertionError:
+            # go to cart page
+            link = "https://www.saucedemo.com/cart.html"
+            # Creates the Cart Page instance
+            page = CartPage(d, link)
+            # Open cart page
+            page.open_page()
+            # Clear cart
+            page.clear_cart()
+        finally:
+            link = "https://www.saucedemo.com/inventory.html"
+            page = ProductsPage(d, link)
+            page.open_page()
 
-# driver.get("https://www.saucedemo.com/")
-time.sleep(1)
+    @pytest.mark.parametrize(
+        "username, password",
+        [
+            ("standard_user", "secret_sauce"),
+            # ("performance_glitch_user", "secret_sauce"),
+            # ("problem_user", "secret_sauce"),
+            # pytest.param(
+            #     "locked_out_user",
+            #     "secret_sauce",
+            #     marks=pytest.mark.xfail(raises=AssertionError),
+            # ),
+        ],
+    )
+    # Тест сохранности заполненной корзины  после перелогинивания
+    def test_safe_cart_data_after_re_login(self, d, username, password):
+        # Test Data
+        sel_item_name = "Test.allTheThings() T-Shirt (Red)"
+        sel_item_qty = "1"
+        sel_item_price = "$15.99"
+        # Part Preconditions
+        self.preconditions(d, username, password)
 
+        # Part 1 of test
+        link = "https://www.saucedemo.com/inventory.html"
+        page = ProductsPage(d, link)
+        page.open_page()
+        # Checks that the current page is Products Page
+        page.should_be_products_page()
 
-# Precondition
-def test_login_form():
-    driver.get("https://www.saucedemo.com/")
-    time.sleep(1)
+        # Step 1 if TC - Add Test.allTheThings() T-Shirt (Red) into cart
+        page.add_item_on_products_page(sel_item_name)
 
-    driver.find_element(By.ID, "user-name").send_keys("standard_user")
-    driver.find_element(By.XPATH, "//input[@id='password']").send_keys("secret_sauce")
-    driver.find_element(By.XPATH, "//input[@name='login-button']").click()
-    time.sleep(1)
+        # Step 2 of TC - Click to hamburger menu
+        page = SideBar(d, link)
+        page.click_hamburger_menu()
 
-    assert (
-        driver.current_url == "https://www.saucedemo.com/inventory.html"
-    ), "We reached another site!"
+        # Step 3-1 of TC - Click to "LOGOUT"
+        page.click_logout_from_top_left_menu()
+        link = "https://www.saucedemo.com/"
+        page = LoginPage(d, link)
+        page.should_be_login_page()
 
+        # Part 2 of test
+        # Step 3-2 - Login
+        # User's authorization
+        self.to_do_registration(d, username, password)
 
-# Steps of test_ts015_01 | Save cart data of current user after re-login
-def test_tc015_01():
-    # Выполнение предусловий
-    # test_login_form()   # Выполнение предусловий
-    driver.get("https://www.saucedemo.com/")
-    time.sleep(1)
+        # Step 4 - Press "Cart" icon on the page
+        # go to the cart page
+        link = "https://www.saucedemo.com/cart.html"
+        page = CartPage(d, link)
+        page.open_page()
+        page.should_be_cart_page()
 
-    driver.find_element(By.ID, "user-name").send_keys("standard_user")
-    driver.find_element(By.XPATH, "//input[@id='password']").send_keys("secret_sauce")
-    driver.find_element(By.XPATH, "//input[@name='login-button']").click()
-    time.sleep(1)
+        # Expected result. Check that the selected item is in the cart
+        page.check_this_item_is_presents_in_the_cart(
+            sel_item_name, sel_item_qty, sel_item_price
+        )
 
-    assert (
-        driver.current_url == "https://www.saucedemo.com/inventory.html"
-    ), "We reached another site!"
+        # Part Postconditions
+        self.postconditions(d, username, password)
 
-    # 1. Add product "Test.allTheThings() T-Shirt (Red)" to cart on the
-    # page https://www.saucedemo.com/inventory.html
-    driver.get("https://www.saucedemo.com/inventory.html")
-
-    # css_loc = ".inventory_list .inventory_item_label #item_3_title_link"
-    # driver.find_element(By.CSS_SELECTOR, css_loc).click()
-
-    css_loc = "item_3_img_link"
-    driver.find_element(By.ID, css_loc).click()
-    time.sleep(1)
-
-    url_item = "https://www.saucedemo.com/inventory-item.html?id=3"
-    assert driver.current_url == url_item, "Не зашли в карточку нужного товара"
-
-    css_loc = ".inventory_details_desc_container button"
-    driver.find_element(By.CSS_SELECTOR, css_loc).click()  # ADD TO CARD
-    time.sleep(1)
-
-    # 2. Проверка что добавили товар в корзину
-    css_loc = ".shopping_cart_link"
-    driver.find_element(By.CSS_SELECTOR, css_loc).click()  # вошли в Корзину
-    time.sleep(1)
-    assert (
-        driver.current_url == "https://www.saucedemo.com/cart.html"
-    ), "Не зашли в корзину"
-
-    css_loc = ".cart_list > .cart_item .inventory_item_name"
-    item_name = driver.find_element(By.CSS_SELECTOR, css_loc).text
-    time.sleep(1)
-    assert (
-        item_name == "Test.allTheThings() T-Shirt (Red)"
-    ), "В корзине нет нужного товара"
-
-    # 3. Сlick the hamburger menu button in the upper left corner of the header. Click "LOGOUT" from the dropdown list
-    css_loc = "#react-burger-menu-btn"
-    driver.find_element(By.CSS_SELECTOR, css_loc).click()
-    time.sleep(1)
-
-    css_loc = "#logout_sidebar_link"
-    driver.find_element(By.CSS_SELECTOR, css_loc).click()
-    time.sleep(1)
-    # проверяем, что вышли из системы на головную страницу
-    assert (
-        driver.current_url == "https://www.saucedemo.com/"
-    ), "Мы не вышли из магазина, на главную страницу авторизации"
-
-    # 4. On the page https://www.saucedemo.com/. Input the username: standard_user and password: secret_sauce
-    # and press "Login" button
-    test_login_form()
-
-    # 5. Press "Cart" icon on the page "https://www.saucedemo.com/inventory.html"
-    css_loc = ".shopping_cart_link"
-    driver.find_element(By.CSS_SELECTOR, css_loc).click()  # вошли в Корзину
-    time.sleep(1)
-    assert (
-        driver.current_url == "https://www.saucedemo.com/cart.html"
-    ), "Не зашли в корзину"
-
-    css_loc = ".cart_list > .cart_item .inventory_item_name"
-    item_name = driver.find_element(By.CSS_SELECTOR, css_loc).text
-    assert (
-        item_name == "Test.allTheThings() T-Shirt (Red)"
-    ), "В корзине нет нужного товара"
-
-
-print("\nquit browser...")
-# browser.quit()
+    # Модуль выполнения постусловий:
+    # 1. проверяет, что корзина пуста
+    # 2. если нет, то удаляет из корзины все товары
+    def postconditions(self, d, username, password):
+        self.preconditions(d, username, password)

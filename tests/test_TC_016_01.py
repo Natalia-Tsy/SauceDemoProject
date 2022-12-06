@@ -6,8 +6,6 @@ from pages.checkout_1_page import CheckoutPage_1
 from pages.checkout_2_page import CheckoutPage_2
 from pages.checkout_cmplt_page import CheckouCmpltPage
 
-link = "https://www.saucedemo.com/"
-
 
 class TestSample:
     @pytest.mark.parametrize(
@@ -23,6 +21,7 @@ class TestSample:
     def test_register_user(self, d, username, password):
 
         # Creates the Authorization Page instance
+        link = "https://www.saucedemo.com/"
         page = LoginPage(d, link)
         # Opens the Authorization Page
         page.open_page()

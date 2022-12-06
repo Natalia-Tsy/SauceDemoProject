@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators import CartPageLocators
 from .src import CartPageSrc
 from .locators import PageLocators
+from .locators import SideBarLocator
 
 
 class CartPage(BasePage):
@@ -35,18 +36,12 @@ class CartPage(BasePage):
 
     # Opens hamburger menu
     def open_hamburger(self):
-        self.browser.find_element(*PageLocators.HAMBURGER).click()
+        self.browser.find_element(*SideBarLocator.HAMBURGER).click()
 
     # Top left menu "all items" line
     def click_all_items(self):
-        self.element_is_visible(PageLocators.ALL_ITEMS)
-        self.browser.find_element(*PageLocators.ALL_ITEMS).click()
-
-    # Select and click LOGOUT item from hamburger menu
-    def click_logout_from_top_left_menu(self):
-        self.open_hamburger()
-        self.element_is_visible(PageLocators.LOGOUT)
-        self.browser.find_element(*PageLocators.LOGOUT).click()
+        self.element_is_visible(SideBarLocator.ALL_ITEMS)
+        self.browser.find_element(*SideBarLocator.ALL_ITEMS).click()
 
     # Clear cart
     def clear_cart(self):
@@ -60,14 +55,19 @@ class CartPage(BasePage):
                 *CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS
             )
 
-    # Check that this item is presents in the cart
-    def check_this_item_is_presents_in_the_cart(self, item):
+    # Check that this item with name, qty, price is presents in the cart
+    def check_this_item_is_presents_in_the_cart(self, item_name, item_qty, item_price):
         assert_cond = False
-        list_name_el = self.browser.find_elements(
-            *CartPageLocators.LIST_OF_NAME_PRODUCTS
+        list_el = self.browser.find_elements(
+            *CartPageLocators.LIST_OF_PRODUCTS
         )
-        for element in list_name_el:
-            if element.text == item:
+        for element in list_el:
+            name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
+            qty = element.find_element(*CartPageLocators.QTY_OF_ITEM).text
+            price = element.find_element(*CartPageLocators.PRICE_OF_ITEM).text
+            if name == item_name:
                 assert_cond = True
+                assert qty == item_qty, f"Товар ожидаемый, но кол-во {qty} не соответствует ожидаемому {item_qty}"
+                assert price == item_price, f"Товар ожидаемый, кол-во ожидаемое {qty}, но цена {price} не соответствует ожидаемой {item_price}"
                 break
-        assert assert_cond, "Selected Item is no presents in the cart"
+        assert assert_cond, f"Ожидаемый товар {item_name} в корзине отсутствует"
