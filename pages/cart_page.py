@@ -56,12 +56,12 @@ class CartPage(BasePage):
             )
 
     # Check that item with item_name is presents in the cart
-    def check_this_item_is_presents_in_the_cart(self, item_name):
+    def check_product_name_in_cart(self, item_name):
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         assert len(list_el) != 0, f"Ожидаемый товар {item_name} в корзине отсутствует"
 
     # Check that item with item_name is presents in the cart with item_qty quantity
-    def check_that_itemname_item_has_quantity_itemqty(self, item_name, item_qty):
+    def check_the_item_quantity_in_cart(self, item_name, item_qty):
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
@@ -73,7 +73,7 @@ class CartPage(BasePage):
                 break
 
     # Check that item with item_name is presents in the cart with price item_price
-    def check_that_itemname_item_has_price_itemprice(self, item_name, item_price):
+    def check_the_item_price_in_cart(self, item_name, item_price):
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text

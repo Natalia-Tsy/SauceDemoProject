@@ -91,7 +91,6 @@ class TestSample:
         self.to_do_registration(d, username, password)
 
         # Step 4 - Press "Cart" icon on the page
-        # go to the cart page
         # go to the products page
         link = "https://www.saucedemo.com/inventory.html"
         page = ProductsPage(d, link)
@@ -103,9 +102,9 @@ class TestSample:
         page.should_be_cart_page()
 
         # Expected result. Check that the selected item is in the cart
-        page.check_this_item_is_presents_in_the_cart(sel_item_name)
-        page.check_that_itemname_item_has_quantity_itemqty(sel_item_name, sel_item_qty)
-        page.check_that_itemname_item_has_price_itemprice(sel_item_name, sel_item_price)
+        page.check_product_name_in_cart(sel_item_name)
+        page.check_the_item_quantity_in_cart(sel_item_name, sel_item_qty)
+        page.check_the_item_price_in_cart(sel_item_name, sel_item_price)
 
         # Part Postconditions
         self.postconditions(d, username, password)
