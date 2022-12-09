@@ -15,7 +15,7 @@ A sample pytest project https://www.saucedemo.com/ to trigger automated tests, g
 #### Notes:
 
  - AB - an example of a branch name 
- - test_001_05_add_into_cart.py - an example of a test name
+ - test_TC_001_05_add_into_cart.py - an example of a test name
 
 #### Regular commands:
  - Run all tests 'poetry run pytest'
