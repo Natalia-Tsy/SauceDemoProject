@@ -39,7 +39,6 @@ class TestSample:
             page.open_page()
             # Clear cart
             page.clear_cart()
-        finally:
             link = "https://www.saucedemo.com/inventory.html"
             page = ProductsPage(d, link)
             page.open_page()
@@ -69,9 +68,9 @@ class TestSample:
         # Part 1 of test
         link = "https://www.saucedemo.com/inventory.html"
         page = ProductsPage(d, link)
-        page.open_page()
-        # Checks that the current page is Products Page
-        page.should_be_products_page()
+        # page.open_page()
+        # # Checks that the current page is Products Page
+        # page.should_be_products_page()
 
         # Step 1 if TC - Add Test.allTheThings() T-Shirt (Red) into cart
         page.add_item_on_products_page(sel_item_name)
@@ -81,7 +80,7 @@ class TestSample:
         page.click_hamburger_menu()
 
         # Step 3-1 of TC - Click to "LOGOUT"
-        page.click_logout_from_top_left_menu()
+        page.click_logout()
         link = "https://www.saucedemo.com/"
         page = LoginPage(d, link)
         page.should_be_login_page()
@@ -93,15 +92,20 @@ class TestSample:
 
         # Step 4 - Press "Cart" icon on the page
         # go to the cart page
+        # go to the products page
+        link = "https://www.saucedemo.com/inventory.html"
+        page = ProductsPage(d, link)
+        page.should_be_products_page()
+        page.go_to_basket_page()
+        # go to the cart page
         link = "https://www.saucedemo.com/cart.html"
         page = CartPage(d, link)
-        page.open_page()
         page.should_be_cart_page()
 
         # Expected result. Check that the selected item is in the cart
-        page.check_this_item_is_presents_in_the_cart(
-            sel_item_name, sel_item_qty, sel_item_price
-        )
+        page.check_this_item_is_presents_in_the_cart(sel_item_name)
+        page.check_that_itemname_item_has_quantity_itemqty(sel_item_name, sel_item_qty)
+        page.check_that_itemname_item_has_price_itemprice(sel_item_name, sel_item_price)
 
         # Part Postconditions
         self.postconditions(d, username, password)

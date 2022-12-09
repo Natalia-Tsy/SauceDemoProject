@@ -55,21 +55,35 @@ class CartPage(BasePage):
                 *CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS
             )
 
-    # Check that this item with name, qty, price is presents in the cart
-    def check_this_item_is_presents_in_the_cart(self, item_name, item_qty, item_price):
+    # Check that item with item_name is presents in the cart
+    def check_this_item_is_presents_in_the_cart(self, item_name):
+        list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
+        assert len(list_el) != 0, f"Ожидаемый товар {item_name} в корзине отсутствует"
+
+    # Check that item with item_name is presents in the cart with item_qty quantity
+    def check_that_itemname_item_has_quantity_itemqty(self, item_name, item_qty):
         assert_cond = False
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
             qty = element.find_element(*CartPageLocators.QTY_OF_ITEM).text
-            price = element.find_element(*CartPageLocators.PRICE_OF_ITEM).text
             if name == item_name:
                 assert_cond = True
                 assert (
                     qty == item_qty
                 ), f"Товар ожидаемый, но кол-во {qty} не соответствует ожидаемому {item_qty}"
+                break
+
+    # Check that item with item_name is presents in the cart with price item_price
+    def check_that_itemname_item_has_price_itemprice(self, item_name, item_price):
+        assert_cond = False
+        list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
+        for element in list_el:
+            name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
+            price = element.find_element(*CartPageLocators.PRICE_OF_ITEM).text
+            if name == item_name:
+                assert_cond = True
                 assert (
                     price == item_price
-                ), f"Товар ожидаемый, кол-во ожидаемое {qty}, но цена {price} не соответствует ожидаемой {item_price}"
+                ), f"Товар ожидаемый, но цена {price} не соответствует ожидаемой {item_price}"
                 break
-        assert assert_cond, f"Ожидаемый товар {item_name} в корзине отсутствует"

@@ -10,6 +10,6 @@ class SideBar(BasePage):
         self.browser.find_element(*SideBarLocator.HAMBURGER).click()
 
     # Select and click LOGOUT item from hamburger menu
-    def click_logout_from_top_left_menu(self):
+    def click_logout(self):
         self.element_is_visible(SideBarLocator.LOGOUT)
         self.browser.find_element(*SideBarLocator.LOGOUT).click()
