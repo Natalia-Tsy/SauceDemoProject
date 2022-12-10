@@ -58,7 +58,12 @@ class CartPage(BasePage):
     # Check that item with item_name is presents in the cart
     def check_product_name_in_cart(self, item_name):
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
-        assert len(list_el) != 0, f"Ожидаемый товар {item_name} в корзине отсутствует"
+        for element in list_el:
+            name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
+            assert (
+                name == item_name
+            ), f"Ожидаемый товар {item_name} в корзине отсутствует"
+            break
 
     # Check that item with item_name is presents in the cart with item_qty quantity
     def check_the_item_quantity_in_cart(self, item_name, item_qty):
