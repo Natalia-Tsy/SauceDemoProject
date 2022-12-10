@@ -49,6 +49,15 @@ class CartPageLocators:
     CHECKOUT_BTN = (By.ID, "checkout")
     TITLE = (By.CLASS_NAME, "title")
     QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
+    LIST_OF_PRODUCTS = (By.CSS_SELECTOR, ".cart_list > .cart_item")
+    LIST_OF_NAME_PRODUCTS = (
+        By.CSS_SELECTOR,
+        ".cart_list > .cart_item div.inventory_item_name",
+    )
+    LIST_OF_REMOVE_BUTTON_ELEMENTS = (By.CSS_SELECTOR, ".cart_list > .cart_item button")
+    PRODUCT_NAME_OF_ITEM = (By.CSS_SELECTOR, "div.inventory_item_name")
+    QTY_OF_ITEM = (By.CSS_SELECTOR, "div.cart_quantity")
+    PRICE_OF_ITEM = (By.CSS_SELECTOR, "div.inventory_item_price")
 
 
 class Chckout1PageLocators:
@@ -74,11 +83,15 @@ class CheckoutCmpltPageLocators:
 class PageLocators:
     ROBOT_IMG = (By.CSS_SELECTOR, ".footer_robot")
     PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
-    HAMBURGER = (By.ID, "react-burger-menu-btn")
-    ALL_ITEMS = (By.ID, "inventory_sidebar_link")
 
 
 class ProductPageLocators:
     PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")
     PRODUCT_IMG_DETAILS = (By.CSS_SELECTOR, ".inventory_details_img")
     PRODUCT_NAME_DETAILS = (By.CSS_SELECTOR, ".inventory_details_name")
+
+
+class SideBarLocator:
+    HAMBURGER = (By.ID, "react-burger-menu-btn")
+    ALL_ITEMS = (By.ID, "inventory_sidebar_link")
+    LOGOUT = (By.ID, "logout_sidebar_link")
