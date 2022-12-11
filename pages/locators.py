@@ -15,6 +15,9 @@ class ProductsPageLocators:
     INVENT_LIST = (By.CLASS_NAME, "inventory_list")
     SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
     INVENT_ITEM = (By.CLASS_NAME, "inventory_item_description")
+    NAME_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_name")
+    BTN_ADD_OR_DEL_TO_BASKET = (By.CSS_SELECTOR, "button.btn_inventory")
+    PRODUCT_ID = (By.CSS_SELECTOR, ".inventory_item_label>a")
     # for test TC_007_01
     PRODUCT_IMG = (By.CSS_SELECTOR, "#item_0_img_link>img")
     PRODUCT_NAME = (By.CSS_SELECTOR, "#item_0_title_link>div")
@@ -43,11 +46,22 @@ class ProductsPageLocators:
     )
     SORT_DROPDOWN = (By.CLASS_NAME, "select_container")
     PRICE_LOW_TO_HIGH = (By.CSS_SELECTOR, ".product_sort_container [value='lohi']")
+    NUMBER_PRODUCT_IN_BASKET = (
+        By.CSS_SELECTOR,
+        ".shopping_cart_badge",
+    )
+    ICON_BASKET = (By.CSS_SELECTOR, "#shopping_cart_container")
 
 
 class CartPageLocators:
     CHECKOUT_BTN = (By.ID, "checkout")
     TITLE = (By.CLASS_NAME, "title")
+    BASKET_LIST = (By.CSS_SELECTOR, ".cart_list")
+    LIST_PRODUCTS = (By.CSS_SELECTOR, ".cart_item")
+    PRODUCT_DIV = (By.CSS_SELECTOR, ".cart_item_label")
+    NAME_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_name")
+    PRICE_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_price")
+    DEL_PRODUCT_BTN = (By.CSS_SELECTOR, ".btn.btn_secondary.btn_small")
     QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
     LIST_OF_PRODUCTS = (By.CSS_SELECTOR, ".cart_list > .cart_item")
     LIST_OF_NAME_PRODUCTS = (
@@ -77,7 +91,16 @@ class CheckoutCmpltPageLocators:
     BACKHOME_BTN = (By.ID, "back-to-products")
     TITLE = (By.CLASS_NAME, "title")
     COMPLETE_MSG = (By.CLASS_NAME, "complete - header")
-    SHOP_CART_LINK = (By.CLASS_NAME, "shopping_cart_link")
+
+
+class CardProductPageLocator:
+    ADD_BTN = (By.CSS_SELECTOR, "button.btn.btn_primary")
+    DEL_BTN = (By.CSS_SELECTOR, ".btn.btn_secondary.btn_small")
+    BACK_TO_THE_MAIN_PAGE_BTN = (
+        By.CSS_SELECTOR,
+        'button[data-test="back-to-products"]',
+    )
+    NAME_PRODUCT = (By.CSS_SELECTOR, ".inventory_details_name")
 
 
 class PageLocators:
