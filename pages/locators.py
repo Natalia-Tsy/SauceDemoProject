@@ -18,6 +18,16 @@ class ProductsPageLocators:
     NAME_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_name")
     BTN_ADD_OR_DEL_TO_BASKET = (By.CSS_SELECTOR, "button.btn_inventory")
     PRODUCT_ID = (By.CSS_SELECTOR, ".inventory_item_label>a")
+    # for test TC_007_01
+    PRODUCT_IMG = (By.CSS_SELECTOR, "#item_0_img_link>img")
+    PRODUCT_NAME = (By.CSS_SELECTOR, "#item_0_title_link>div")
+    PRODUCT_PRICE = (
+        By.XPATH,
+        "//*[@id = 'item_0_title_link']/ancestor::*[@class = 'inventory_item_description']//*[@class = 'inventory_item_price']",
+    )
+    PRODUCT_IMG_FOR_CLICK = (By.CSS_SELECTOR, "#item_0_img_link")
+    # for sort product
+    SORTING_BY_NAME_AZ = (By.CSS_SELECTOR, '.product_sort_container option[value="az"]')
 
     # Rustam
     INVENTORY_ITEM = (By.CSS_SELECTOR, ".inventory_item")
@@ -53,6 +63,15 @@ class CartPageLocators:
     PRICE_PRODUCT = (By.CSS_SELECTOR, ".inventory_item_price")
     DEL_PRODUCT_BTN = (By.CSS_SELECTOR, ".btn.btn_secondary.btn_small")
     QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
+    LIST_OF_PRODUCTS = (By.CSS_SELECTOR, ".cart_list > .cart_item")
+    LIST_OF_NAME_PRODUCTS = (
+        By.CSS_SELECTOR,
+        ".cart_list > .cart_item div.inventory_item_name",
+    )
+    LIST_OF_REMOVE_BUTTON_ELEMENTS = (By.CSS_SELECTOR, ".cart_list > .cart_item button")
+    PRODUCT_NAME_OF_ITEM = (By.CSS_SELECTOR, "div.inventory_item_name")
+    QTY_OF_ITEM = (By.CSS_SELECTOR, "div.cart_quantity")
+    PRICE_OF_ITEM = (By.CSS_SELECTOR, "div.inventory_item_price")
 
 
 class Chckout1PageLocators:
@@ -87,5 +106,15 @@ class CardProductPageLocator:
 class PageLocators:
     ROBOT_IMG = (By.CSS_SELECTOR, ".footer_robot")
     PRIVACY = (By.XPATH, "//*[@class = 'footer_copy']/text()[3]")
+
+
+class ProductPageLocators:
+    PRODUCT_PRICE_DETAILS = (By.CSS_SELECTOR, ".inventory_details_price")
+    PRODUCT_IMG_DETAILS = (By.CSS_SELECTOR, ".inventory_details_img")
+    PRODUCT_NAME_DETAILS = (By.CSS_SELECTOR, ".inventory_details_name")
+
+
+class SideBarLocator:
     HAMBURGER = (By.ID, "react-burger-menu-btn")
     ALL_ITEMS = (By.ID, "inventory_sidebar_link")
+    LOGOUT = (By.ID, "logout_sidebar_link")

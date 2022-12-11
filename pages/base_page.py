@@ -43,7 +43,7 @@ class BasePage:
     #
     def elements_are_located(self, locator, timeout=5):
         return Wait(self.browser, timeout).until(
-            EC.presence_of_all_elements_located((locator))
+            EC.presence_of_all_elements_located(locator)
         )
 
     # Either returns the elements or sets up timeout
@@ -51,7 +51,7 @@ class BasePage:
     #     if the element doesn't appear during timeout
     def element_is_located(self, locator, timeout=5):
         return Wait(self.browser, timeout).until(
-            EC.presence_of_element_located((locator))
+            EC.presence_of_element_located(locator)
         )
 
     # Method for finding an html element inside an html object
@@ -73,7 +73,7 @@ class BasePage:
     # Return the elements text that meets
     # the requirements from the specified index i
     def get_text(self, i, method, locator):
-        return self.browser.find_element(method, locator).text.split("\n")[i:]
+        return "".join(self.browser.find_element(method, locator).text.split("\n")[i:])
 
     #  Unpacks the list of elements list into element list
     def flatten(self, mylist):
@@ -93,3 +93,19 @@ class BasePage:
     # Метод очистки знака доллара в цене товара
     def clearing_characters(self, char, data):
         return data.replace(char, "")
+
+    # Returns the elements src text that meets the requirements from the specified index i
+    def get_src(self, i, method, locator):
+        return "".join(
+            self.browser.find_element(method, locator)
+            .get_property("src")
+            .split("\n")[i:]
+        )
+
+    # Returns the list elements text that meets the requirements from the specified index i
+    def get_text_elements(self, i, method, locator):
+        try:
+            list_prices = self.browser.find_elements(method, locator)
+            return list(map(lambda element: element.text[i:], list_prices))
+        except NoSuchElementException:
+            return NoSuchElementException
