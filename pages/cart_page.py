@@ -1,5 +1,4 @@
 import logging
-import time
 
 from selenium.common import NoSuchElementException, ElementClickInterceptedException
 
@@ -67,7 +66,7 @@ class CartPage(LoginPage, ProductsPage):
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
             assert (
-                name == item_name
+                    name == item_name
             ), f"Ожидаемый товар {item_name} в корзине отсутствует"
             break
 
@@ -79,7 +78,7 @@ class CartPage(LoginPage, ProductsPage):
             qty = element.find_element(*CartPageLocators.QTY_OF_ITEM).text
             if name == item_name:
                 assert (
-                    qty == item_qty
+                        qty == item_qty
                 ), f"Товар ожидаемый, но кол-во {qty} не соответствует ожидаемому {item_qty}"
                 break
 
@@ -91,7 +90,7 @@ class CartPage(LoginPage, ProductsPage):
             price = element.find_element(*CartPageLocators.PRICE_OF_ITEM).text
             if name == item_name:
                 assert (
-                    price == item_price
+                        price == item_price
                 ), f"Товар ожидаемый, но цена {price} не соответствует ожидаемой {item_price}"
                 break
 
@@ -171,11 +170,11 @@ class CartPage(LoginPage, ProductsPage):
         ).click()
 
     def get_ids_and_put_or_del_products_in_packet_on_the_card_page(self, item_names):
-        """Метод добавления/удаления товаров с/из карточки товара в/из корзину(ы)"""
+        """Method of adding/removing products from/from the product card to/from the cart(s)"""
         all_card_products = self.list_finded_item_by_name(item_names)[0]
         ids = [self.get_id_product(product) for product in all_card_products]
         for id in ids:
-            self.add_or_del_product_from_card_product_page(id, item_names)
+            self.add_or_del_product_from_card_product_page(id)
 
     def product_params_comparison_in_basket(self):
         """The method of checking the coincidence of the parameters of the product in the basket"""
@@ -194,9 +193,9 @@ class CartPage(LoginPage, ProductsPage):
                 "$", product.find_element(*CartPageLocators.PRICE_PRODUCT).text
             )
             assert (
-                name_product_basket,
-                price_product_basket,
-            ) in all_data, "The names or price of the products do not match"
+                       name_product_basket,
+                       price_product_basket,
+                   ) in all_data, "The names or price of the products do not match"
 
     def check_number_products_in_basket_is_zero(self):
         """Method of checking that all products are removed from the basket"""
