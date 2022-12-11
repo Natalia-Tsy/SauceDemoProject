@@ -2,12 +2,12 @@ import logging
 
 from selenium.common import NoSuchElementException, ElementClickInterceptedException
 
-from .login_page import LoginPage
-from .products_page import ProductsPage
 from .locators import CartPageLocators, CardProductPageLocator, ProductsPageLocators
-from .src import CartPageSrc
 from .locators import PageLocators
 from .locators import SideBarLocator
+from .login_page import LoginPage
+from .products_page import ProductsPage
+from .src import CartPageSrc
 
 
 class CartPage(LoginPage, ProductsPage):
@@ -66,7 +66,7 @@ class CartPage(LoginPage, ProductsPage):
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
             assert (
-                    name == item_name
+                name == item_name
             ), f"Ожидаемый товар {item_name} в корзине отсутствует"
             break
 
@@ -78,7 +78,7 @@ class CartPage(LoginPage, ProductsPage):
             qty = element.find_element(*CartPageLocators.QTY_OF_ITEM).text
             if name == item_name:
                 assert (
-                        qty == item_qty
+                    qty == item_qty
                 ), f"Товар ожидаемый, но кол-во {qty} не соответствует ожидаемому {item_qty}"
                 break
 
@@ -90,7 +90,7 @@ class CartPage(LoginPage, ProductsPage):
             price = element.find_element(*CartPageLocators.PRICE_OF_ITEM).text
             if name == item_name:
                 assert (
-                        price == item_price
+                    price == item_price
                 ), f"Товар ожидаемый, но цена {price} не соответствует ожидаемой {item_price}"
                 break
 
@@ -193,9 +193,9 @@ class CartPage(LoginPage, ProductsPage):
                 "$", product.find_element(*CartPageLocators.PRICE_PRODUCT).text
             )
             assert (
-                       name_product_basket,
-                       price_product_basket,
-                   ) in all_data, "The names or price of the products do not match"
+                name_product_basket,
+                price_product_basket,
+            ) in all_data, "The names or price of the products do not match"
 
     def check_number_products_in_basket_is_zero(self):
         """Method of checking that all products are removed from the basket"""
