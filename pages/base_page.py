@@ -54,8 +54,8 @@ class BasePage:
             EC.presence_of_element_located(locator)
         )
 
-    # Method for finding an html element inside an html object
     def element_is_located_in_element(self, element, locator, timeout=5):
+        """Method for finding an html element inside an html object"""
         return Wait(element, timeout).until(EC.presence_of_element_located((locator)))
 
     # Проверяет, что текущая страница соответствует требованиям
@@ -83,15 +83,15 @@ class BasePage:
     def click_button(self, method, locator):
         self.browser.find_element(method, locator).click()
 
-    # Метод получения количества товаров в корзине
     def get_num_products_in_basket(self, method, locator):
+        """Method of getting the number of items in the basket"""
         try:
             return self.browser.find_elements(method, locator)
         except NoSuchElementException:
             return []
 
-    # Метод очистки знака доллара в цене товара
     def clearing_characters(self, char, data):
+        """The method of cleaning the dollar sign in the price of the goods"""
         return data.replace(char, "")
 
     # Returns the elements src text that meets the requirements from the specified index i
