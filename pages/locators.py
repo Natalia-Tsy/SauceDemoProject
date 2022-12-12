@@ -50,10 +50,6 @@ class CartPageLocators:
     TITLE = (By.CLASS_NAME, "title")
     QUANTITY = (By.CLASS_NAME, "shopping_cart_badge")
     LIST_OF_PRODUCTS = (By.CSS_SELECTOR, ".cart_list > .cart_item")
-    LIST_OF_NAME_PRODUCTS = (
-        By.CSS_SELECTOR,
-        ".cart_list > .cart_item div.inventory_item_name",
-    )
     LIST_OF_REMOVE_BUTTON_ELEMENTS = (By.CSS_SELECTOR, ".cart_list > .cart_item button")
     PRODUCT_NAME_OF_ITEM = (By.CSS_SELECTOR, "div.inventory_item_name")
     QTY_OF_ITEM = (By.CSS_SELECTOR, "div.cart_quantity")
