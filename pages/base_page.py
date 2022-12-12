@@ -52,7 +52,7 @@ class BasePage:
             logging.exception(e.msg)
             return False
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
             return False
         return True
@@ -79,8 +79,9 @@ class BasePage:
             logging.error(
                 f"The elements is no longer attached to the DOM on page: {self.browser.current_url}"
             )
+            logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     # The button is pressed on the locator
@@ -106,7 +107,7 @@ class BasePage:
             )
             logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def get_property(self, property, method, locator):
@@ -131,8 +132,9 @@ class BasePage:
             logging.error(
                 f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
             )
+            logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def element_is_visible(self, locator, timeout=5):
@@ -157,8 +159,9 @@ class BasePage:
                 f"Element not present after {timeout} seconds on page: {self.browser.current_url}"
             )
             logging.exception(e.msg)
+            logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def elements_are_located(self, locator, timeout=5):
@@ -182,8 +185,9 @@ class BasePage:
                 f"Elements not present after {timeout} seconds on page: {self.browser.current_url}"
             )
             logging.exception(e.msg)
+            logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def element_is_located(self, locator, timeout=5):
@@ -207,8 +211,9 @@ class BasePage:
                 f"Element not present after {timeout} seconds on page: {self.browser.current_url}"
             )
             logging.exception(e.msg)
+            logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def should_be_link(self, link):
@@ -249,6 +254,7 @@ class BasePage:
             logging.error(
                 f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
             )
+            logging.exception(e.msg)
         except WebDriverException as e:
             logging.error(f"Could not find element on page: {self.browser.current_url}")
             logging.exception(e.msg)
@@ -276,8 +282,9 @@ class BasePage:
             logging.error(
                 f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
             )
+            logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def flatten(self, mylist):
@@ -312,7 +319,7 @@ class BasePage:
             logging.error(f"Could not find element on page: {self.browser.current_url}")
             logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def get_src(self, i, method, locator):
@@ -343,13 +350,14 @@ class BasePage:
             logging.error(
                 f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
             )
+            logging.exception(e.msg)
         except InvalidElementStateException as e:
             logging.error(
                 f"The element is in an invalid state on page: {self.browser.current_url}"
             )
             logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
     def get_text_elements(self, i, method, locator):
@@ -375,6 +383,7 @@ class BasePage:
             logging.error(
                 f"The elements is no longer attached to the DOM on page: {self.browser.current_url}"
             )
+            logging.exception(e.msg)
         except WebDriverException as e:
-            logging.error(f"Unable to initialize WebDriver")
+            logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
