@@ -1,27 +1,35 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
-from .src import LoginPageSrc
+from src.src import LoginPageSrc
 
 
 class LoginPage(BasePage):
+    """This class is used to test the functionality of the login page of the website.
+
+    Args:
+        BasePage: Contains common methods that are used by all page classes
+    """
+
     def should_be_login_page(self):
-        self.should_be_link(LoginPageSrc.LINK)
-        # Check there's an element to input the
-        # User's first name on the current page
-        assert self.element_is_present(*LoginPageLocators.INPUT_USERNAME)
-        # Check there's an element to input the Password on the current page
-        assert self.element_is_present(*LoginPageLocators.INPUT_PASSWORD)
-        # Check there's an element to confirm authorization on the current page
-        assert self.element_is_present(*LoginPageLocators.LOGIN_BTN)
-        # # Checks there are Users' names on the current page
-        # assert self.element_is_present(*LoginPageLocators.LOGIN_CREDENTIALS)
-        # # Checks there are Users' the passwords on the current page
-        # assert self.element_is_present(*LoginPageLocators.LOGIN_PASSWORD)
+        """Check that the current page is the login page"""
+        self.should_be_link(LoginPageSrc.URL)
+        assert self.element_is_present(
+            *LoginPageLocators.INPUT_USERNAME
+        ), "The username input field is not present on the page"
+        assert self.element_is_present(
+            *LoginPageLocators.INPUT_PASSWORD
+        ), "The password input field is not present on the page"
+        assert self.element_is_visible(
+            LoginPageLocators.LOGIN_BTN
+        ), "The login button is not visible on the page"
 
     def register_user(self, username, password):
-        # n = 1
-        # h = self.get_text(n, *LoginPageLocators.LOGIN_CREDENTIALS)
-        # w = self.get_text(n, *LoginPageLocators.LOGIN_PASSWORD)
+        """Register user on the login page.
+
+        Args:
+            username (_type_): username user
+            password (_type_): password user
+        """
         # User's name is passed to the text element on the login page
         self.browser.find_element(*LoginPageLocators.INPUT_USERNAME).send_keys(username)
         # Password is passed to the text element on the login page
@@ -30,6 +38,8 @@ class LoginPage(BasePage):
         self.click_button(*LoginPageLocators.LOGIN_BTN)
 
     def should_be_error_message(self):
-        # Checks there's Error message on the current page
+        """Check an error message is displayed on the page and that the error message text is correct."""
         btn_error = self.browser.find_element(*LoginPageLocators.ERROR_BTN)
-        assert btn_error.text == LoginPageSrc.ERROR_BTN_TEXT, "wrong test"
+        assert (
+            btn_error.text == LoginPageSrc.ERROR_BTN_TEXT
+        ), "The error message displayed on the page does not match the expected text"

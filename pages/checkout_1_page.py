@@ -1,43 +1,56 @@
 from .base_page import BasePage
-from .locators import Chckout1PageLocators
-from .src import Chckout1PageSrc
-from .locators import PageLocators
+from .locators import PageLocators, Chckout1PageLocators
+from src.src import Chckout1PageSrc
 
 
 class CheckoutPage_1(BasePage):
-    # Checks tha the current page is Checkout-1
+    """This class is used to test the functionality of the first checkout page of the website.
+
+    Args:
+        BasePage: Contains common methods that are used by all page classes
+    """
+
     def should_be_checkout_1_page(self):
-        # Checks that the current page meets the requirements
+        """Check that the current page is the first checkout page."""
         self.should_be_link(Chckout1PageSrc.LINK)
-        # Checks that the texts of the page
-        # title element meets the requirements
         self.should_be_page_title(Chckout1PageSrc.TITLE, *Chckout1PageLocators.TITLE)
         self.should_be_input_firstname_to_checkout_1_page()
         self.should_be_input_lastname_to_checkout_1_page()
         self.should_be_input_postal_code_to_checkout_1_page()
         self.should_be_btn_to_checkout_1_page()
 
-        # Checks there's an element to input User's first name on the page
-
     def should_be_input_firstname_to_checkout_1_page(self):
-        assert self.element_is_present(*Chckout1PageLocators.INPUT_FIRSTNAME)
-
-        # Checks there's an element to input User's last name on the page
+        """Check the first name input field is present on the page."""
+        assert self.element_is_present(
+            *Chckout1PageLocators.INPUT_FIRSTNAME
+        ), "The first name input field is not present on the page"
 
     def should_be_input_lastname_to_checkout_1_page(self):
-        assert self.element_is_present(*Chckout1PageLocators.INPUT_LASTNAME)
-
-        # Checks there's an element to input User's zipcode on the page
+        """Check the last name input field is present on the page."""
+        assert self.element_is_present(
+            *Chckout1PageLocators.INPUT_LASTNAME
+        ), "The last name input field is not present on the page"
 
     def should_be_input_postal_code_to_checkout_1_page(self):
-        assert self.element_is_present(*Chckout1PageLocators.INPUT_CODE)
+        """Check the postal code input field is present on the page."""
+        assert self.element_is_present(
+            *Chckout1PageLocators.INPUT_CODE
+        ), "The postal code input field is not present on the page"
 
-    # Checks there's CHECKOUT button on the page
     def should_be_btn_to_checkout_1_page(self):
-        assert self.element_is_visible(Chckout1PageLocators.CONTINUE_BTN)
+        """Check the "CONTINUE" button is visible on the page."""
+        assert self.element_is_visible(
+            Chckout1PageLocators.CONTINUE_BTN
+        ), "The continue button is not visible on the page"
 
-    # The data required to receive the product is filled
     def set_shipping_info(self, firstname, lastname, code):
+        """Set the shipping information on the first checkout page
+
+        Args:
+            firstname: first name user
+            lastname: last name user
+            code: postal code
+        """
         # User's first name is passed to the text element on the page
         self.browser.find_element(*Chckout1PageLocators.INPUT_FIRSTNAME).send_keys(
             firstname
@@ -49,11 +62,14 @@ class CheckoutPage_1(BasePage):
         # User's zipcode is passed to the text element on the page
         self.browser.find_element(*Chckout1PageLocators.INPUT_CODE).send_keys(code)
 
-    # "CONTINUE" Button is pressed
     def go_to_checkout_2_page(self):
+        """Navigate to the second checkout page."""
         self.click_button(*Chckout1PageLocators.CONTINUE_BTN)
 
-    # Checks the link Privacy Policy
     def check_privacy_link(self):
-        assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
+        """Check that the privacy link is present on the page
+        and that it can be clicked to navigate to the privacy policy page."""
+        assert self.element_is_present(
+            *PageLocators.ROBOT_IMG
+        ), "The footer_robot is not present on the page"
         self.browser.find_element(*PageLocators.PRIVACY).click()

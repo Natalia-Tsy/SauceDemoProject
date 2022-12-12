@@ -1,50 +1,58 @@
 from .base_page import BasePage
-from .locators import CartPageLocators
-from .src import CartPageSrc
-from .locators import PageLocators
-from .locators import SideBarLocator
+from .locators import PageLocators, CartPageLocators, SideBarLocator
+from src.src import CartPageSrc
 
 
 class CartPage(BasePage):
+    """This class is used to test the functionality of the cart page of the website
 
-    # Checks that the page is Cart page
+    Args:
+        BasePage: Contains common methods that are used by all page classes
+    """
+
     def should_be_cart_page(self):
-        # Checks that the current page meets the requirements
+        """Check that the current page is the cart page."""
         self.should_be_link(CartPageSrc.LINK)
-        # Checks that the text of the title element meets the requirements
         self.should_be_page_title(CartPageSrc.TITLE, *CartPageLocators.TITLE)
-        # Checks there's "checkout" button on the page
         self.should_be_btn_to_checkout_1_page()
 
-    # Checks there's "checkout" button on the page
     def should_be_btn_to_checkout_1_page(self):
-        assert self.element_is_visible(CartPageLocators.CHECKOUT_BTN)
+        """Check that the checkout button is present and visible on the current page."""
+        assert self.element_is_visible(
+            CartPageLocators.CHECKOUT_BTN
+        ), "The checkout button is not present or not visible on the page"
 
-    # Goes to Checkout-1 page
     def go_to_checkout_1_page(self):
+        """Navigate to the first checkout page."""
         self.click_button(*CartPageLocators.CHECKOUT_BTN)
 
-    # Checks the link Privacy Policy
     def check_privacy_link(self):
-        assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
+        """Check that the privacy link is present on the page
+        and that it can be clicked to navigate to the privacy policy page.
+        """
+        assert self.element_is_present(
+            *PageLocators.ROBOT_IMG
+        ), "The footer_robot is not present on the page"
         self.browser.find_element(*PageLocators.PRIVACY).click()
 
     def check_the_quantity(self):
+        """Check the quantity of items in the cart"""
         quant = self.browser.find_element(*CartPageLocators.QUANTITY).text
         if quant != 0:
-            assert "there are items in the cart", "the cart is empty"
+            assert "There are items in the cart", "the cart is empty"
 
-    # Opens hamburger menu
     def open_hamburger(self):
+        """Open the hamburger menu on the current page."""
         self.browser.find_element(*SideBarLocator.HAMBURGER).click()
 
-    # Top left menu "all items" line
     def click_all_items(self):
+        """Check that the "All items" link is present and visible on the current page
+        and that it can be the clicked in the hamburger menu on the current page."""
         self.element_is_visible(SideBarLocator.ALL_ITEMS)
         self.browser.find_element(*SideBarLocator.ALL_ITEMS).click()
 
-    # Clear cart
     def clear_cart(self):
+        """Find all of the "REMOVE" buttons on the cart page and then clicks on them one by one in the cart."""
         # Gets the list of elements on the cart page
         list_el = self.browser.find_elements(
             *CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS
@@ -55,18 +63,27 @@ class CartPage(BasePage):
                 *CartPageLocators.LIST_OF_REMOVE_BUTTON_ELEMENTS
             )
 
-    # Check that item with item_name is presents in the cart
     def check_product_name_in_cart(self, item_name):
+        """Check the name of a specific product in the cart.
+
+        Args:
+            item_name: expected product
+        """
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
             assert (
                 name == item_name
-            ), f"Ожидаемый товар {item_name} в корзине отсутствует"
+            ), f"Expected product {item_name} is not present in the cart"
             break
 
-    # Check that item with item_name is presents in the cart with item_qty quantity
     def check_the_item_quantity_in_cart(self, item_name, item_qty):
+        """Check the quantity of a specific product in the cart.
+
+        Args:
+            item_name: expected product
+            item_qty:  expected quantity
+        """
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
@@ -74,11 +91,17 @@ class CartPage(BasePage):
             if name == item_name:
                 assert (
                     qty == item_qty
-                ), f"Товар ожидаемый, но кол-во {qty} не соответствует ожидаемому {item_qty}"
+                ), f"Expected product is found, but quantity {qty} doesn't match the expected quantity {item_qty}"
                 break
 
     # Check that item with item_name is presents in the cart with price item_price
     def check_the_item_price_in_cart(self, item_name, item_price):
+        """Check the price of a specific product in the cart.
+
+        Args:
+            item_name: expected product
+            item_price: expected price
+        """
         list_el = self.browser.find_elements(*CartPageLocators.LIST_OF_PRODUCTS)
         for element in list_el:
             name = element.find_element(*CartPageLocators.PRODUCT_NAME_OF_ITEM).text
@@ -86,5 +109,5 @@ class CartPage(BasePage):
             if name == item_name:
                 assert (
                     price == item_price
-                ), f"Товар ожидаемый, но цена {price} не соответствует ожидаемой {item_price}"
+                ), f"Expected product is found, but price {price} doesn't match the expected price {item_price}"
                 break

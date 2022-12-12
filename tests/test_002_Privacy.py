@@ -1,11 +1,11 @@
 import pytest
 from selenium.common.exceptions import InvalidSelectorException
-from ..pages.products_page import ProductsPage
-from ..pages.login_page import LoginPage
-from ..pages.cart_page import CartPage
-from ..pages.checkout_1_page import CheckoutPage_1
-from ..pages.checkout_2_page import CheckoutPage_2
-from ..pages.checkout_cmplt_page import CheckouCmpltPage
+from pages.products_page import ProductsPage
+from pages.login_page import LoginPage
+from pages.cart_page import CartPage
+from pages.checkout_1_page import CheckoutPage_1
+from pages.checkout_2_page import CheckoutPage_2
+from pages.checkout_cmplt_page import CheckouCmpltPage
 
 
 class Tests:
