@@ -1,34 +1,35 @@
 from .base_page import BasePage
-from .locators import Chckout2PageLocators
-from .src import Chckout2PageSrc
-from .locators import PageLocators
+from .locators import PageLocators, Chckout2PageLocators
+from src.src import Chckout2PageSrc
 
 
 class CheckoutPage_2(BasePage):
-    """
-    Checks that the current page is Checkout-2 page
+    """This class is used to test the functionality of the second checkout page of the website.
+
+    Args:
+        BasePage: Contains common methods that are used by all page classes
     """
 
     def should_be_checkout_2_page(self):
-        """
-        Checks that the current page meets the requirements
-        Returns:
-        """
+        """Check that the current page is the second checkout page."""
         self.should_be_link(Chckout2PageSrc.LINK)
-        # Checks that the text of page title element meets the requirements
         self.should_be_page_title(Chckout2PageSrc.TITLE, *Chckout2PageLocators.TITLE)
         self.should_be_btn_to_checkout_complete_page()
 
-    # Checks that there's FINISH button on thr page
-
     def should_be_btn_to_checkout_complete_page(self):
-        assert self.element_is_visible(Chckout2PageLocators.FINISH_BTN)
+        """Check the "FINISH" button is visible on the second checkout page."""
+        assert self.element_is_visible(
+            Chckout2PageLocators.FINISH_BTN
+        ), "The finish button is not present or not visible on the page"
 
-    # Goes to Checkout-complete page
     def go_to_checkout_complete_page(self):
+        """Navigate to the second checkout complete page."""
         self.click_button(*Chckout2PageLocators.FINISH_BTN)
 
-    # Checks the link Privacy Policy
     def check_privacy_link(self):
-        assert self.element_is_present(*PageLocators.ROBOT_IMG), "something went wrong"
+        """Check that the privacy link is present on the page
+        and that it can be clicked to navigate to the privacy policy page."""
+        assert self.element_is_present(
+            *PageLocators.ROBOT_IMG
+        ), "The footer_robot is not present on the page"
         self.browser.find_element(*PageLocators.PRIVACY).click()

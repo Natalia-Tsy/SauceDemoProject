@@ -18,7 +18,7 @@ class TestSample:
             ),
         ],
     )
-    def test_TC_003_user_сan_autorize(self, d, username, password):
+    def test_TC_003_user_can_autorize(self, d, username, password):
         link = "https://www.saucedemo.com/"
         page = LoginPage(d, link)
         page.open_page()

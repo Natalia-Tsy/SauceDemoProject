@@ -1,97 +1,389 @@
-from selenium.common.exceptions import NoSuchElementException
+import logging
+from selenium.common.exceptions import (
+    NoSuchElementException,
+    TimeoutException,
+    WebDriverException,
+    NoSuchAttributeException,
+    ElementNotInteractableException,
+    InvalidElementStateException,
+    StaleElementReferenceException,
+)
 from selenium.webdriver.support.ui import WebDriverWait as Wait
 from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage:
+    """This class used as a base class for other page classes that represent specific pages on a website"""
+
     def __init__(self, browser, link):
+        """Initializes the object.
+
+        Args:
+            browser: WebDriver
+            link: URL
+        """
         self.browser = browser
         self.link = link
 
-    # Opens a page
     def open_page(self):
-
+        """Navigates to a page given by the URL."""
         self.browser.get(self.link)
 
-    # Object WebElement is returned in
-    # accordance with the specified search criteria
     def element_is_present(self, method, locator):
+        """Find an element given a By method and locator.
+
+        Args:
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            bool: True if the element is located in a page. False if the element could not be found.
+        """
         try:
             self.browser.find_element(method, locator)
-        except NoSuchElementException:
+        except InvalidElementStateException as e:
+            logging.error(
+                f"The element is in an invalid state on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+            return False
+        except NoSuchElementException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
+            return False
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
             return False
         return True
 
-    # WebElements list, meeting the search requirements, is returned
     def elements_are_present(self, method, locator):
+        """Find elements given a By method and locator.
+
+        Args:
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            list[selenium.webdriver.remote.webelement.WebElement]: list of found WebElement or empty if elements are not found.
+            Throws NoSuchElementException when elements could not are found.
+        """
         try:
             return self.browser.find_elements(method, locator)
-        except NoSuchElementException:
-            return NoSuchElementException
-
-    # Either returns the element or sets up waiting timeout seconds
-    # until the object appears
-    # before TimeOutException arises
-    # if the element doesn't appear during timeout
-    def element_is_visible(self, locator, timeout=5):
-        return Wait(self.browser, timeout).until(
-            EC.visibility_of_element_located(locator)
-        )
-
-    # Either returns the elements or sets up timeout
-    # seconds until the exception TimeoutException is returned
-    # if the element doesn't appear during timeout
-    #
-    def elements_are_located(self, locator, timeout=5):
-        return Wait(self.browser, timeout).until(
-            EC.presence_of_all_elements_located(locator)
-        )
-
-    # Either returns the elements or sets up timeout
-    #     seconds until the exception TimeoutException is returned
-    #     if the element doesn't appear during timeout
-    def element_is_located(self, locator, timeout=5):
-        return Wait(self.browser, timeout).until(
-            EC.presence_of_element_located(locator)
-        )
-
-    # Checks that the current page meets the requirements
-    def should_be_link(self, link):
-        assert link in self.browser.current_url, "wrong url"
-
-    # Checks that the texts of page title element meets the requirements
-    def should_be_page_title(self, title, method, locator):
-        el_title = self.browser.find_element(method, locator)
-        # Gets the page title element
-        assert el_title, "there is no title"
-        # Checks that the page title element meets the requirements
-        assert title == el_title.text, "wrong title"
-
-    # Return the elements text that meets
-    # the requirements from the specified index i
-    def get_text(self, i, method, locator):
-        return "".join(self.browser.find_element(method, locator).text.split("\n")[i:])
-
-    #  Unpacks the list of elements list into element list
-    def flatten(self, mylist):
-        return [item for sublist in mylist for item in sublist]
+        except NoSuchElementException as e:
+            logging.error(
+                f"Could not find elements on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except StaleElementReferenceException as e:
+            logging.error(
+                f"The elements is no longer attached to the DOM on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
 
     # The button is pressed on the locator
+    def send_keys(self, value, method, locator):
+        try:
+            self.browser.find_element(method, locator).send_keys(value)
+        except NoSuchElementException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
+        except ElementNotInteractableException as e:
+            logging.error(
+                f"The element is not currently interactable on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except InvalidElementStateException as e:
+            logging.error(
+                f"The element is in an invalid state on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except StaleElementReferenceException as e:
+            logging.error(
+                f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
+    def get_property(self, property, method, locator):
+        """Gets the given property of the element.
+
+        Args:
+            property: name of the property to retrieve
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            str | bool | WebElement | dict: the value of a property with the given name or None if there's no property with that name
+        """
+        try:
+            return self.browser.find_element(method, locator).get_property(property)
+        except NoSuchAttributeException as e:
+            logging.error(
+                f"The attribute of element could not be found on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except StaleElementReferenceException as e:
+            logging.error(
+                f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
+    def element_is_visible(self, locator, timeout=5):
+        """Check that an element is present on the DOM of a page and visible.
+        Visibility means that the element is not only displayed but also has a height and width that is greater than 0.
+
+        Args:
+            locator: used to find the element; a tuple of 'by' and 'path'
+            timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 5.
+
+        Returns:
+            selenium.webdriver.remote.webelement.WebElement: it is located and visible.
+            Throws TimeoutException when there is no match with at least one element even after wait time.
+            Throws WebDriverException when there is no element located using the locator.
+        """
+        try:
+            return Wait(self.browser, timeout).until(
+                EC.visibility_of_element_located(locator)
+            )
+        except TimeoutException as e:
+            logging.exception(
+                f"Element not present after {timeout} seconds on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
+    def elements_are_located(self, locator, timeout=5):
+        """Check that there is at least one element, located by the locator, present on a web page.
+
+        Args:
+            locator: used to find the element; a tuple of 'by' and 'path'
+            timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 5.
+
+        Returns:
+            list[selenium.webdriver.remote.webelement.WebElement]: the list of all matched WebElements.
+            Throws TimeoutException when there is no match with at least one element even after wait time.
+            Throws WebDriverException when there is no element located using the locator.
+        """
+        try:
+            return Wait(self.browser, timeout).until(
+                EC.presence_of_all_elements_located((locator))
+            )
+        except TimeoutException as e:
+            logging.exception(
+                f"Elements not present after {timeout} seconds on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
+    def element_is_located(self, locator, timeout=5):
+        """Check that an element is present on the DOM of a page.
+
+        Args:
+            locator: used to find the element; a tuple of 'by' and 'path'
+            timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 5.
+
+        Returns:
+            selenium.webdriver.remote.webelement.WebElement: returns the WebElement located.
+            Throws TimeoutException when there is no match with at least one element even after wait time.
+            Throws WebDriverException when there is no element located using the locator.
+        """
+        try:
+            return Wait(self.browser, timeout).until(
+                EC.presence_of_element_located((locator))
+            )
+        except TimeoutException as e:
+            logging.exception(
+                f"Element not present after {timeout} seconds on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
+    def should_be_link(self, link):
+        """Check that the link provided is in the current URL of the browser.
+
+        Args:
+            link: link browser
+        """
+        assert (
+            link in self.browser.current_url
+        ), f"Expected link {link} not found in URL {self.browser.current_url}"
+
+    def should_be_page_title(self, title, method, locator):
+        """Check that the page has the expected title given a By method and locator.
+
+        Args:
+            title: page's title
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            Throws NoSuchElementException when element could not be found.
+        """
+        try:
+            el_title = self.browser.find_element(method, locator)
+            # Gets the page title element
+            assert (
+                el_title
+            ), f"Title element not found on page: {self.browser.current_url}"
+            # Checks that the page title element meets the requirements
+            assert (
+                el_title.text == title
+            ), f"Expected title {title} but got {el_title.text} on page: {self.browser.current_url}"
+        except NoSuchElementException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
+        except StaleElementReferenceException as e:
+            logging.error(
+                f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
+
+    def get_text(self, i, method, locator):
+        """Extract a specific part of the text from the element given a By method and locator.
+
+        Args:
+            i: extract all elements of the list of individual lines of text starting from the ith element
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            str: the text of the element
+            Throws NoSuchElementException when element could not be found.
+        """
+        try:
+            return "".join(
+                self.browser.find_element(method, locator).text.split("\n")[i:]
+            )
+        except NoSuchElementException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
+        except StaleElementReferenceException as e:
+            logging.error(
+                f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
+    def flatten(self, mylist):
+        """Unpacks list of lists of elements into a single, flat list of elements
+
+        Args:
+            mylist: the list of the lists of WebElements.
+
+        Returns:
+            list[selenium.webdriver.remote.webelement.WebElement]: the list of WebElements.
+        """
+        return [item for sublist in mylist for item in sublist]
+
     def click_button(self, method, locator):
-        self.browser.find_element(method, locator).click()
+        """Clicks the element given a By method and locator.
 
-    # Returns the elements src text that meets the requirements from the specified index i
+        Args:
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            Throws NoSuchElementException when element could not be found.
+        """
+        try:
+            self.browser.find_element(method, locator).click()
+        except InvalidElementStateException as e:
+            logging.error(
+                f"The element is in an invalid state on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except NoSuchElementException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
     def get_src(self, i, method, locator):
-        return "".join(
-            self.browser.find_element(method, locator)
-            .get_property("src")
-            .split("\n")[i:]
-        )
+        """Extract the src attribute of an element given a By method and locator.
+        The src attribute specifies the URL of an image or other media file.
 
-    # Returns the list elements text that meets the requirements from the specified index i
+        Args:
+            i: extract all elements of the list of individual lines of text starting from the ith element
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            str: the src of the element
+            Throws NoSuchElementException when element could not be found.
+        """
+        try:
+            return "".join(
+                self.browser.find_element(method, locator)
+                .get_property("src")
+                .split("\n")[i:]
+            )
+        except NoSuchAttributeException as e:
+            logging.error(
+                f"The attribute of element could not be found on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except StaleElementReferenceException as e:
+            logging.error(
+                f"The element is no longer attached to the DOM on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except InvalidElementStateException as e:
+            logging.error(
+                f"The element is in an invalid state on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
+
     def get_text_elements(self, i, method, locator):
+        """Extract the substrings of the text from the elements given a By method and locator.
+        Args:
+            i: substring starts at the i-th character and continues to the end of the text
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+
+        Returns:
+            list[str]: the list of substring of the element's text
+            Throws NoSuchElementException when elements could not are found.
+        """
         try:
             list_prices = self.browser.find_elements(method, locator)
             return list(map(lambda element: element.text[i:], list_prices))
-        except NoSuchElementException:
-            return NoSuchElementException
+        except NoSuchElementException as e:
+            logging.error(
+                f"Could not find elements on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except StaleElementReferenceException as e:
+            logging.error(
+                f"The elements is no longer attached to the DOM on page: {self.browser.current_url}"
+            )
+            logging.exception(e.msg)
+        except WebDriverException as e:
+            logging.error("Unable to initialize WebDriver")
+            logging.exception(e.msg)
