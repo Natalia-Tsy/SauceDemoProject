@@ -180,8 +180,8 @@ class TestSample:
         page = CheckouCmpltPage(d, CheckoutCmpltPageSrc.URL)
         page.should_be_checkout_complete_page()
 
-    @allure.feature("TC_016.01 | Return to products page from checkout complete page")
-    @allure.story("US_016 | Return to the products page")
+    @allure.feature("US_016 | Return to the products page")
+    @allure.story("TC_016.01 | Return to products page from checkout complete page")
     @pytest.mark.parametrize(
         "username, password",
         [
