@@ -4,6 +4,7 @@
 
 import allure
 import pytest
+
 from selenium.common.exceptions import InvalidSelectorException
 from pages.products_page import ProductsPage
 from pages.login_page import LoginPage

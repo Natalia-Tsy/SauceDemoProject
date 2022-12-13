@@ -3,11 +3,12 @@
 # @Author  : Natalia Ts
 
 import allure
+import pytest
+
 from selenium.common import NoSuchElementException
 from pages.products_page import ProductsPage
 from pages.login_page import LoginPage
 from pages.cart_page import CartPage
-import pytest
 from src.src import LoginPageSrc, ProductsPageSrc, CartPageSrc
 
 
@@ -53,6 +54,11 @@ class Tests:
             d, ProductsPageSrc.URL
         )  # creates the Products page instance
         page.should_be_products_page()  # Checks we're on the Product page
-        page.go_to_basket_page()  # go to cart to remove the items (for the following users)
-        page = CartPage(d, CartPageSrc.URL)
-        page.clear_cart()
+        page.add_item_on_products_page(
+            "Sauce Labs Fleece Jacket", "Test.allTheThings() T-Shirt (Red)"
+        )
+
+        # Alternative way to clear the cart
+        # page.go_to_basket_page()
+        # page = CartPage(d, CartPageSrc.URL)
+        # page.clear_cart()
