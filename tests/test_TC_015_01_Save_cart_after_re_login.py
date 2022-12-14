@@ -74,7 +74,7 @@ class TestSample:
             ),
         ],
     )
-    def test_tc_015_01_safe_cart_after_re_login(self, d, username, password):
+    def test_tc_015_01_save_cart_after_re_login(self, d, username, password):
         """Check save cart data of current user after re-login
 
         Args:
