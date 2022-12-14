@@ -9,7 +9,7 @@ class SideBar(BasePage):
         BasePage: Contains common methods that are used by all page classes
     """
     def click_hamburger_menu(self):
-        """Open the hamburger menu, allowing the user to access the options it contains."""        
+        """Open the hamburger menu, allowing the user to access the options it contains."""
         self.element_is_visible(SideBarLocator.HAMBURGER)
         self.browser.find_element(*SideBarLocator.HAMBURGER).click()
 
