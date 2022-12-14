@@ -1,11 +1,17 @@
+# -*- coding: utf-8 -*-
+# @Time    : 2022/11/29 16:55
+# @Author  : Mariya Abayev
+
 import pytest
+import allure
 from pages.login_page import LoginPage
 from pages.products_page import ProductsPage
+from src.src import LoginPageSrc, ProductsPageSrc
 
 
-# sort product
 class Tests:
-    # TC 007.00.01 Sorting products by name asc
+    @allure.feature("US_007 | Sorting")
+    @allure.story("TC_007.00.01 | Sorting products by name ascending")
     @pytest.mark.parametrize(
         "username, password",
         [
@@ -20,12 +26,9 @@ class Tests:
         ],
     )
     def test_TC_007_01_sort_products_by_name_asc(self, d, username, password):
-        link = "https://www.saucedemo.com/"
-        page = LoginPage(d, link)
+        page = LoginPage(d, LoginPageSrc.URL)
         page.open_page()
         page.register_user(username, password)
-        link = "https://www.saucedemo.com/inventory.html"
-        page = ProductsPage(d, link)
+        page = ProductsPage(d, ProductsPageSrc.URL)
         page.should_be_products_page()
-        # sorting from A to Z
         page.sorting_products_by_name_asc()
