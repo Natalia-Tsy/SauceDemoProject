@@ -38,7 +38,6 @@ class BasePage:
 
         Returns:
             bool: True if the element is located in a page. False if the element could not be found
-        
         Raises:
             InvalidElementStateException: if the element is in an invalid state
             NoSuchElementException: if the element cannot be found on the page
@@ -71,7 +70,6 @@ class BasePage:
 
         Returns:
             list[selenium.webdriver.remote.webelement.WebElement]: list of found WebElement or empty if elements are not found
-        
         Raises:
             NoSuchElementException: if the elements are not found on the page
             StaleElementReferenceException: if the elements are no longer attached to the DOM
@@ -101,14 +99,13 @@ class BasePage:
             value: the value to send to the element
             method: used for locating the element on the page
             locator: used with the specified method to find the element
-        
         Raises:
             NoSuchElementException: if the element cannot be found on the page
             ElementNotInteractableException: if the element is not currently interactable
             InvalidElementStateException: if the element is in an invalid state
             StaleElementReferenceException: if the element is no longer attached to the DOM
             WebDriverException:  if an error occurs while initializing the WebDriver
-        """        
+        """
         try:
             self.browser.find_element(method, locator).send_keys(value)
         except NoSuchElementException as e:
@@ -143,7 +140,7 @@ class BasePage:
 
         Returns:
             str | bool | WebElement | dict: the value of a property with the given name or None if there's no property with that name
-        
+
         Raises:
             NoSuchElementException: if the element cannot be found on the page
             NoSuchAttributeException: if the attribute of the element is not found
@@ -179,7 +176,7 @@ class BasePage:
 
         Returns:
             selenium.webdriver.remote.webelement.WebElement: it is located and visible
-        
+
         Raises:
             TimeoutException: when there is no match with at least one element even after wait time
             WebDriverException: if an error occurs while initializing the WebDriver
@@ -207,7 +204,7 @@ class BasePage:
 
         Returns:
             list[selenium.webdriver.remote.webelement.WebElement]: the list of all matched WebElements
-        
+
         Raises:
             TimeoutException: when there is no match with at least one element even after wait time
             WebDriverException: if an error occurs while initializing the WebDriver
@@ -235,7 +232,7 @@ class BasePage:
 
         Returns:
             selenium.webdriver.remote.webelement.WebElement: returns the WebElement located
-        
+
         Raises:
             TimeoutException: when there is no match with at least one element even after wait time
             WebDriverException: if an error occurs while initializing the WebDriver
@@ -271,7 +268,7 @@ class BasePage:
             title: page's title
             method: used for locating the element on the page
             locator: used with the specified method to find the element
-        
+
         Raises:
             NoSuchElementException: if the element cannot be found on the page
             StaleElementReferenceException: if the elements are no longer attached to the DOM
@@ -309,7 +306,7 @@ class BasePage:
 
         Returns:
             str: the text of the element
-        
+
         Raises:
             NoSuchElementException: if the element cannot be found on the page
             StaleElementReferenceException: if the elements are no longer attached to the DOM
@@ -379,7 +376,7 @@ class BasePage:
 
         Returns:
             str: the src of the element
-        
+
         Raises:
             NoSuchElementException: if the element cannot be found on the page
             NoSuchAttributeException: if the attribute of the element is not found
@@ -424,7 +421,7 @@ class BasePage:
 
         Returns:
             list[str]: the list of substring of the element's text
-        
+
         Raises:
             NoSuchElementException: if the elements are not found on the page
             StaleElementReferenceException: if the elements are no longer attached to the DOM
