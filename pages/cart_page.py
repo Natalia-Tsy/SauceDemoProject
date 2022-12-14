@@ -94,7 +94,6 @@ class CartPage(BasePage):
                 ), f"Expected product is found, but quantity {qty} doesn't match the expected quantity {item_qty}"
                 break
 
-    # Check that item with item_name is presents in the cart with price item_price
     def check_the_item_price_in_cart(self, item_name, item_price):
         """Check the price of a specific product in the cart.
 

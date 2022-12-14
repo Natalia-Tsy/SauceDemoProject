@@ -27,8 +27,8 @@ class LoginPage(BasePage):
         """Register user on the login page.
 
         Args:
-            username (_type_): username user
-            password (_type_): password user
+            username: username user
+            password: password user
         """
         # User's name is passed to the text element on the login page
         self.browser.find_element(*LoginPageLocators.INPUT_USERNAME).send_keys(username)

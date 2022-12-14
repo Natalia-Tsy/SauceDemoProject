@@ -37,7 +37,11 @@ class BasePage:
             locator: used with the specified method to find the element
 
         Returns:
-            bool: True if the element is located in a page. False if the element could not be found.
+            bool: True if the element is located in a page. False if the element could not be found
+        Raises:
+            InvalidElementStateException: if the element is in an invalid state
+            NoSuchElementException: if the element cannot be found on the page
+            WebDriverException:  if an error occurs while initializing the WebDriver
         """
         try:
             self.browser.find_element(method, locator)
@@ -65,8 +69,12 @@ class BasePage:
             locator: used with the specified method to find the element
 
         Returns:
-            list[selenium.webdriver.remote.webelement.WebElement]: list of found WebElement or empty if elements are not found.
-            Throws NoSuchElementException when elements could not are found.
+            list[selenium.webdriver.remote.webelement.WebElement]: list of found WebElement or empty if elements are not found
+        Raises:
+            NoSuchElementException: if the elements are not found on the page
+            StaleElementReferenceException: if the elements are no longer attached to the DOM
+            WebDriverException: if an error occurs while initializing the WebDriver
+
         """
         try:
             return self.browser.find_elements(method, locator)
@@ -84,8 +92,20 @@ class BasePage:
             logging.error("Unable to initialize WebDriver")
             logging.exception(e.msg)
 
-    # The button is pressed on the locator
     def send_keys(self, value, method, locator):
+        """Sends keys to an element given a By method and locator.
+
+        Args:
+            value: the value to send to the element
+            method: used for locating the element on the page
+            locator: used with the specified method to find the element
+        Raises:
+            NoSuchElementException: if the element cannot be found on the page
+            ElementNotInteractableException: if the element is not currently interactable
+            InvalidElementStateException: if the element is in an invalid state
+            StaleElementReferenceException: if the element is no longer attached to the DOM
+            WebDriverException:  if an error occurs while initializing the WebDriver
+        """
         try:
             self.browser.find_element(method, locator).send_keys(value)
         except NoSuchElementException as e:
@@ -120,9 +140,18 @@ class BasePage:
 
         Returns:
             str | bool | WebElement | dict: the value of a property with the given name or None if there's no property with that name
+
+        Raises:
+            NoSuchElementException: if the element cannot be found on the page
+            NoSuchAttributeException: if the attribute of the element is not found
+            StaleElementReferenceException: if the elements are no longer attached to the DOM
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             return self.browser.find_element(method, locator).get_property(property)
+        except NoSuchElementException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
         except NoSuchAttributeException as e:
             logging.error(
                 f"The attribute of element could not be found on page: {self.browser.current_url}"
@@ -146,9 +175,11 @@ class BasePage:
             timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 5.
 
         Returns:
-            selenium.webdriver.remote.webelement.WebElement: it is located and visible.
-            Throws TimeoutException when there is no match with at least one element even after wait time.
-            Throws WebDriverException when there is no element located using the locator.
+            selenium.webdriver.remote.webelement.WebElement: it is located and visible
+
+        Raises:
+            TimeoutException: when there is no match with at least one element even after wait time
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             return Wait(self.browser, timeout).until(
@@ -172,9 +203,11 @@ class BasePage:
             timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 5.
 
         Returns:
-            list[selenium.webdriver.remote.webelement.WebElement]: the list of all matched WebElements.
-            Throws TimeoutException when there is no match with at least one element even after wait time.
-            Throws WebDriverException when there is no element located using the locator.
+            list[selenium.webdriver.remote.webelement.WebElement]: the list of all matched WebElements
+
+        Raises:
+            TimeoutException: when there is no match with at least one element even after wait time
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             return Wait(self.browser, timeout).until(
@@ -198,9 +231,11 @@ class BasePage:
             timeout (optional): specified time duration before throwing a TimeoutException. Defaults to 5.
 
         Returns:
-            selenium.webdriver.remote.webelement.WebElement: returns the WebElement located.
-            Throws TimeoutException when there is no match with at least one element even after wait time.
-            Throws WebDriverException when there is no element located using the locator.
+            selenium.webdriver.remote.webelement.WebElement: returns the WebElement located
+
+        Raises:
+            TimeoutException: when there is no match with at least one element even after wait time
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             return Wait(self.browser, timeout).until(
@@ -234,8 +269,10 @@ class BasePage:
             method: used for locating the element on the page
             locator: used with the specified method to find the element
 
-        Returns:
-            Throws NoSuchElementException when element could not be found.
+        Raises:
+            NoSuchElementException: if the element cannot be found on the page
+            StaleElementReferenceException: if the elements are no longer attached to the DOM
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             el_title = self.browser.find_element(method, locator)
@@ -269,7 +306,11 @@ class BasePage:
 
         Returns:
             str: the text of the element
-            Throws NoSuchElementException when element could not be found.
+
+        Raises:
+            NoSuchElementException: if the element cannot be found on the page
+            StaleElementReferenceException: if the elements are no longer attached to the DOM
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             return "".join(
@@ -305,8 +346,10 @@ class BasePage:
             method: used for locating the element on the page
             locator: used with the specified method to find the element
 
-        Returns:
-            Throws NoSuchElementException when element could not be found.
+        Raises:
+            InvalidElementStateException: if the element is in an invalid state
+            NoSuchElementException: if the element cannot be found on the page
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             self.browser.find_element(method, locator).click()
@@ -333,7 +376,13 @@ class BasePage:
 
         Returns:
             str: the src of the element
-            Throws NoSuchElementException when element could not be found.
+
+        Raises:
+            NoSuchElementException: if the element cannot be found on the page
+            NoSuchAttributeException: if the attribute of the element is not found
+            StaleElementReferenceException: if the elements are no longer attached to the DOM
+            InvalidElementStateException: if the element is in an invalid state
+            WebDriverException: if an error occurs while initializing the WebDriver
         """
         try:
             return "".join(
@@ -341,6 +390,9 @@ class BasePage:
                 .get_property("src")
                 .split("\n")[i:]
             )
+        except NoSuchElementException as e:
+            logging.error(f"Could not find element on page: {self.browser.current_url}")
+            logging.exception(e.msg)
         except NoSuchAttributeException as e:
             logging.error(
                 f"The attribute of element could not be found on page: {self.browser.current_url}"
@@ -369,7 +421,11 @@ class BasePage:
 
         Returns:
             list[str]: the list of substring of the element's text
-            Throws NoSuchElementException when elements could not are found.
+
+        Raises:
+            NoSuchElementException: if the elements are not found on the page
+            StaleElementReferenceException: if the elements are no longer attached to the DOM
+            WebDriverException:  If an error occurs while initializing the WebDriver
         """
         try:
             list_prices = self.browser.find_elements(method, locator)

@@ -64,7 +64,6 @@ class ProductsPage(BasePage):
         btn_inventory = pricebar[1]
         btn_inventory.click()
 
-    # Products are added into the cart in accordance with the requirements
     def add_item_on_products_page(self, *args, **kwargs):
         """Add items to the cart or remove items from cart by name.
 
