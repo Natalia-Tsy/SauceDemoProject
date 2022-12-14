@@ -43,7 +43,7 @@ class TestSample:
         """
         self.authorization(d, username, password)
 
-        # проверка, что в корзине ничего нет
+        # Check that cart is empty
         page = ProductsPage(d, ProductsPageSrc.URL)
         page.open_page()
         try:
@@ -60,21 +60,21 @@ class TestSample:
             page.open_page()
 
     @allure.feature("US_015 | Save cart data current user")
-    @allure.story("TC_016.01 | Save cart data of current user after re-login")
+    @allure.story("TC_015.01 | Save cart data of current user after re-login")
     @pytest.mark.parametrize(
         "username, password",
         [
             ("standard_user", "secret_sauce"),
-            # ("performance_glitch_user", "secret_sauce"),
-            # ("problem_user", "secret_sauce"),
-            # pytest.param(
-            #     "locked_out_user",
-            #     "secret_sauce",
-            #     marks=pytest.mark.xfail(raises=AssertionError),
-            # ),
+            ("performance_glitch_user", "secret_sauce"),
+            ("problem_user", "secret_sauce"),
+            pytest.param(
+                "locked_out_user",
+                "secret_sauce",
+                marks=pytest.mark.xfail(raises=AssertionError),
+            ),
         ],
     )
-    def test_safe_cart_data_after_re_login(self, d, username, password):
+    def test_tc_015_01_safe_cart_after_re_login(self, d, username, password):
         """Check save cart data of current user after re-login
 
         Args:
