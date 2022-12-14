@@ -15,6 +15,7 @@ from pages.sidebar import SideBar
 
 
 class TestSample:
+
     def authorization(self, d, username, password):
         """Method for authorization user.
 
