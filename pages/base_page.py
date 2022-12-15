@@ -302,7 +302,7 @@ class BasePage:
             EC.visibility_of_element_located(locator)
         )
 
-    @Handle_Exc_Elements_Decorator
+    @Handle_Exc_Elements_Decorator()
     def elements_are_located(self, locator, timeout=5):
         """Check that there is at least one element, located by the locator, present on a web page.
 
