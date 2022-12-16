@@ -1,14 +1,21 @@
-from selenium.webdriver.common.by import By
+# -*- coding: utf-8 -*-
+# @Time    : 2022/1/12 17:47
+# @Author  : Rustam S
+
+import allure
 import conf
+from selenium.webdriver.common.by import By
 from pages.locators import LoginPageLocators
 from pages.locators import ProductsPageLocators
 
 
 class TestAddToCartAllItems:
-    def test_add_to_cart(self, d):
+    @allure.feature("US_006 | Adding an item to the cart")
+    @allure.story("TC_006.01 | Adding items to your non-empty cart")
+    def test_TC_006_01_add_to_cart(self, d):
         assert d.current_url == conf.URL
 
-        # login
+        # login standard user
         d.find_element(*LoginPageLocators.INPUT_USERNAME).send_keys("standard_user")
         d.find_element(*LoginPageLocators.INPUT_PASSWORD).send_keys("secret_sauce")
         d.find_element(*LoginPageLocators.LOGIN_BTN).click()

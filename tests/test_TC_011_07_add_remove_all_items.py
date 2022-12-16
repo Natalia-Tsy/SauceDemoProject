@@ -1,5 +1,10 @@
-from selenium.webdriver.common.by import By
+# -*- coding: utf-8 -*-
+# @Time    : 2022/1/12 17:40
+# @Author  : Rustam S
+
 import conf
+import allure
+from selenium.webdriver.common.by import By
 from pages.locators import LoginPageLocators
 from pages.locators import ProductsPageLocators
 
@@ -24,7 +29,9 @@ class TestAddRemoveAllItems:
         shopping_cart = d.find_element(*ProductsPageLocators.SHOP_CART_LINK).text
         assert shopping_cart == "6"
 
-    def test_remove_all_from_cart(self, d):
+    @allure.feature("US_011 | Removing an item from the cart")
+    @allure.story("TC_011.07 Removing items from the cart")
+    def test_TC_011_07_remove_all_from_cart(self, d):
         assert d.current_url == "https://www.saucedemo.com/inventory.html"
 
         shopping_cart = d.find_element(*ProductsPageLocators.SHOP_CART_LINK).text
