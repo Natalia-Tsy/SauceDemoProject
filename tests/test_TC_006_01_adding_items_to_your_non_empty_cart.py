@@ -15,7 +15,7 @@ class TestAddToCartAllItems:
     def test_TC_006_01_add_to_cart(self, d):
         assert d.current_url == conf.URL
 
-        # login
+        # login standard user
         d.find_element(*LoginPageLocators.INPUT_USERNAME).send_keys("standard_user")
         d.find_element(*LoginPageLocators.INPUT_PASSWORD).send_keys("secret_sauce")
         d.find_element(*LoginPageLocators.LOGIN_BTN).click()
