@@ -1,11 +1,17 @@
-from selenium.webdriver.common.by import By
+# -*- coding: utf-8 -*-
+# @Time    : 2022/1/12 17:40
+# @Author  : Rustam S
+
 import conf
+import allure
+from selenium.webdriver.common.by import By
 from pages.locators import LoginPageLocators
 from pages.locators import ProductsPageLocators
 
 
-class TestAddToCartAllItems:
-    def test_add_to_cart(self, d):
+class TestAddRemoveAllItems:
+
+    def test_add_all_to_cart(self, d):
         assert d.current_url == conf.URL
 
         # login
@@ -17,32 +23,25 @@ class TestAddToCartAllItems:
 
         inventory_list = d.find_elements(*ProductsPageLocators.INVENTORY_ITEM)
 
-        for item in range(0, len(inventory_list)):
-            item += 1
-            add_to_cart_button = d.find_element(
-                By.XPATH, f"(//button[contains(@class,'inventory')])[{item}]"
-            )
+        for add_to_cart_button in inventory_list:
+            add_to_cart_button = d.find_element(By.CSS_SELECTOR, "[name*=add-to-cart]")
             add_to_cart_button.click()
-            cart_link = d.find_element(By.CSS_SELECTOR, ".shopping_cart_link")
-            cart_link.click()
-            continue_shopping_button = d.find_element(
-                By.CSS_SELECTOR, '[name="continue-shopping"]'
-            )
-            continue_shopping_button.click()
 
         shopping_cart = d.find_element(*ProductsPageLocators.SHOP_CART_LINK).text
         assert shopping_cart == "6"
 
-    def test_remove_from_cart(self, d):
+    @allure.feature("US_011 | Removing an item from the cart")
+    @allure.story("TC_011.07 Removing items from the cart")
+
+    def test_TC_011_07_remove_all_from_cart(self, d):
+        assert d.current_url == "https://www.saucedemo.com/inventory.html"
+
         shopping_cart = d.find_element(*ProductsPageLocators.SHOP_CART_LINK).text
         assert shopping_cart == "6"
 
-        d.find_element(By.CSS_SELECTOR, ".shopping_cart_link").click()
-        assert d.current_url == "https://www.saucedemo.com/cart.html"
+        inventory_list = d.find_elements(*ProductsPageLocators.INVENTORY_ITEM)
 
-        cart_item = d.find_elements(By.CSS_SELECTOR, ".cart_item")
-
-        for item in range(0, len(cart_item)):
+        for remove_from_cart_button in inventory_list:
             remove_from_cart_button = d.find_element(By.CSS_SELECTOR, "[name*=remove]")
             remove_from_cart_button.click()
 
