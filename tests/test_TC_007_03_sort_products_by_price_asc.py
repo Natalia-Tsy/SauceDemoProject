@@ -11,7 +11,7 @@ from src.src import LoginPageSrc, ProductsPageSrc
 
 class Test:
     @allure.feature("US_007 | Sorting")
-    @allure.story("TC_007.00.03 | Sorting products by price ascending")
+    @allure.story("TC_007.03 | Sorting products by price ascending")
     @pytest.mark.parametrize(
         "username, password",
         [

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2022/11/29 16:55
+# @Time    : 2022/11/29 11:55
 # @Author  : Mariya Abayev
 
 import pytest
@@ -11,7 +11,7 @@ from src.src import LoginPageSrc, ProductsPageSrc
 
 class Tests:
     @allure.feature("US_007 | Sorting")
-    @allure.story("TC_007.00.01 | Sorting products by name ascending")
+    @allure.story("TC_007.01 | Sorting products by name ascending")
     @pytest.mark.parametrize(
         "username, password",
         [
