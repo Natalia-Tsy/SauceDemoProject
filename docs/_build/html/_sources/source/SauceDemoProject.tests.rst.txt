@@ -12,22 +12,6 @@ SauceDemoProject.tests.conftest module
    :undoc-members:
    :show-inheritance:
 
-SauceDemoProject.tests.test\_011\_06\_Adding\_items\_to\_your\_non\_empty\_cart module
---------------------------------------------------------------------------------------
-
-.. automodule:: SauceDemoProject.tests.test_011_06_Adding_items_to_your_non_empty_cart
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-SauceDemoProject.tests.test\_011\_07\_add\_remove\_all\_items module
---------------------------------------------------------------------
-
-.. automodule:: SauceDemoProject.tests.test_011_07_add_remove_all_items
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 SauceDemoProject.tests.test\_TC\_002\_read\_privacy\_policy module
 ------------------------------------------------------------------
 
@@ -52,6 +36,14 @@ SauceDemoProject.tests.test\_TC\_005\_01\_view\_details\_for\_product module
    :undoc-members:
    :show-inheritance:
 
+SauceDemoProject.tests.test\_TC\_006\_01\_adding\_items\_to\_your\_non\_empty\_cart module
+------------------------------------------------------------------------------------------
+
+.. automodule:: SauceDemoProject.tests.test_TC_006_01_adding_items_to_your_non_empty_cart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 SauceDemoProject.tests.test\_TC\_007\_01\_sort\_product\_by\_name\_asc module
 -----------------------------------------------------------------------------
 
@@ -64,6 +56,14 @@ SauceDemoProject.tests.test\_TC\_007\_03\_sort\_products\_by\_price\_asc module
 -------------------------------------------------------------------------------
 
 .. automodule:: SauceDemoProject.tests.test_TC_007_03_sort_products_by_price_asc
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+SauceDemoProject.tests.test\_TC\_011\_07\_add\_remove\_all\_items module
+------------------------------------------------------------------------
+
+.. automodule:: SauceDemoProject.tests.test_TC_011_07_add_remove_all_items
    :members:
    :undoc-members:
    :show-inheritance:
