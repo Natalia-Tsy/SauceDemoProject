@@ -15,21 +15,33 @@ class ProductPage(BasePage):
         self.should_be_link(ProductPageSrc.LINK)
 
     def check_product_img(self, mydict):
-        """Check img"""
+        """Check that the image displayed for the selected product matches the expected image.
+
+        Args:
+            mydict (dict): dictionary of selected product, including the expected image URL
+        """
         select_img = self.get_src(0, *ProductPageLocators.PRODUCT_IMG_DETAILS)
         assert (
             select_img == mydict["img"]
         ), f"The the source URL of the image {select_img} on the product page does not match the expected image {mydict['img']}"
 
     def check_product_name(self, mydict):
-        """Check name"""
+        """Check that the name displayed for the selected product matches the expected name.
+
+        Args:
+            mydict (dict):  dictionary of selected product, including the expected name.
+        """
         select_name = self.get_text(0, *ProductPageLocators.PRODUCT_NAME_DETAILS)
         assert (
             select_name == mydict["name"]
         ), f"The name {select_name} on the product page does not match the expected name {mydict['name']}"
 
     def check_product_price(self, mydict):
-        """Check price"""
+        """Check that the price displayed for the selected product matches the expected price.
+
+        Args:
+            mydict (dict): dictionary of selected product, including the expected price.
+        """
         select_price = self.get_text(0, *ProductPageLocators.PRODUCT_PRICE_DETAILS)
         assert (
             select_price == mydict["price"]
