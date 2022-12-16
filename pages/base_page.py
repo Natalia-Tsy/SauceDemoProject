@@ -1,4 +1,5 @@
 import logging
+import inspect
 from selenium.common.exceptions import (
     NoSuchElementException,
     TimeoutException,
@@ -103,6 +104,9 @@ class Handle_Exc_Element_Decorator(object):
                 logging.error("Unable to initialize WebDriver")
                 logging.exception(e.msg)
 
+        inner_function.__doc__ = func.__doc__
+        inner_function.__module__ = func.__module__
+        inner_function.__signature__ = inspect.signature(func)
         return inner_function
 
 
@@ -197,6 +201,9 @@ class Handle_Exc_Elements_Decorator(object):
                 logging.error("Unable to initialize WebDriver")
                 logging.exception(e.msg)
 
+        inner_function.__doc__ = func.__doc__
+        inner_function.__module__ = func.__module__
+        inner_function.__signature__ = inspect.signature(func)
         return inner_function
 
 
@@ -249,6 +256,7 @@ class BasePage:
             return False
         return True
 
+    @Handle_Exc_Elements_Decorator()
     def elements_are_present(self, method, locator):
         """Find elements given a By method and locator.
 
