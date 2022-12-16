@@ -37,7 +37,7 @@ class Tests:
     def test_return_to_the_catalog_all_items(self, d, username, password):
         page = LoginPage(d, LoginPageSrc.URL)  # Creates the Login page instance
         page.open_page()
-        page.register_user(username, password)  # user logs in
+        page.register_user(username, password)  # a user logs in
         page = ProductsPage(
             d, ProductsPageSrc.URL
         )  # Creates the Products page instance
