@@ -11,7 +11,7 @@ from pages.locators import ProductsPageLocators
 
 class TestAddToCartAllItems:
     @allure.feature("US_006 | Adding an item to the cart")
-    @allure.story("TC_006_01 | Adding items to your non-empty cart")
+    @allure.story("TC_006.01 | Adding items to your non-empty cart")
     def test_TC_006_01_add_to_cart(self, d):
         assert d.current_url == conf.URL
 
