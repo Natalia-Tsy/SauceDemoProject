@@ -10,7 +10,6 @@ from pages.locators import ProductsPageLocators
 
 
 class TestAddRemoveAllItems:
-
     def test_add_all_to_cart(self, d):
         assert d.current_url == conf.URL
 
@@ -32,7 +31,6 @@ class TestAddRemoveAllItems:
 
     @allure.feature("US_011 | Removing an item from the cart")
     @allure.story("TC_011.07 Removing items from the cart")
-
     def test_TC_011_07_remove_all_from_cart(self, d):
         assert d.current_url == "https://www.saucedemo.com/inventory.html"
 
