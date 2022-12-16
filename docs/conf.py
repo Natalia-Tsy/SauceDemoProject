@@ -5,10 +5,14 @@
 import os
 import sys
 
-# sys.path.insert(0, os.path.abspath('..'))
-sys.path.insert(0, os.path.abspath("../.."))
-sys.path.append(os.path.abspath(".."))
-sys.path.insert(0, os.path.abspath('../../../'))
+# sys.path.insert(0, os.path.abspath("../.."))
+# sys.path.append(os.path.abspath(".."))
+sys.path.append(os.path.join(os.path.abspath(os.pardir)))
+
+cwd = os.getcwd()
+project_root = os.path.dirname(cwd)
+sys.path.insert(0, os.path.abspath('source'))
+sys.path.insert(0, project_root)
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
