@@ -1,0 +1,36 @@
+2022-12-17 23:48:06 ERROR Could not find element on page: https://www.saucedemo.com/
+2022-12-17 23:48:06 ERROR no such element: Unable to locate element: {"method":"css selector","selector":".shopping_cart_link"}
+  (Session info: headless chrome=108.0.5359.98)
+Traceback (most recent call last):
+  File "/home/runner/work/SauceDemoProject/SauceDemoProject/pages/base_page.py", line 72, in inner_function
+    return func(*args, **kwargs)
+  File "/home/runner/work/SauceDemoProject/SauceDemoProject/pages/base_page.py", line 295, in get_property
+    return self.browser.find_element(method, locator).get_property(property)
+  File "/home/runner/.cache/pypoetry/virtualenvs/saucedemoproject-P9vpYs8v-py3.10/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "/home/runner/.cache/pypoetry/virtualenvs/saucedemoproject-P9vpYs8v-py3.10/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/saucedemoproject-P9vpYs8v-py3.10/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".shopping_cart_link"}
+  (Session info: headless chrome=108.0.5359.98)
+Stacktrace:
+#0 0x564c0b7d42a3 <unknown>
+#1 0x564c0b592f77 <unknown>
+#2 0x564c0b5cf80c <unknown>
+#3 0x564c0b5cfa71 <unknown>
+#4 0x564c0b609734 <unknown>
+#5 0x564c0b5efb5d <unknown>
+#6 0x564c0b60747c <unknown>
+#7 0x564c0b5ef903 <unknown>
+#8 0x564c0b5c2ece <unknown>
+#9 0x564c0b5c3fde <unknown>
+#10 0x564c0b82463e <unknown>
+#11 0x564c0b827b79 <unknown>
+#12 0x564c0b80a89e <unknown>
+#13 0x564c0b828a83 <unknown>
+#14 0x564c0b7fd505 <unknown>
+#15 0x564c0b849ca8 <unknown>
+#16 0x564c0b849e36 <unknown>
+#17 0x564c0b865333 <unknown>
+#18 0x7f7ec4cefb43 <unknown>
