@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SauceDemoProject.pages.products_page &#8212; SauceDemoProject 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for SauceDemoProject.pages.products_page</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">.base_page</span> <span class="kn">import</span> <span class="n">BasePage</span>
+<span class="kn">from</span> <span class="nn">src.src</span> <span class="kn">import</span> <span class="n">ProductsPageSrc</span>
+<span class="kn">from</span> <span class="nn">.locators</span> <span class="kn">import</span> <span class="n">PageLocators</span><span class="p">,</span> <span class="n">ProductsPageLocators</span>
+
+
+<div class="viewcode-block" id="ProductsPage"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage">[docs]</a><span class="k">class</span> <span class="nc">ProductsPage</span><span class="p">(</span><span class="n">BasePage</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This class is used to test the functionality of the products page of the website.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        BasePage: Contains common methods that are used by all page classes</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ProductsPage.should_be_products_page"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.should_be_products_page">[docs]</a>    <span class="k">def</span> <span class="nf">should_be_products_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check that the current page is the products page.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">should_be_link</span><span class="p">(</span><span class="n">ProductsPageSrc</span><span class="o">.</span><span class="n">LINK</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">should_be_page_title</span><span class="p">(</span><span class="n">ProductsPageSrc</span><span class="o">.</span><span class="n">TITLE</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">TITLE</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">should_be_products_page_inventory_list</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">should_be_link_to_cart_page</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ProductsPage.should_be_link_to_cart_page"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.should_be_link_to_cart_page">[docs]</a>    <span class="k">def</span> <span class="nf">should_be_link_to_cart_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check the shopping cart link is visible on the page.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_is_visible</span><span class="p">(</span>
+            <span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">SHOP_CART_LINK</span>
+        <span class="p">),</span> <span class="s2">&quot;The shopping cart link is not present or not visible on the page&quot;</span></div>
+
+<div class="viewcode-block" id="ProductsPage.should_be_products_page_inventory_list"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.should_be_products_page_inventory_list">[docs]</a>    <span class="k">def</span> <span class="nf">should_be_products_page_inventory_list</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks products in an inventory list on the page.&quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">&quot;children&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">INVENT_LIST</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The inventory list could not be found on the page&quot;</span>
+        <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No products in the inventory list&quot;</span></div>
+
+<div class="viewcode-block" id="ProductsPage.list_finded_item_by_name"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.list_finded_item_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">list_finded_item_by_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item_names</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns a list of products on the products page that match the item_names.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            item_names: names of the products</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[selenium.webdriver.remote.webelement.WebElement]: the list of items</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">list_el</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">browser</span><span class="o">.</span><span class="n">find_elements</span><span class="p">(</span><span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">INVENT_ITEM</span><span class="p">)</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="nb">map</span><span class="p">(</span>
+                <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span>
+                    <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">n&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">y</span><span class="p">,</span> <span class="n">list_el</span><span class="p">)</span>
+                <span class="p">),</span>
+                <span class="n">item_names</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">items</span></div>
+
+<div class="viewcode-block" id="ProductsPage.find_button"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.find_button">[docs]</a>    <span class="k">def</span> <span class="nf">find_button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">el</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find and click the button &quot;ADD TO CART&quot;/&quot;REMOVE&quot; of selected element on the products page.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            selenium.webdriver.remote.webelement.WebElement: selected item</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Product module</span>
+        <span class="n">inventory_item</span> <span class="o">=</span> <span class="n">el</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">&quot;children&quot;</span><span class="p">)</span>
+        <span class="c1"># Product Pricebar module</span>
+        <span class="n">pricebar</span> <span class="o">=</span> <span class="n">inventory_item</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">&quot;children&quot;</span><span class="p">)</span>
+        <span class="c1">#  &quot;ADD TO CART&quot;/&quot;REMOVE&quot; button</span>
+        <span class="n">btn_inventory</span> <span class="o">=</span> <span class="n">pricebar</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">btn_inventory</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="ProductsPage.add_item_on_products_page"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.add_item_on_products_page">[docs]</a>    <span class="k">def</span> <span class="nf">add_item_on_products_page</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Add items to the cart or remove items from cart by name.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list[selenium.webdriver.remote.webelement.WebElement]: list of the selected items by name</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">selected_items</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">list_finded_item_by_name</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+        <span class="c1"># Products are added into the cart one by one</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_button</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">selected_items</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">selected_items</span></div>
+
+<div class="viewcode-block" id="ProductsPage.go_to_basket_page"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.go_to_basket_page">[docs]</a>    <span class="k">def</span> <span class="nf">go_to_basket_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Navigate to the cart page.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">click_button</span><span class="p">(</span><span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">SHOP_CART_LINK</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProductsPage.should_be_empty_shopping_cart_badge"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.should_be_empty_shopping_cart_badge">[docs]</a>    <span class="k">def</span> <span class="nf">should_be_empty_shopping_cart_badge</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check the cart is empty.&quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_property</span><span class="p">(</span><span class="s2">&quot;children&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">SHOP_CART_LINK</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The shopping cart is not present on the page&quot;</span>
+        <span class="k">assert</span> <span class="n">value</span> <span class="o">==</span> <span class="p">[],</span> <span class="s2">&quot;The shopping cart is not empty&quot;</span></div>
+
+<div class="viewcode-block" id="ProductsPage.check_privacy_link"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.check_privacy_link">[docs]</a>    <span class="k">def</span> <span class="nf">check_privacy_link</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Check that the privacy link is present on the page</span>
+<span class="sd">        and that it can be clicked to navigate to the privacy policy page.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_is_present</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">PageLocators</span><span class="o">.</span><span class="n">ROBOT_IMG</span>
+        <span class="p">),</span> <span class="s2">&quot;The footer_robot is not present on the page&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">browser</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span><span class="o">*</span><span class="n">PageLocators</span><span class="o">.</span><span class="n">PRIVACY</span><span class="p">)</span><span class="o">.</span><span class="n">click</span><span class="p">()</span></div>
+
+    <span class="sd">&quot;&quot;&quot;Check choose product:</span>
+<span class="sd">        Product image</span>
+<span class="sd">        Product name = &quot;Sauce Labs Bike Light&quot;</span>
+<span class="sd">        Price = $9.99&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ProductsPage.select_product"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.select_product">[docs]</a>    <span class="k">def</span> <span class="nf">select_product</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Retrieve the information about a product on the products page.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            dict: dictionary containing information about a product on the products page</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">item_info</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">item_info</span><span class="p">[</span><span class="s2">&quot;img&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_src</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">PRODUCT_IMG</span><span class="p">)</span>
+        <span class="n">item_info</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">PRODUCT_NAME</span><span class="p">)</span>
+        <span class="n">item_info</span><span class="p">[</span><span class="s2">&quot;price&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">PRODUCT_PRICE</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">item_info</span></div>
+
+<div class="viewcode-block" id="ProductsPage.go_to_product_page"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.go_to_product_page">[docs]</a>    <span class="k">def</span> <span class="nf">go_to_product_page</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Navigate to the selected product page.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">click_button</span><span class="p">(</span><span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">PRODUCT_IMG</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ProductsPage.sorting_products_by_name_asc"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.sorting_products_by_name_asc">[docs]</a>    <span class="k">def</span> <span class="nf">sorting_products_by_name_asc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sort a list of products by name in ascending order and check the sorting.&quot;&quot;&quot;</span>
+        <span class="n">new_list_before_sorting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_text_elements</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">INVENTORY_ITEM_NAME</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_list_before_sorting</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Items could not are found on the products page&quot;</span>
+        <span class="n">new_list_before_sorting</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">sorting_products_by_name_asc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">browser</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">SORTING_BY_NAME_AZ</span>
+        <span class="p">)</span>
+        <span class="n">sorting_products_by_name_asc</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="n">new_list_all_name_after_sorting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_text_elements</span><span class="p">(</span>
+            <span class="mi">0</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">INVENTORY_ITEM_NAME</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">new_list_before_sorting</span> <span class="o">==</span> <span class="n">new_list_all_name_after_sorting</span>
+        <span class="p">),</span> <span class="s2">&quot;The list of product names on the page isn&#39;t the same as the sorted list by name in ascending order&quot;</span></div>
+
+<div class="viewcode-block" id="ProductsPage.sorting_products_by_price_asc"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.products_page.ProductsPage.sorting_products_by_price_asc">[docs]</a>    <span class="k">def</span> <span class="nf">sorting_products_by_price_asc</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Sorts a list of products by price in ascending order and check the sorting.&quot;&quot;&quot;</span>
+        <span class="n">new_list_for_sort_without_first_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_text_elements</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">INVENTORY_ITEM_PRICE</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">new_list_for_sort_without_first_symbol</span> <span class="o">==</span> <span class="p">[]:</span>
+            <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Items could not are found on the products page&quot;</span>
+        <span class="n">new_list_for_sort_without_first_symbol</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">new_list_for_sort_without_first_symbol</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">new_list_for_sort_without_first_symbol</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">sorting_products_by_name_asc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">browser</span><span class="o">.</span><span class="n">find_element</span><span class="p">(</span>
+            <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">PRICE_LOW_TO_HIGH</span>
+        <span class="p">)</span>
+        <span class="n">sorting_products_by_name_asc</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="n">new_list_all_price_after_sorting</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_text_elements</span><span class="p">(</span>
+            <span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">ProductsPageLocators</span><span class="o">.</span><span class="n">INVENTORY_ITEM_PRICE</span>
+        <span class="p">)</span>
+        <span class="n">new_list_all_price_after_sorting</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+            <span class="nb">map</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">new_list_all_price_after_sorting</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">new_list_for_sort_without_first_symbol</span> <span class="o">==</span> <span class="n">new_list_all_price_after_sorting</span>
+        <span class="p">),</span> <span class="s2">&quot;The list of product prices on the page isn&#39;t the same as the sorted list by price in ascending order&quot;</span></div></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">SauceDemoProject</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/README.html">Project Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/modules.html">SauceDemoProject</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, OlegKomissarovV.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
