@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SauceDemoProject.pages.locators &#8212; SauceDemoProject 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for SauceDemoProject.pages.locators</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">selenium.webdriver.common.by</span> <span class="kn">import</span> <span class="n">By</span>
+
+
+<div class="viewcode-block" id="LoginPageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.LoginPageLocators">[docs]</a><span class="k">class</span> <span class="nc">LoginPageLocators</span><span class="p">:</span>
+    <span class="n">INPUT_USERNAME</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;user-name&quot;</span><span class="p">)</span>
+    <span class="n">INPUT_PASSWORD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
+    <span class="n">LOGIN_BTN</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;login-button&quot;</span><span class="p">)</span>
+    <span class="n">LOGIN_CREDENTIALS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;login_credentials&quot;</span><span class="p">)</span>
+    <span class="n">LOGIN_PASSWORD</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;login_password&quot;</span><span class="p">)</span>
+    <span class="n">ERROR_BTN</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;error-message-container.error&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProductsPageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.ProductsPageLocators">[docs]</a><span class="k">class</span> <span class="nc">ProductsPageLocators</span><span class="p">:</span>
+    <span class="n">TITLE</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">)</span>
+    <span class="n">INVENT_LIST</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;inventory_list&quot;</span><span class="p">)</span>
+    <span class="n">SHOP_CART_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;shopping_cart_link&quot;</span><span class="p">)</span>
+    <span class="n">INVENT_ITEM</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;inventory_item_description&quot;</span><span class="p">)</span>
+    <span class="c1"># for test TC_007_01</span>
+    <span class="n">PRODUCT_IMG</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;#item_0_img_link&gt;img&quot;</span><span class="p">)</span>
+    <span class="n">PRODUCT_NAME</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;#item_0_title_link&gt;div&quot;</span><span class="p">)</span>
+    <span class="n">PRODUCT_PRICE</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span>
+        <span class="s2">&quot;//*[@id = &#39;item_0_title_link&#39;]/ancestor::*[@class = &#39;inventory_item_description&#39;]//*[@class = &#39;inventory_item_price&#39;]&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">PRODUCT_IMG_FOR_CLICK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;#item_0_img_link&quot;</span><span class="p">)</span>
+    <span class="c1"># for sort product</span>
+    <span class="n">SORTING_BY_NAME_AZ</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s1">&#39;.product_sort_container option[value=&quot;az&quot;]&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Rustam</span>
+    <span class="n">INVENTORY_ITEM</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_item&quot;</span><span class="p">)</span>
+    <span class="n">INVENTORY_ITEM_NAME</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_item_name&quot;</span><span class="p">)</span>
+    <span class="n">INVENTORY_ITEM_DESC</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_item_desc&quot;</span><span class="p">)</span>
+    <span class="n">INVENTORY_ITEM_PRICE</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_item_price&quot;</span><span class="p">)</span>
+    <span class="n">INVENTORY_ITEM_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_item_img .inventory_item_img&quot;</span><span class="p">)</span>
+
+    <span class="n">SAUCE_LABS_BACKPACK_ADD_TO_CART</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span>
+        <span class="s2">&quot;#add-to-cart-sauce-labs-backpack&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">SAUCE_LABS_BACKPACK_REMOVE_FROM_CART</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span>
+        <span class="s2">&quot;#remove-sauce-labs-backpack&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">SORT_DROPDOWN</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;select_container&quot;</span><span class="p">)</span>
+    <span class="n">PRICE_LOW_TO_HIGH</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.product_sort_container [value=&#39;lohi&#39;]&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CartPageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.CartPageLocators">[docs]</a><span class="k">class</span> <span class="nc">CartPageLocators</span><span class="p">:</span>
+    <span class="n">CHECKOUT_BTN</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;checkout&quot;</span><span class="p">)</span>
+    <span class="n">TITLE</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">)</span>
+    <span class="n">QUANTITY</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;shopping_cart_badge&quot;</span><span class="p">)</span>
+    <span class="n">LIST_OF_PRODUCTS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.cart_list &gt; .cart_item&quot;</span><span class="p">)</span>
+    <span class="n">LIST_OF_REMOVE_BUTTON_ELEMENTS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.cart_list &gt; .cart_item button&quot;</span><span class="p">)</span>
+    <span class="n">PRODUCT_NAME_OF_ITEM</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;div.inventory_item_name&quot;</span><span class="p">)</span>
+    <span class="n">QTY_OF_ITEM</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;div.cart_quantity&quot;</span><span class="p">)</span>
+    <span class="n">PRICE_OF_ITEM</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;div.inventory_item_price&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Chckout1PageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.Chckout1PageLocators">[docs]</a><span class="k">class</span> <span class="nc">Chckout1PageLocators</span><span class="p">:</span>
+    <span class="n">CONTINUE_BTN</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;continue&quot;</span><span class="p">)</span>
+    <span class="n">TITLE</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">)</span>
+    <span class="n">INPUT_FIRSTNAME</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;first-name&quot;</span><span class="p">)</span>
+    <span class="n">INPUT_LASTNAME</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;last-name&quot;</span><span class="p">)</span>
+    <span class="n">INPUT_CODE</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;postal-code&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Chckout2PageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.Chckout2PageLocators">[docs]</a><span class="k">class</span> <span class="nc">Chckout2PageLocators</span><span class="p">:</span>
+    <span class="n">FINISH_BTN</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;finish&quot;</span><span class="p">)</span>
+    <span class="n">TITLE</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CheckoutCmpltPageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.CheckoutCmpltPageLocators">[docs]</a><span class="k">class</span> <span class="nc">CheckoutCmpltPageLocators</span><span class="p">:</span>
+    <span class="n">BACKHOME_BTN</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;back-to-products&quot;</span><span class="p">)</span>
+    <span class="n">TITLE</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;title&quot;</span><span class="p">)</span>
+    <span class="n">COMPLETE_MSG</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;complete - header&quot;</span><span class="p">)</span>
+    <span class="n">SHOP_CART_LINK</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CLASS_NAME</span><span class="p">,</span> <span class="s2">&quot;shopping_cart_link&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.PageLocators">[docs]</a><span class="k">class</span> <span class="nc">PageLocators</span><span class="p">:</span>
+    <span class="n">ROBOT_IMG</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.footer_robot&quot;</span><span class="p">)</span>
+    <span class="n">PRIVACY</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">XPATH</span><span class="p">,</span> <span class="s2">&quot;//*[@class = &#39;footer_copy&#39;]/text()[3]&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProductPageLocators"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.ProductPageLocators">[docs]</a><span class="k">class</span> <span class="nc">ProductPageLocators</span><span class="p">:</span>
+    <span class="n">PRODUCT_PRICE_DETAILS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_details_price&quot;</span><span class="p">)</span>
+    <span class="n">PRODUCT_IMG_DETAILS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_details_img&quot;</span><span class="p">)</span>
+    <span class="n">PRODUCT_NAME_DETAILS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">CSS_SELECTOR</span><span class="p">,</span> <span class="s2">&quot;.inventory_details_name&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SideBarLocator"><a class="viewcode-back" href="../../../source/SauceDemoProject.pages.html#SauceDemoProject.pages.locators.SideBarLocator">[docs]</a><span class="k">class</span> <span class="nc">SideBarLocator</span><span class="p">:</span>
+    <span class="n">HAMBURGER</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;react-burger-menu-btn&quot;</span><span class="p">)</span>
+    <span class="n">ALL_ITEMS</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;inventory_sidebar_link&quot;</span><span class="p">)</span>
+    <span class="n">LOGOUT</span> <span class="o">=</span> <span class="p">(</span><span class="n">By</span><span class="o">.</span><span class="n">ID</span><span class="p">,</span> <span class="s2">&quot;logout_sidebar_link&quot;</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">SauceDemoProject</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/README.html">Project Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../source/modules.html">SauceDemoProject</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, OlegKomissarovV.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
