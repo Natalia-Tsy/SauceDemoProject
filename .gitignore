@@ -162,4 +162,9 @@ cython_debug/
 .vscode/settings.json
 
 # MacOS artefacts
-.DS_Srore
+.DS_Store
+
+# Alexander Tomelo project artefacts
+html/
+tests/allure-reports/
+tests/report/
