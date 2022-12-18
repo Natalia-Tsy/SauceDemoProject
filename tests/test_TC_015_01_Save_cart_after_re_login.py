@@ -14,7 +14,7 @@ from pages.login_page import LoginPage
 from pages.sidebar import SideBar
 
 
-class TestSample:
+class Tests:
     def authorization(self, d, username, password):
         """Method for authorization user.
 
