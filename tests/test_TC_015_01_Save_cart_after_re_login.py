@@ -33,7 +33,7 @@ class TestSample:
         # User's authorization
         page.register_user(username, password)
 
-    def preconditions(self, d, username, password):
+    def pre_conditions(self, d, username, password):
         """Precondition execution method.
 
         Args:
@@ -88,7 +88,7 @@ class TestSample:
         sel_item_price = "$15.99"
 
         # Part Preconditions
-        self.preconditions(d, username, password)
+        self.pre_conditions(d, username, password)
 
         # Part 1 of test
         page = ProductsPage(d, ProductsPageSrc.URL)
@@ -128,15 +128,15 @@ class TestSample:
         page.check_the_item_quantity_in_cart(sel_item_name, sel_item_qty)
         page.check_the_item_price_in_cart(sel_item_name, sel_item_price)
 
-        # Part Postconditions
-        self.postconditions(d, username, password)
+        # Part Post conditions
+        self.post_conditions(d, username, password)
 
-    def postconditions(self, d, username, password):
-        """Postcondition execution method.
+    def post_conditions(self, d, username, password):
+        """Post_condition execution method.
 
         Args:
             d: WebDriver
             username: name of current test user
             password: password of current test user
         """
-        self.preconditions(d, username, password)
+        self.pre_conditions(d, username, password)
