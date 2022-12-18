@@ -166,3 +166,5 @@ cython_debug/
 
 # Alexander Tomelo project artefacts
 html/
+tests/allure-reports/
+tests/report/
