@@ -1,0 +1,36 @@
+2022-12-20 01:20:01 ERROR Could not find element on page: https://www.saucedemo.com/
+2022-12-20 01:20:01 ERROR no such element: Unable to locate element: {"method":"css selector","selector":".shopping_cart_link"}
+  (Session info: headless chrome=108.0.5359.98)
+Traceback (most recent call last):
+  File "/home/runner/work/SauceDemoProject/SauceDemoProject/pages/base_page.py", line 72, in inner_function
+    return func(*args, **kwargs)
+  File "/home/runner/work/SauceDemoProject/SauceDemoProject/pages/base_page.py", line 295, in get_property
+    return self.browser.find_element(method, locator).get_property(property)
+  File "/home/runner/.cache/pypoetry/virtualenvs/saucedemoproject-P9vpYs8v-py3.10/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "/home/runner/.cache/pypoetry/virtualenvs/saucedemoproject-P9vpYs8v-py3.10/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "/home/runner/.cache/pypoetry/virtualenvs/saucedemoproject-P9vpYs8v-py3.10/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":".shopping_cart_link"}
+  (Session info: headless chrome=108.0.5359.98)
+Stacktrace:
+#0 0x5575b891f2a3 <unknown>
+#1 0x5575b86ddf77 <unknown>
+#2 0x5575b871a80c <unknown>
+#3 0x5575b871aa71 <unknown>
+#4 0x5575b8754734 <unknown>
+#5 0x5575b873ab5d <unknown>
+#6 0x5575b875247c <unknown>
+#7 0x5575b873a903 <unknown>
+#8 0x5575b870dece <unknown>
+#9 0x5575b870efde <unknown>
+#10 0x5575b896f63e <unknown>
+#11 0x5575b8972b79 <unknown>
+#12 0x5575b895589e <unknown>
+#13 0x5575b8973a83 <unknown>
+#14 0x5575b8948505 <unknown>
+#15 0x5575b8994ca8 <unknown>
+#16 0x5575b8994e36 <unknown>
+#17 0x5575b89b0333 <unknown>
+#18 0x7fd730b00b43 <unknown>
