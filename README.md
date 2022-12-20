@@ -3,7 +3,7 @@ A sample pytest project https://www.saucedemo.com/ to trigger automated tests, g
 
 [![selenium_test](https://github.com/ivanovajulika/Sauce/actions/workflows/action.yml/badge.svg)](https://github.com/Natalia-Tsy/SauceDemoProject/actions/workflows/action.yml)
 [![Allure Report](https://img.shields.io/badge/Allure%20Report-deployed-yellowgreen)](https://natalia-tsy.github.io/SauceDemoProject/)
-
+[![Documentation Status](https://readthedocs.org/projects/saucedemoproject/badge/?version=latest)](https://saucedemoproject.readthedocs.io/en/latest/?badge=latest)
 
 #### How to work with the Repo:
 1. Create a folder locally
