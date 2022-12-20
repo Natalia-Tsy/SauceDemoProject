@@ -1,0 +1,255 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Dec 20 01:07:32 GMT 2022","Tue Dec 20 01:07:32 GMT 2022","408","tests","test_TC_003_user_can_be_autorize","TestSample","","","test_TC_003_user_can_autorize[standard_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:09:22 GMT 2022","Tue Dec 20 01:09:22 GMT 2022","214","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_cart_page[locked_out_user-secret_sauce]","Checks whether a user can navigate to the cart page of a website after logging in and adding items to cart.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:04 GMT 2022","Tue Dec 20 01:09:06 GMT 2022","1808","tests","test_TC_015_01_Save_cart_after_re_login","TestSample","","","test_tc_015_01_save_cart_after_re_login[problem_user-secret_sauce]","Check save cart data of current user after re-login
+
+        Args:
+            d: WebDriver
+            username: username
+            password: password
+        "
+"skipped","Tue Dec 20 01:10:00 GMT 2022","Tue Dec 20 01:10:01 GMT 2022","879","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_TC_016_01_return_to_catalog_after_order[problem_user-secret_sauce]","Checks whether a user can return to the products page of a website
+        after completing an order and verifying that the cart is empty
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"skipped","Tue Dec 20 01:08:28 GMT 2022","Tue Dec 20 01:08:28 GMT 2022","491","tests","test_TC_014_02_return_to_catalog","Tests","","","test_return_to_the_catalog_all_items[problem_user-secret_sauce]",""
+"passed","Tue Dec 20 01:08:32 GMT 2022","Tue Dec 20 01:09:04 GMT 2022","32068","tests","test_TC_015_01_Save_cart_after_re_login","TestSample","","","test_tc_015_01_save_cart_after_re_login[performance_glitch_user-secret_sauce]","Check save cart data of current user after re-login
+
+        Args:
+            d: WebDriver
+            username: username
+            password: password
+        "
+"passed","Tue Dec 20 01:08:30 GMT 2022","Tue Dec 20 01:08:32 GMT 2022","2199","tests","test_TC_015_01_Save_cart_after_re_login","TestSample","","","test_tc_015_01_save_cart_after_re_login[standard_user-secret_sauce]","Check save cart data of current user after re-login
+
+        Args:
+            d: WebDriver
+            username: username
+            password: password
+        "
+"passed","Tue Dec 20 01:08:13 GMT 2022","Tue Dec 20 01:08:13 GMT 2022","569","tests","test_TC_011_07_add_remove_all_items","TestAddRemoveAllItems","","","test_add_all_to_cart",""
+"passed","Tue Dec 20 01:09:08 GMT 2022","Tue Dec 20 01:09:09 GMT 2022","388","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_products_page[standard_user-secret_sauce]","Checks whether a user can navigate to the products page of a website after logging in.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"skipped","Tue Dec 20 01:09:47 GMT 2022","Tue Dec 20 01:09:47 GMT 2022","267","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_complete_page[locked_out_user-secret_sauce]","Checks whether a user can navigate to the checkout complete page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        filling out the shipping information on the first checkout page, and navigating to the second checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"skipped","Tue Dec 20 01:09:29 GMT 2022","Tue Dec 20 01:09:30 GMT 2022","234","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_1_page[locked_out_user-secret_sauce]","Checks whether a user can navigate to the first checkout page of a website
+        after logging in, adding items to cart, and navigating to the cart page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:07:57 GMT 2022","Tue Dec 20 01:07:57 GMT 2022","386","tests","test_TC_007_01_sort_product_by_name_asc","Tests","","","test_TC_007_01_sort_products_by_name_asc[problem_user-secret_sauce]",""
+"passed","Tue Dec 20 01:09:21 GMT 2022","Tue Dec 20 01:09:22 GMT 2022","540","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_cart_page[problem_user-secret_sauce]","Checks whether a user can navigate to the cart page of a website after logging in and adding items to cart.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"skipped","Tue Dec 20 01:07:38 GMT 2022","Tue Dec 20 01:07:38 GMT 2022","220","tests","test_TC_003_user_can_be_autorize","TestSample","","","test_TC_003_user_can_autorize[locked_out_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:09:46 GMT 2022","Tue Dec 20 01:09:47 GMT 2022","872","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_complete_page[problem_user-secret_sauce]","Checks whether a user can navigate to the checkout complete page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        filling out the shipping information on the first checkout page, and navigating to the second checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:30 GMT 2022","Tue Dec 20 01:09:31 GMT 2022","932","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_2_page[standard_user-secret_sauce]","Checks whether a user can navigate to the second checkout page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        and filling out the shipping information on the first checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:08:13 GMT 2022","Tue Dec 20 01:08:14 GMT 2022","242","tests","test_TC_011_07_add_remove_all_items","TestAddRemoveAllItems","","","test_TC_011_07_remove_all_from_cart",""
+"skipped","Tue Dec 20 01:07:27 GMT 2022","Tue Dec 20 01:07:28 GMT 2022","730","tests","test_TC_002_read_privacy_policy","Tests","","","test_TC_003_03_read_privacy_policy_from_checkout",""
+"skipped","Tue Dec 20 01:09:38 GMT 2022","Tue Dec 20 01:09:38 GMT 2022","237","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_2_page[locked_out_user-secret_sauce]","Checks whether a user can navigate to the second checkout page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        and filling out the shipping information on the first checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:22 GMT 2022","Tue Dec 20 01:09:23 GMT 2022","674","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_1_page[standard_user-secret_sauce]","Checks whether a user can navigate to the first checkout page of a website
+        after logging in, adding items to cart, and navigating to the cart page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:08:15 GMT 2022","Tue Dec 20 01:08:16 GMT 2022","1571","tests","test_TC_014_02_return_to_catalog","Tests","","","test_return_to_the_catalog_all_items[standard_user-secret_sauce]",""
+"passed","Tue Dec 20 01:07:48 GMT 2022","Tue Dec 20 01:07:50 GMT 2022","1161","tests","test_TC_006_01_adding_items_to_your_non_empty_cart","TestAddToCartAllItems","","","test_TC_006_01_add_to_cart",""
+"skipped","Tue Dec 20 01:09:14 GMT 2022","Tue Dec 20 01:09:15 GMT 2022","220","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_products_page[locked_out_user-secret_sauce]","Checks whether a user can navigate to the products page of a website after logging in.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:08 GMT 2022","Tue Dec 20 01:09:08 GMT 2022","123","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_login_page","Checks whether a user can navigate to the login page of a website.
+
+        Args:
+            d: WebDriver
+        "
+"passed","Tue Dec 20 01:07:32 GMT 2022","Tue Dec 20 01:07:38 GMT 2022","5299","tests","test_TC_003_user_can_be_autorize","TestSample","","","test_TC_003_user_can_autorize[performance_glitch_user-secret_sauce]",""
+"passed","Tue Dec 20 01:09:49 GMT 2022","Tue Dec 20 01:10:00 GMT 2022","11118","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_TC_016_01_return_to_catalog_after_order[performance_glitch_user-secret_sauce]","Checks whether a user can return to the products page of a website
+        after completing an order and verifying that the cart is empty
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:15 GMT 2022","Tue Dec 20 01:09:16 GMT 2022","621","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_cart_page[standard_user-secret_sauce]","Checks whether a user can navigate to the cart page of a website after logging in and adding items to cart.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"skipped","Tue Dec 20 01:07:25 GMT 2022","Tue Dec 20 01:07:25 GMT 2022","519","tests","test_TC_002_read_privacy_policy","Tests","","","test_TC_002_01_read_privacy_policy_from_catalog",""
+"passed","Tue Dec 20 01:07:51 GMT 2022","Tue Dec 20 01:07:52 GMT 2022","549","tests","test_TC_007_01_sort_product_by_name_asc","Tests","","","test_TC_007_01_sort_products_by_name_asc[standard_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:08:29 GMT 2022","Tue Dec 20 01:08:29 GMT 2022","221","tests","test_TC_014_02_return_to_catalog","Tests","","","test_return_to_the_catalog_all_items[locked_out_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:08:10 GMT 2022","Tue Dec 20 01:08:10 GMT 2022","186","tests","test_TC_007_03_sort_products_by_price_asc","Test","","","test_TC_007_03_sort_products_by_price_asc[locked_out_user-secret_sauce]",""
+"passed","Tue Dec 20 01:07:40 GMT 2022","Tue Dec 20 01:07:46 GMT 2022","5445","tests","test_TC_005_01_view_details_for_product","Tests","","","test_TC_005_01_view_details_for_product[performance_glitch_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:07:57 GMT 2022","Tue Dec 20 01:07:58 GMT 2022","192","tests","test_TC_007_01_sort_product_by_name_asc","Tests","","","test_TC_007_01_sort_products_by_name_asc[locked_out_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:07:29 GMT 2022","Tue Dec 20 01:07:30 GMT 2022","851","tests","test_TC_002_read_privacy_policy","Tests","","","test_TC_002_05_read_privacy_policy_from_final_page",""
+"passed","Tue Dec 20 01:09:29 GMT 2022","Tue Dec 20 01:09:29 GMT 2022","630","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_1_page[problem_user-secret_sauce]","Checks whether a user can navigate to the first checkout page of a website
+        after logging in, adding items to cart, and navigating to the cart page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"skipped","Tue Dec 20 01:10:02 GMT 2022","Tue Dec 20 01:10:02 GMT 2022","250","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_TC_016_01_return_to_catalog_after_order[locked_out_user-secret_sauce]","Checks whether a user can return to the products page of a website
+        after completing an order and verifying that the cart is empty
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:08:00 GMT 2022","Tue Dec 20 01:08:10 GMT 2022","10436","tests","test_TC_007_03_sort_products_by_price_asc","Test","","","test_TC_007_03_sort_products_by_price_asc[performance_glitch_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:09:37 GMT 2022","Tue Dec 20 01:09:38 GMT 2022","839","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_2_page[problem_user-secret_sauce]","Checks whether a user can navigate to the second checkout page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        and filling out the shipping information on the first checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:08:16 GMT 2022","Tue Dec 20 01:08:28 GMT 2022","11394","tests","test_TC_014_02_return_to_catalog","Tests","","","test_return_to_the_catalog_all_items[performance_glitch_user-secret_sauce]",""
+"passed","Tue Dec 20 01:07:38 GMT 2022","Tue Dec 20 01:07:38 GMT 2022","258","tests","test_TC_003_user_can_be_autorize","TestSample","","","test_TC_003_user_can_autorize[problem_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:09:06 GMT 2022","Tue Dec 20 01:09:07 GMT 2022","394","tests","test_TC_015_01_Save_cart_after_re_login","TestSample","","","test_tc_015_01_save_cart_after_re_login[locked_out_user-secret_sauce]","Check save cart data of current user after re-login
+
+        Args:
+            d: WebDriver
+            username: username
+            password: password
+        "
+"skipped","Tue Dec 20 01:07:26 GMT 2022","Tue Dec 20 01:07:26 GMT 2022","426","tests","test_TC_002_read_privacy_policy","Tests","","","test_TC_002_02_read_privacy_policy_from_cart",""
+"skipped","Tue Dec 20 01:07:28 GMT 2022","Tue Dec 20 01:07:29 GMT 2022","777","tests","test_TC_002_read_privacy_policy","Tests","","","test_TC_002_04_read_privacy_policy_from_checkout_overview",""
+"passed","Tue Dec 20 01:09:40 GMT 2022","Tue Dec 20 01:09:46 GMT 2022","6003","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_complete_page[performance_glitch_user-secret_sauce]","Checks whether a user can navigate to the checkout complete page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        filling out the shipping information on the first checkout page, and navigating to the second checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:07:52 GMT 2022","Tue Dec 20 01:07:57 GMT 2022","5418","tests","test_TC_007_01_sort_product_by_name_asc","Tests","","","test_TC_007_01_sort_products_by_name_asc[performance_glitch_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:07:46 GMT 2022","Tue Dec 20 01:07:47 GMT 2022","366","tests","test_TC_005_01_view_details_for_product","Tests","","","test_TC_005_01_view_details_for_product[problem_user-secret_sauce]",""
+"passed","Tue Dec 20 01:09:14 GMT 2022","Tue Dec 20 01:09:14 GMT 2022","286","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_products_page[problem_user-secret_sauce]","Checks whether a user can navigate to the products page of a website after logging in.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:07:40 GMT 2022","Tue Dec 20 01:07:40 GMT 2022","727","tests","test_TC_005_01_view_details_for_product","Tests","","","test_TC_005_01_view_details_for_product[standard_user-secret_sauce]",""
+"passed","Tue Dec 20 01:07:59 GMT 2022","Tue Dec 20 01:08:00 GMT 2022","550","tests","test_TC_007_03_sort_products_by_price_asc","Test","","","test_TC_007_03_sort_products_by_price_asc[standard_user-secret_sauce]",""
+"skipped","Tue Dec 20 01:07:46 GMT 2022","Tue Dec 20 01:07:46 GMT 2022","219","tests","test_TC_005_01_view_details_for_product","Tests","","","test_TC_005_01_view_details_for_product[locked_out_user-secret_sauce]",""
+"passed","Tue Dec 20 01:09:23 GMT 2022","Tue Dec 20 01:09:29 GMT 2022","5676","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_1_page[performance_glitch_user-secret_sauce]","Checks whether a user can navigate to the first checkout page of a website
+        after logging in, adding items to cart, and navigating to the cart page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:31 GMT 2022","Tue Dec 20 01:09:37 GMT 2022","5902","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_2_page[performance_glitch_user-secret_sauce]","Checks whether a user can navigate to the second checkout page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        and filling out the shipping information on the first checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:48 GMT 2022","Tue Dec 20 01:09:49 GMT 2022","1142","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_TC_016_01_return_to_catalog_after_order[standard_user-secret_sauce]","Checks whether a user can return to the products page of a website
+        after completing an order and verifying that the cart is empty
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:07:50 GMT 2022","Tue Dec 20 01:07:50 GMT 2022","304","tests","test_TC_006_01_adding_items_to_your_non_empty_cart","TestAddToCartAllItems","","","test_remove_from_cart",""
+"passed","Tue Dec 20 01:09:09 GMT 2022","Tue Dec 20 01:09:14 GMT 2022","5328","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_products_page[performance_glitch_user-secret_sauce]","Checks whether a user can navigate to the products page of a website after logging in.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"passed","Tue Dec 20 01:09:16 GMT 2022","Tue Dec 20 01:09:21 GMT 2022","5568","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_cart_page[performance_glitch_user-secret_sauce]","Checks whether a user can navigate to the cart page of a website after logging in and adding items to cart.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
+"skipped","Tue Dec 20 01:08:11 GMT 2022","Tue Dec 20 01:08:11 GMT 2022","401","tests","test_TC_007_03_sort_products_by_price_asc","Test","","","test_TC_007_03_sort_products_by_price_asc[problem_user-secret_sauce]",""
+"passed","Tue Dec 20 01:09:39 GMT 2022","Tue Dec 20 01:09:40 GMT 2022","991","tests","test_TC_016_01_return_to_catalog_after_order","TestSample","","","test_user_can_go_to_checkout_complete_page[standard_user-secret_sauce]","Checks whether a user can navigate to the checkout complete page of a website
+        after logging in, adding items to cart, navigating to the cart page,
+        filling out the shipping information on the first checkout page, and navigating to the second checkout page.
+
+        Args:
+            d: WebDriver
+            username: used to specify the username of the user
+            password: used to specify the password of the user
+        "
